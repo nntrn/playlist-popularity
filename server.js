@@ -15,22 +15,24 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var redirectUri = 'https://spotify-easyauth.glitch.me/callback';
 var tokenExpirationEpoch;
 
+// The API object we'll use to interact with the API
 var spotifyApi = new SpotifyWebApi({
   clientId : process.env.CLIENT_ID,
   clientSecret : process.env.CLIENT_SECRET,
   redirectUri : redirectUri
 });
 
-// spotifyApi.clientCredentialsGrant()
-//   .then(function(data) {
-//     console.log('The access token expires in ' + data.body['expires_in']);
-//     console.log('The access token is ' + data.body['access_token']);
+// Using the Client Credentials Flow, authenticate our app
+spotifyApi.clientCredentialsGrant()
+  .then(function(data) {
+    console.log('The access token expires in ' + data.body['expires_in']);
+    console.log('The access token is ' + data.body['access_token']);
 
-//     // Save the access token so that it's used in future calls
-//     spotifyApi.setAccessToken(data.body['access_token']);
-//   }, function(err) {
-//     console.log('Something went wrong when retrieving an access token', err.message);
-//   });
+    // Save the access token so that it's used in future calls
+    spotifyApi.setAccessToken(data.body['access_token']);
+  }, function(err) {
+    console.log('Something went wrong when retrieving an access token', err.message);
+  });
 
 
 // http://expressjs.com/en/starter/static-files.html
@@ -42,7 +44,7 @@ app.get("/", function (request, response) {
 });
 
 app.get("/authorize", function (request, response) {
-  var scopesArray = request.query.scopes.split(',');
+  var scopes = ['user-read-currently-playing'];
   var authorizeURL = spotifyApi.createAuthorizeURL(scopesArray);
   console.log(authorizeURL)
   response.send(authorizeURL);
