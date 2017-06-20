@@ -6,21 +6,10 @@
 
 $(function() {
   console.log('hello world :o');
-
-  $('form').submit(function(event) {
-    event.preventDefault();
     
-    let scopesList = '';
-    
-    $("#authorize-scopes input:checkbox:checked").each(function(){
-      scopesList += $(this).val();
-      scopesList += ',';
-    });
-    
-    $.get('/authorize?' + $.param({scopes: scopesList}), function(data) {
-      console.log(data)
-      window.location = data;
-    });
+  $.get('/myendpoint', function(data) {
+    console.log(data)
+    $('#data-container').text = data;
   });
 
 });

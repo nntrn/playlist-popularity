@@ -32,13 +32,22 @@ spotifyApi.clientCredentialsGrant()
     console.log('Something went wrong when retrieving an access token', err.message);
   });
 
-
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
+});
+
+app.get('/myendpoint', function (request, response) {
+  // Passing a callback - get Elvis' albums in range [20...29]
+  spotifyApi.searchTracks('Dancing Queen', {limit: 1})
+    .then(function(data) {
+      response.send(data.body);
+    }, function(err) {
+      console.error(err);
+    });
 });
 
 // listen for requests :)
