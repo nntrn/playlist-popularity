@@ -5,7 +5,6 @@
 // add other scripts at the bottom of index.html
 
 $(function() {
-  console.log('hello world :o');
     
   $.get('/myendpoint', function(data) {
     // "Data" is the track object we get from the API. See server.js for the function that returns it.
@@ -15,7 +14,7 @@ $(function() {
     $('#data-container').text(data.name);
     
     // Display the album art
-    var img = $('<img id="albumart">');
+    var img = $('<img id="albumart"/>');
     img.attr('src', data.album.images[0].url);
     img.appendTo('#data-container');
   });

@@ -5,6 +5,18 @@
 var express = require('express');
 var app = express();
 
+// http://expressjs.com/en/starter/static-files.html
+app.use(express.static('public'));
+
+// http://expressjs.com/en/starter/basic-routing.html
+app.get("/", function (request, response) {
+  response.sendFile(__dirname + '/views/index.html');
+});
+
+
+//-------------------------------------------------------------//
+
+
 // init Spotify API wrapper
 var SpotifyWebApi = require('spotify-web-api-node');
 
@@ -26,14 +38,6 @@ spotifyApi.clientCredentialsGrant()
     console.log('Something went wrong when retrieving an access token', err.message);
   });
 
-// http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
-
-// http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
-});
-
 app.get('/myendpoint', function (request, response) {
   // Search for a track!
   spotifyApi.searchTracks('track:Dancing Queen', {limit: 1})
@@ -44,6 +48,10 @@ app.get('/myendpoint', function (request, response) {
       console.error(err);
     });
 });
+
+
+//-------------------------------------------------------------//
+
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
