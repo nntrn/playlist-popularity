@@ -9,7 +9,12 @@ $(function() {
     
   $.get('/myendpoint', function(data) {
     console.log(data)
-    $('#data-container').text = data;
+    
+    $('#data-container').text(data.name);
+    
+    var img = $('<img id="albumart">');
+    img.attr('src', data.album.images[0].url);
+    img.appendTo('#data-container');
   });
 
 });

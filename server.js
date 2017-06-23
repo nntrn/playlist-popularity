@@ -44,7 +44,9 @@ app.get('/myendpoint', function (request, response) {
   // Passing a callback - get Elvis' albums in range [20...29]
   spotifyApi.searchTracks('Dancing Queen', {limit: 1})
     .then(function(data) {
-      response.send(data.body);
+      console.log(data.body.tracks.items[0])
+      console.log(data.body.tracks.items[0].album.images[0].url)
+      response.send(data.body.tracks.items[0]);
     }, function(err) {
       console.error(err);
     });
