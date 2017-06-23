@@ -5,19 +5,13 @@
 var express = require('express');
 var app = express();
 
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
-
 // init Spotify API wrapper
 var SpotifyWebApi = require('spotify-web-api-node');
-
-var redirectUri = 'https://spotify-client-credentials-node.glitch.me/callback';
 
 // The API object we'll use to interact with the API
 var spotifyApi = new SpotifyWebApi({
   clientId : process.env.CLIENT_ID,
-  clientSecret : process.env.CLIENT_SECRET,
-  redirectUri : redirectUri
+  clientSecret : process.env.CLIENT_SECRET
 });
 
 // Using the Client Credentials auth flow, authenticate our app
@@ -41,11 +35,10 @@ app.get("/", function (request, response) {
 });
 
 app.get('/myendpoint', function (request, response) {
-  // Passing a callback - get Elvis' albums in range [20...29]
-  spotifyApi.searchTracks('Dancing Queen', {limit: 1})
+  // Search for a track!
+  spotifyApi.searchTracks('track:Dancing Queen', {limit: 1})
     .then(function(data) {
-      console.log(data.body.tracks.items[0])
-      console.log(data.body.tracks.items[0].album.images[0].url)
+      // Send the first (only) track object
       response.send(data.body.tracks.items[0]);
     }, function(err) {
       console.error(err);
