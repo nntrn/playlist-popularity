@@ -40,7 +40,7 @@ spotifyApi.clientCredentialsGrant()
 
 app.get('/myendpoint', function (request, response) {
   // Search for a track!
-  spotifyApi.searchTracks('track:Despaciyo', {limit: 1})
+  spotifyApi.searchTracks('track:Despacito', {limit: 1})
     .then(function(data) {
       // Send the first (only) track object
       response.send(data.body.tracks.items[0]);
