@@ -11,7 +11,7 @@ $(function() {
     console.log(data)
     
     // Display the track name
-    $('#data-container').text(data.name + ' | ' + data.artists[0].name);
+    $('#data-container').text(data.name);
     
     // Display the album art
     var img = $('<img id="albumart"/>');
