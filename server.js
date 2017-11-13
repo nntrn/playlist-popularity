@@ -51,10 +51,11 @@ app.get('/myendpoint', function (request, response) {
     });
 });
 
-app.get('/category-playlists-container', function (request, response) {
+app.get('/category-playlists', function (request, response) {
   
-  // Search for a track!
-  spotifyApi.getPlaylistsForCategory('party', { limit : 10 })
+  // Get playlists from a browse category
+  // Find out which categories are available here: https://beta.developer.spotify.com/console/get-browse-categories/
+  spotifyApi.getPlaylistsForCategory('', { limit : 5 })
     .then(function(data) {
     
     // Send the playlists

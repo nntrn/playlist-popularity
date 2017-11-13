@@ -20,3 +20,9 @@ This app uses the *Client Credentials Flow* for authentication, which means you 
 3. Make the image link to the song on Spotify. *(Hint: look at the whole track object to find the song URL)*
 
 4. Use a different endpoint to get totally different data! *(Hint: look at [this repository](https://github.com/thelinmichael/spotify-web-api-node/) for examples of all the calls you can make)*
+
+### Browse
+
+1. Get the playlists for a different category!
+
+2. Get 10 playlists
