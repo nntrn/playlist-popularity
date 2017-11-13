@@ -86,7 +86,7 @@ app.get('/audio-features', function (request, response) {
 });
 
 app.get('/artist', function (request, response) {
-  spotifyApi.getArtist('22bE4uQ6baNwSHPVcDxLCe')
+  spotifyApi.getArtist('6jJ0s89eD6GaHleKKya26X')
     .then(function(data) {
     
       // Send the list of tracks
