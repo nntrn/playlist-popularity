@@ -66,11 +66,11 @@ app.get('/category-playlists', function (request, response) {
   });
 });
 
-app.get('/category-playlists', function (request, response) {
+app.get('/audio-features', function (request, response) {
   spotifyApi.getAudioFeaturesForTrack('3Qm86XLflmIXVm1wcwkgDK')
     .then(function(data) {
     
-      console.log(data.body);
+      response.send(data.body);
     
     }, function(err) {
       console.error(err);
