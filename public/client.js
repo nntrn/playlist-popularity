@@ -46,5 +46,16 @@ $(function() {
       }
     });
   });
+  
+  $.get('/artist-top-tracks', function(data) {
+    // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.log(data)
+    
+    // Display the audio features
+    data.map(function(track, i) {
+      var trackName = $('<li>' + track.name + '</li>');
+      trackName.appendTo('#top-tracks-container');
+    });
+  });
 
 });

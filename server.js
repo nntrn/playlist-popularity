@@ -77,6 +77,19 @@ app.get('/audio-features', function (request, response) {
     });
 });
 
+app.get('/artist-top-tracks', function (request, response) {
+  spotifyApi.getArtistTopTracks('=1dfeR4HaWDbWqFHLkxsg1d', 'GB')
+    .then(function(data) {
+    
+      response.send(data.body.tracks);
+    
+    }, function(err) {
+      console.error(err);
+    });
+});
+
+
+
 
 //-------------------------------------------------------------//
 
