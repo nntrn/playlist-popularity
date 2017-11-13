@@ -30,5 +30,17 @@ $(function() {
       img.appendTo('#category-playlists-container');
     });
   });
+  
+  $.get('/audio-features', function(data) {
+    // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.log(data)
+    
+    // Display the covers of the playlists
+    data.items.map(function(playlist, i) {
+      var img = $('<img class="cover-image"/>');
+      img.attr('src', playlist.images[0].url);
+      img.appendTo('#category-playlists-container');
+    });
+  });
 
 });

@@ -55,7 +55,7 @@ app.get('/category-playlists', function (request, response) {
   
   // Get playlists from a browse category
   // Find out which categories are available here: https://beta.developer.spotify.com/console/get-browse-categories/
-  spotifyApi.getPlaylistsForCategory('', { limit : 5 })
+  spotifyApi.getPlaylistsForCategory('jazz', { limit : 5 })
     .then(function(data) {
     
     // Send the playlists
@@ -64,6 +64,17 @@ app.get('/category-playlists', function (request, response) {
   }, function(err) {
     console.error(err);
   });
+});
+
+app.get('/category-playlists', function (request, response) {
+  spotifyApi.getAudioFeaturesForTrack('3Qm86XLflmIXVm1wcwkgDK')
+    .then(function(data) {
+    
+      console.log(data.body);
+    
+    }, function(err) {
+      console.error(err);
+    });
 });
 
 
