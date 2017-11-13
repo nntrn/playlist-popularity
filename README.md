@@ -1,4 +1,4 @@
-Spotify API Workshop 1
+Spotify Playground
 =========================
 
 A basic Node app that integrates with the Spotify API.
