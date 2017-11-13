@@ -37,10 +37,10 @@ spotifyApi.clientCredentialsGrant()
     console.log('Something went wrong when retrieving an access token', err.message);
   });
 
-app.get('/myendpoint', function (request, response) {
+app.get('/search-track', function (request, response) {
   
   // Search for a track!
-  spotifyApi.searchTracks('track:Dancing Queen', {limit: 1})
+  spotifyApi.searchTracks('track:Bohemian Rhapsody', {limit: 1})
     .then(function(data) {
     
       // Send the first (only) track object
@@ -58,7 +58,7 @@ app.get('/category-playlists', function (request, response) {
   spotifyApi.getPlaylistsForCategory('jazz', { limit : 5 })
     .then(function(data) {
     
-    // Send the playlists
+    // Send the list of playlists
     response.send(data.body.playlists);
     
   }, function(err) {
@@ -77,10 +77,23 @@ app.get('/audio-features', function (request, response) {
     });
 });
 
-app.get('/artist-top-tracks', function (request, response) {
-  spotifyApi.getArtistTopTracks('=1dfeR4HaWDbWqFHLkxsg1d', 'GB')
+app.get('/artist', function (request, response) {
+  spotifyApi.getArtist('0LcJLqbBmaGUft1e9Mm8HV')
     .then(function(data) {
     
+      // Send the list of tracks
+      response.send(data.body);
+    
+    }, function(err) {
+      console.error(err);
+    });
+});
+
+app.get('/artist-top-tracks', function (request, response) {
+  spotifyApi.getArtistTopTracks('0LcJLqbBmaGUft1e9Mm8HV', 'SE')
+    .then(function(data) {
+    
+      // Send the list of tracks
       response.send(data.body.tracks);
     
     }, function(err) {

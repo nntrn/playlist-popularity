@@ -6,17 +6,18 @@
 
 $(function() {
     
-  $.get('/myendpoint', function(data) {
-    // "Data" is the track object we get from the API. See server.js for the function that returns it.
+  $.get('/search-track', function(data) {
+    // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.log(data)
     
     // Display the track name
-    $('#data-container').text(data.name);
+    var trackName = $('<h3>' + data.name + '</h3>');
+    trackName.appendTo('#search-track-container');
     
     // Display the album art
-    var img = $('<img id="albumart"/>');
+    var img = $('<img/>');
     img.attr('src', data.album.images[0].url);
-    img.appendTo('#data-container');
+    img.appendTo('#search-track-container');
   });
   
   $.get('/category-playlists', function(data) {
@@ -44,6 +45,17 @@ $(function() {
         var feature = $('<p>' + key + ': <span class="big-number">' + data[key] + '</span></p>');
         feature.appendTo('#audio-features-container');
       }
+    });
+  });
+  
+  $.get('/artist', function(data) {
+    // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.log(data)
+    
+    // Display the audio features
+    data.map(function(track, i) {
+      var trackName = $('<li>' + track.name + '</li>');
+      trackName.appendTo('#top-tracks-container');
     });
   });
   
