@@ -8,6 +8,7 @@ $(function() {
     
   $.get('/search-track', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.warn('Response from /search-track :')
     console.log(data)
     
     // Display the track name
@@ -22,6 +23,7 @@ $(function() {
   
   $.get('/category-playlists', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.warn('Response from /category-playlists :')
     console.log(data)
     
     // Display the covers of the playlists
@@ -34,6 +36,7 @@ $(function() {
   
   $.get('/audio-features', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.warn('Response from /audio-features :')
     console.log(data)
     
     // The audio features we want to show
@@ -42,7 +45,7 @@ $(function() {
     // Display the audio features
     keys.map(function(key, i) {
       if (data.hasOwnProperty(key)) {
-        var feature = $('<p>' + key + ': <span class="big-number">' + data[key] + '</span></p>');
+        var feature = $('<p><span class="big-number">' + data[key] + ' </span>'  + key + '</p>');
         feature.appendTo('#audio-features-container');
       }
     });
@@ -50,9 +53,19 @@ $(function() {
   
   $.get('/artist', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.warn('Response from /artist :')
     console.log(data)
     
-    // Display the audio features
+    // Display the artist name
+    var trackName = $('<h3>' + data.name + '</h3>');
+    trackName.appendTo('#artist-container');
+    
+    // Display the covers of the playlists
+    data.genres.map(function(genre, i) {
+      var genreItem = $('<p>' + genre + '</p>');
+      genreItem.appendTo('#artist-container');
+    });
+    
     data.map(function(track, i) {
       var trackName = $('<li>' + track.name + '</li>');
       trackName.appendTo('#top-tracks-container');
@@ -61,6 +74,7 @@ $(function() {
   
   $.get('/artist-top-tracks', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.warn('Response from /artist-top-tracks :')
     console.log(data)
     
     // Display the audio features

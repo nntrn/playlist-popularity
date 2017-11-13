@@ -15,12 +15,14 @@ app.get("/", function (request, response) {
 
 
 //-------------------------------------------------------------//
+//----------------------- AUTHORIZATION -----------------------//
+//-------------------------------------------------------------//
 
 
-// init Spotify API wrapper
+// Initialize Spotify API wrapper
 var SpotifyWebApi = require('spotify-web-api-node');
 
-// The API object we'll use to interact with the API
+// The object we'll use to interact with the API
 var spotifyApi = new SpotifyWebApi({
   clientId : process.env.CLIENT_ID,
   clientSecret : process.env.CLIENT_SECRET
@@ -36,6 +38,12 @@ spotifyApi.clientCredentialsGrant()
   }, function(err) {
     console.log('Something went wrong when retrieving an access token', err.message);
   });
+
+
+//-------------------------------------------------------------//
+//------------------------- API CALLS -------------------------//
+//-------------------------------------------------------------//
+
 
 app.get('/search-track', function (request, response) {
   
@@ -102,12 +110,13 @@ app.get('/artist-top-tracks', function (request, response) {
 });
 
 
-
-
+//-------------------------------------------------------------//
+//------------------------ WEB SERVER -------------------------//
 //-------------------------------------------------------------//
 
 
-// listen for requests :)
+// Listen for requests to our app
+// We make these requests from client.js
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
