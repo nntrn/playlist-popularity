@@ -8,8 +8,9 @@ $(function() {
     
   $.get('/search-track', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
-    console.warn('Response from /search-track :')
-    console.log(data)
+    console.group('Response from /search-track');
+    console.log(data);
+    console.groupEnd();
     
     // Display the track name
     var trackName = $('<h3>' + data.name + '</h3>');
@@ -23,8 +24,9 @@ $(function() {
   
   $.get('/category-playlists', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
-    console.warn('Response from /category-playlists :')
-    console.log(data)
+    console.group('Response from /category-playlists');
+    console.log(data);
+    console.groupEnd();
     
     // Display the covers of the playlists
     data.items.map(function(playlist, i) {
@@ -36,8 +38,9 @@ $(function() {
   
   $.get('/audio-features', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
-    console.warn('Response from /audio-features :')
-    console.log(data)
+    console.group('Response from /audio-features');
+    console.log(data);
+    console.groupEnd();
     
     // The audio features we want to show
     var keys = ["danceability", "energy", "acousticness"]
@@ -53,8 +56,9 @@ $(function() {
   
   $.get('/artist', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
-    console.warn('Response from /artist :')
-    console.log(data)
+    console.group('Response from /artist');
+    console.log(data);
+    console.groupEnd();
     
     // Display the artist name
     var trackName = $('<h3>' + data.name + '</h3>');
@@ -65,17 +69,14 @@ $(function() {
       var genreItem = $('<p>' + genre + '</p>');
       genreItem.appendTo('#artist-container');
     });
-    
-    data.map(function(track, i) {
-      var trackName = $('<li>' + track.name + '</li>');
-      trackName.appendTo('#top-tracks-container');
-    });
   });
   
   $.get('/artist-top-tracks', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
-    console.warn('Response from /artist-top-tracks :')
-    console.log(data)
+    console.group('%cThis will be formatted with large, blue text", "color: ; font-size: x-large');
+    console.group('Response from /artist-top-tracks');
+    console.log(data);
+    console.groupEnd();
     
     // Display the audio features
     data.map(function(track, i) {
