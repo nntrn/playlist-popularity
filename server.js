@@ -51,6 +51,20 @@ app.get('/myendpoint', function (request, response) {
     });
 });
 
+app.get('/category-playlists-container', function (request, response) {
+  
+  // Search for a track!
+  spotifyApi.getPlaylistsForCategory('party', { limit : 10 })
+    .then(function(data) {
+    
+    // Send the playlists
+    response.send(data.body.playlists);
+    
+  }, function(err) {
+    console.error(err);
+  });
+});
+
 
 //-------------------------------------------------------------//
 
