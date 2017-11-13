@@ -21,7 +21,7 @@ This app uses the *Client Credentials Flow* for authentication, which means you 
 
 4. Use a different endpoint to get totally different data! *(Hint: look at [this repository](https://github.com/thelinmichael/spotify-web-api-node/) for examples of all the calls you can make)*
 
-### Browse
+### Section 3: Get a Category's Playlists
 
 1. Get the playlists for a different category!
 
