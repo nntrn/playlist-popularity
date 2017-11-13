@@ -39,12 +39,12 @@ $(function() {
     var keys = ["danceability", "energy", "acousticness"]
     
     // Display the audio features
-    for (var key in data) {
+    keys.map(function(key, i) {
       if (data.hasOwnProperty(key)) {
         var feature = $('<p>' + key + ': <span class="big-number">' + data[key] + '</span></p>');
         feature.appendTo('#audio-features-container');
       }
-    }
+    });
   });
 
 });

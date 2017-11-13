@@ -8,17 +8,20 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 25px;
-}
-
 h1 {
   font-weight: bold;
   color: #1ED760;
+  text-align: center;
 }
 
 img {
   display: inline-block;
+}
+
+section {
+  padding: 30px 70px;
+  margin: 20px 0;
+  background-color: #f3f3f3;
 }
 
 .big-number {
