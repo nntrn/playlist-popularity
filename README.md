@@ -13,16 +13,25 @@ This app uses the *Client Credentials Flow* for authentication, which means you 
 
 ## Challenges
 
-1. Change the song that shows up. *(Hint: look in server.js for the API call)*
-
-2. Display the artist name in addition to the song name. *(Hint: look at the whole track object to find the artist name)*
-
 3. Make the image link to the song on Spotify. *(Hint: look at the whole track object to find the song URL)*
 
 4. Use a different endpoint to get totally different data! *(Hint: look at [this repository](https://github.com/thelinmichael/spotify-web-api-node/) for examples of all the calls you can make)*
 
-### Section 3: Get a Category's Playlists
+### Pink: Search for a Track
+
+1. Change the song that shows up. *(Hint: look in server.js for the API call)*
+
+2. Display the artist name in addition to the song name. *(Hint: look at the whole track object to find the artist name)*
+
+### Purple: Get a Category's Playlists
 
 1. Get the playlists for a different category!
 
 2. Get 10 playlists
+
+### Orange: Get Audio Features for a Track
+
+### Blue: Get an Artist
+
+### Yellow: Get an Artist's Top Tracks
+
