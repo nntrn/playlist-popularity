@@ -7,11 +7,15 @@ A basic Node app that integrates with the Spotify API.
 
 This app uses the *Client Credentials Flow* for authentication, which means you can only get non-user-specific data.
 
+-----
+
 ## Getting Started
 
 1. After registering your app at developer.spotify.com, put your app's client ID and secret (which you can find in the Dashboard) into the `.env` file.
 
 2. Click on "Show Live" in Glitch and verify that your app works (you should see data in each of the coloured sections).
+
+-----
 
 ## Working with the Playground
 
@@ -20,6 +24,8 @@ This app uses the *Client Credentials Flow* for authentication, which means you 
 - Open the browser's **Developer Tools** by right-clicking and selecting **Inspect**.
 - Calls to the Spotify API live in **server.js**.
 - Calls to your own server and the rendering of the UI occur in **public/client.js**.
+
+-----
 
 ## Challenges
 
