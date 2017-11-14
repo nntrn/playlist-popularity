@@ -75,9 +75,12 @@ app.get('/category-playlists', function (request, response) {
 });
 
 app.get('/audio-features', function (request, response) {
+  
+  // Get the audio features for a track ID
   spotifyApi.getAudioFeaturesForTrack('4uLU6hMCjMI75M1A2tKUQC')
     .then(function(data) {
     
+      //Send the audio features object
       response.send(data.body);
     
     }, function(err) {
@@ -86,6 +89,8 @@ app.get('/audio-features', function (request, response) {
 });
 
 app.get('/artist', function (request, response) {
+  
+  // Get information about an artist
   spotifyApi.getArtist('6jJ0s89eD6GaHleKKya26X')
     .then(function(data) {
     
@@ -98,6 +103,8 @@ app.get('/artist', function (request, response) {
 });
 
 app.get('/artist-top-tracks', function (request, response) {
+  
+  // Get an artist's top tracks in a country
   spotifyApi.getArtistTopTracks('0LcJLqbBmaGUft1e9Mm8HV', 'SE')
     .then(function(data) {
     
