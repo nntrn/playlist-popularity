@@ -11,7 +11,7 @@ This app uses the *Client Credentials Flow* for authentication, which means you 
 
 ## Getting Started
 
-1. After registering your app at developer.spotify.com, put your app's client ID and secret (which you can find in the Dashboard) into the `.env` file.
+1. After registering your app at beta.developer.spotify.com, put your app's client ID and secret (which you can find in the Dashboard) into the `.env` file.
 
 2. Click on "Show Live" in Glitch and verify that your app works (you should see data in each of the coloured sections).
 
