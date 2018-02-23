@@ -48,7 +48,7 @@ spotifyApi.clientCredentialsGrant()
 app.get('/search-track', function (request, response) {
   
   // Search for a track!
-  spotifyApi.searchTracks('track:Bohemian Rhapsody', {limit: 1})
+  spotifyApi.searchTracks('track:Hey Jude', {limit: 1})
     .then(function(data) {
     
       // Send the first (only) track object

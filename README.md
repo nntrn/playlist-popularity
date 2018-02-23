@@ -7,10 +7,6 @@ A basic Node app that integrates with the Spotify API.
 
 This app uses the *Client Credentials Flow* for authentication, which means you can only get non-user-specific data.
 
-41c4dcf2105d46dab8a1cdb76a725a41
-
-4a2997c6a2de47b5afff534765154dea
-
 -----
 
 ## Getting Started
