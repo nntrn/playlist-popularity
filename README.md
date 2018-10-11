@@ -3,7 +3,7 @@ Spotify Playground
 
 Written by [Arielle Vaniderstine](https://twitter.com/imariari)
 
-A basic Node app that integrates with the Spotify API.
+A basic Node app that integrates with the Spotify API. Explore different endpoints the API has to offer!
 
 This app uses the *Client Credentials Flow* for authentication, which means you can only get non-user-specific data.
 
@@ -11,7 +11,7 @@ This app uses the *Client Credentials Flow* for authentication, which means you 
 
 ## Getting Started
 
-1. After registering your app at beta.developer.spotify.com, put your app's client ID and secret (which you can find in the Dashboard) into the `.env` file.
+1. After registering your app at developer.spotify.com/dashboard, put your app's client ID and secret (which you can find in the Dashboard) into the `.env` file.
 
 2. Click on "Show Live" in Glitch and verify that your app works (you should see data in each of the coloured sections).
 
@@ -20,7 +20,7 @@ This app uses the *Client Credentials Flow* for authentication, which means you 
 ## Working with the Playground
 
 - Navigate between files in Glitch's left panel.
-- See server logs by clicking "Logs" at the top of the left panel.
+- See server logs by clicking "Status" at the top of the left panel.
 - Open the browser's **Developer Tools** by right-clicking and selecting **Inspect**.
 - Calls to the Spotify API live in **server.js**.
 - Calls to your own server and the rendering of the UI occur in **public/client.js**.
