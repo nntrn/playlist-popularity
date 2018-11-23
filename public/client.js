@@ -10,10 +10,8 @@ $(function() {
     console.groupEnd();
     
     // Display the track name
-    var trackName = $('<h3><a href="' + data.external_urls.spotify + '">' + data.name + '</a></h3>');
-    var artistName = $('<h3>' + data.artists[0].name + '</h3>');
+    var trackName = $('<h3>' + data.name + '</h3>');
     trackName.appendTo('#search-track-container');
-    artistName.appendTo('#search-track-container');
     
     // Display the album art
     var img = $('<img/>');
