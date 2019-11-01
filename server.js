@@ -60,6 +60,29 @@ app.get('/search-track', function (request, response) {
     });
 });
 
+app.get('/lookup-playlist', function (request, response) {
+  
+  // Search for a track!
+  spotifyApi.searchTracks('track:Dancing Queen', {limit: 1})
+    .then(function(data) {
+    
+      // Send the first (only) track object
+      response.send(data.body.tracks.items[0]);
+    
+    }, function(err) {
+      console.error(err);
+    });
+});
+
+
+// // Get a user's playlists
+// spotifyApi.getUserPlaylists('thelinmichael')
+//   .then(function(data) {
+//     console.log('Retrieved playlists', data.body);
+//   },function(err) {
+//     console.log('Something went wrong!', err);
+//   });
+
 app.get('/category-playlists', function (request, response) {
   
   // Get playlists from a browse category
