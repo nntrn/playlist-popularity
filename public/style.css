@@ -8,12 +8,8 @@
   box-sizing: border-box;
 }
 
-body {
-  padding: 40px 0;
-}
-
-header {
-  padding: 10px 40px;
+header,section{
+   padding: 0 70px
 }
 
 h1 {
@@ -22,31 +18,14 @@ h1 {
   display: inline;
 }
 
-img {
-  display: inline-block;
-  width: 300px;
-  height: 300px;
-}
-
-.circle-image {
-  border-radius: 300px;
-}
-
 section {
-  padding: 30px 70px;
   margin: 20px 0;
-  background-color: #f3f3f3;
 }
 
 footer {
   text-align: center;
 }
 
-.big-number {
-  font-size: 40px;
-  font-weight: bold;
-  color: #1E3264;
-}
 
 .radius-right-0{
   border-top-right-radius: 0!important;
