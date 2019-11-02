@@ -60,7 +60,7 @@ app.get('/search-track', function (request, response) {
     });
 });
 
-app.get('/lookup-playlist', function (request, response) {
+app.get('/user-playlist', function (request, response) {
   
   // Search for a track!
   spotifyApi.searchTracks('track:Dancing Queen', {limit: 1})
