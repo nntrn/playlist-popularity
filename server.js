@@ -4,15 +4,20 @@ const bodyParser = require('body-parser')
 
 app.use(express.static('public'))
 
-app.get('/', function (request, response) {
-  response.sendFile(__dirname + '/views/index.html')
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/views/index.html')
 })
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+// // parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }))
  
-// parse application/json
-app.use(bodyParser.json())
+// // parse application/json
+// app.use(bodyParser.json())
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+// in latest body-parser use like below.
+app.use(bodyParser.urlencoded({ extended: true }));
  
 
 
@@ -44,80 +49,80 @@ spotifyApi.clientCredentialsGrant()
 // ------------------------- API CALLS -------------------------//
 // -------------------------------------------------------------//
 
-app.get('/search-track', function (request, response) {
+app.get('/search-track', function (req, res) {
 
   // Search for a track!
   spotifyApi.searchTracks('track:Dancing Queen', {limit: 1})
     .then(function (data) {
 
       // Send the first (only) track object
-      response.send(data.body.tracks.items[0])
+      res.send(data.body.tracks.items[0])
 
     }, function (err) {
       console.error(err)
     })
 })
 
-app.get('/user-playlist', function (request, response) {
-
-  spotifyApi.getUserPlaylists('nntrn')
-    .then(function (data) {
-      response.send(data.body)
-    }, function (err) {
-      console.error(err)
-    })
+app.post('/user-playlist', function (req, res) {
+res.send(req.body)
+  // spotifyApi.getUserPlaylists('nntrn')
+  //   .then(function (data) {    
+  //     res.send(data.body)
+  //   }, function (err) {
+  //     console.error(err)
+  //   })
 
 })
 
-app.get('/category-playlists', function (request, response) {
+app.get('/category-playlists', function (req, res) {
   
   spotifyApi.getPlaylistsForCategory('jazz', {limit: 5})
     .then(function (data) {
 
       // Send the list of playlists
-      response.send(data.body.playlists)
+      res.send(data.body.playlists)
 
     }, function (err) {
       console.error(err)
     })
 })
 
-app.get('/audio-features', function (request, response) {
+app.get('/audio-features', function (req, res) {
 
   // Get the audio features for a track ID
   spotifyApi.getAudioFeaturesForTrack('4uLU6hMCjMI75M1A2tKUQC')
     .then(function (data) {
 
       // Send the audio features object
-      response.send(data.body)
+      res.send(data.body)
 
     }, function (err) {
       console.error(err)
     })
 })
 
-app.get('/artist', function (request, response) {
+app.get('/artist', function (req, res) {
 
   // Get information about an artist
   spotifyApi.getArtist('6jJ0s89eD6GaHleKKya26X')
     .then(function (data) {
 
       // Send the list of tracks
-      response.send(data.body)
+      res.send(data.body)
 
     }, function (err) {
       console.error(err)
     })
 })
 
-app.get('/artist-top-tracks', function (request, response) {
+app.get('/artist-top-tracks', function (req, res) {
 
   // Get an artist's top tracks in a country
   spotifyApi.getArtistTopTracks('0LcJLqbBmaGUft1e9Mm8HV', 'SE')
     .then(function (data) {
 
       // Send the list of tracks
-      response.send(data.body.tracks)
+      res.send(data.body.tracks)
 
     }, function (err) {
       console.error(err)
