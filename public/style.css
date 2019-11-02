@@ -8,18 +8,18 @@
   box-sizing: border-box;
 }
 
-header,section{
-   padding: 0 70px
-}
+header{
+  text-transform:uppercase;
 
-h1 {
-  font-weight: bold;
-  color: #1ED760;
-  display: inline;
 }
-
+h1.title{
+  font-size:1em;
+    text-align:center
+}
 section {
   margin: 20px 0;
+  padding: 1.4rem 70px;
+  
 }
 
 footer {
