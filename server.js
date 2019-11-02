@@ -63,9 +63,10 @@ app.get('/search-track', function (req, res) {
 })
 
 app.get('/user-playlist', function (req, res) {
-  
   spotifyApi.getUserPlaylists(req.query.user)
     .then(function (data) {  
+    res.preventDefault()
+    if()
       res.send(data.body)
     }, function (err) {
       console.error(err)
