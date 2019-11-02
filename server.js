@@ -9,18 +9,16 @@ app.get('/', function (req, res) {
 })
 
 // // parse application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }))
  
 // // parse application/json
 // app.use(bodyParser.json())
 
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded());
-// // in latest body-parser use like below.
-// app.use(bodyParser.urlencoded({ extended: true }));
+
  
 
-// app.set('json spaces', 2)
+app.set('json spaces', 2)
 
 // -------------------------------------------------------------//
 // ----------------------- AUTHORIZATION -----------------------//
@@ -65,12 +63,10 @@ app.get('/search-track', function (req, res) {
 })
 
 app.get('/user-playlist', function (req, res) {
-// res.send(req.body)
   
-  spotifyApi.getUserPlaylists(req.body.user)
+  spotifyApi.getUserPlaylists(req.query.user)
     .then(function (data) {  
-    
-      res.send(data)
+      res.send(data.body)
     }, function (err) {
       console.error(err)
     })
