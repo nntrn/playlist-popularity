@@ -16,10 +16,11 @@ app.get('/', function (req, res) {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-// in latest body-parser use like below.
-app.use(bodyParser.urlencoded({ extended: true }));
+// // in latest body-parser use like below.
+// app.use(bodyParser.urlencoded({ extended: true }));
  
 
+// app.set('json spaces', 2)
 
 // -------------------------------------------------------------//
 // ----------------------- AUTHORIZATION -----------------------//
@@ -64,13 +65,15 @@ app.get('/search-track', function (req, res) {
 })
 
 app.post('/user-playlist', function (req, res) {
-res.send(req.body)
-  // spotifyApi.getUserPlaylists('nntrn')
-  //   .then(function (data) {    
-  //     res.send(data.body)
-  //   }, function (err) {
-  //     console.error(err)
-  //   })
+// res.send(req.body)
+  
+  spotifyApi.getUserPlaylists( req.body.user)
+    .then(function (data) {  
+    
+      res.send(data)
+    }, function (err) {
+      console.error(err)
+    })
 
 })
 
