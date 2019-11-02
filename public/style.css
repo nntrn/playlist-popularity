@@ -7,24 +7,56 @@
 * {
   box-sizing: border-box;
 }
+body {
+  font-family: Circular,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #222326;
+  background-color: #fff
+}
 
 header{
-  text-transform:uppercase;
+  padding:0 .7rem
+}
 
+button,input,select,textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit
 }
-h1.title{
-  font-size:1em;
-    text-align:center
+
+a {
+  color: #1db954;
+  text-decoration: none
 }
+
+a:focus,a:hover {
+  color: #1ed760;
+  text-decoration: none
+}
+
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px
+}
+
 section {
   margin: 20px 0;
   padding: 1.4rem 70px;
   
 }
 
-footer {
-  text-align: center;
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+  font-family: inherit;
+  font-weight: 900;
+  line-height: 1.1;
+  color: inherit;
+  padding-top:0;
+  margin
 }
+
+
 
 
 .radius-right-0{

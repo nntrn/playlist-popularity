@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Spotify API Playground</title>
 
-<head>
-  <title>Spotify API Playground</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css" />
+  </head>
 
-  <link rel="stylesheet" href="/style.css">
-</head>
+  <body>
+    <header>
+      <h1 class="title">spotify user playlist lookup</h1>
+    </header>
+    <main>
+      <section class="text-black-50" data-bg="primary">
+        <div class="container">
+          <h2>Search...</h2>
 
-<body>
-
-<header>
-   <h1 class="title">user playlist lookup</h1>
-  </header>
-  <main>
-
-    <section class="text-black-50" data-bg="#1DB954">
-      <div class="container">
-        
-    
-      <h2>Search...</h2>
-      
-      <form class="form-inline">
-        <div class="form-group mb-2">
-          <input type="text" class="border-0 form-control radius-right-0" id="user-search" name="user" value="nntrn" placeholder="user lookup">
+          <form class="form-inline">
+            <div class="form-group mb-2">
+              <input
+                type="text"
+                class="border-0 form-control radius-right-0"
+                id="user-search"
+                name="user"
+                value="nntrn"
+                placeholder="user lookup"
+              />
+            </div>
+            <input
+              type="submit"
+              class="btn btn-dark mb-2 radius-left-0"
+              value="submit"
+              data-bg="accent"
+            />
+          </form>
         </div>
-        <input type="submit" class="btn btn-dark mb-2 radius-left-0" value="submit" data-bg="#19512f">
-      </form>
-    </div>
-    </section>
-    <div id="user-playlist-output"></div>
+      </section>
+      <div id="user-playlist-output"></div>
+    </main>
 
-  </main>
-
-
-  <!-- Your web-app is https, so your scripts need to be too -->
-<!--   <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script> -->
-  <script src="/events.js"></script>
-
-</body>
-
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <!--   <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script> -->
+    <script src="/events.js"></script>
+  </body>
 </html>
