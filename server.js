@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 // app.use(bodyParser.json())
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+// app.use(bodyParser.urlencoded());
 // // in latest body-parser use like below.
 // app.use(bodyParser.urlencoded({ extended: true }));
  
@@ -64,10 +64,10 @@ app.get('/search-track', function (req, res) {
     })
 })
 
-app.post('/user-playlist', function (req, res) {
+app.get('/user-playlist', function (req, res) {
 // res.send(req.body)
   
-  spotifyApi.getUserPlaylists( req.body.user)
+  spotifyApi.getUserPlaylists(req.body.user)
     .then(function (data) {  
     
       res.send(data)
