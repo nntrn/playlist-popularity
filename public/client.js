@@ -51,6 +51,16 @@ $(function() {
     });
   });
   
+    $.get('/user-playlist', function(data) {
+    // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.group('%cResponse from /user-playlist', 'color: #F037A5; font-size: large');
+    console.log(data);
+    console.groupEnd();
+      
+    document.querySelector('#user-playlist').innerHTML = '<pre>'+JSON.stringify(data,null,2)+'</pre>'
+  });
+  
+  
   $.get('/artist', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /artist', 'color: #F037A5; font-size: large');

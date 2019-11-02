@@ -62,16 +62,14 @@ app.get('/search-track', function (request, response) {
 
 app.get('/user-playlist', function (request, response) {
   
-  // Search for a track!
-  spotifyApi.searchTracks('track:Dancing Queen', {limit: 1})
-    .then(function(data) {
-    
-      // Send the first (only) track object
-      response.send(data.body.tracks.items[0]);
-    
-    }, function(err) {
+  spotifyApi.getUserPlaylists('nntrn')
+  .then(function(data) {
+    response.send(data.body)
+  },function(err) {
       console.error(err);
-    });
+  });
+  
+  
 });
 
 
