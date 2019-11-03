@@ -16,17 +16,21 @@
   </head>
 
   <body>
-    
     <header>
       <h1 class="title">spotify user playlist lookup</h1>
     </header>
-    
+
     <main>
-      <section class="text-black-50" data-bg="primary">
+      <section class="text-black-50" data-bg="primary" id="user-playlist">
         <div class="container">
           <h2>User</h2>
 
-          <form id="userlookup" class="form-inline" action="/user-playlist" method="get">
+          <form
+            id="userlookup"
+            class="form-inline"
+            action="/user-playlist"
+            method="get"
+          >
             <div class="form-group mb-2">
               <input
                 type="text"
@@ -37,15 +41,16 @@
                 placeholder="user lookup"
               />
             </div>
-            <button
+            <input
               type="submit"
               class="btn btn-dark mb-2 radius-left-0"
               value="submit"
               data-bg="accent"
-            />submit
-            </button>
+            />
           </form>
+          <div class="output"></div>
         </div>
+       
       </section>
       <div id="user-playlist-output"></div>
     </main>
@@ -53,6 +58,5 @@
     <!-- Your web-app is https, so your scripts need to be too -->
     <!--   <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script> -->
     <script src="/events.js"></script>
-    
   </body>
 </html>
