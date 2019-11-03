@@ -57,7 +57,9 @@ app.get("/user-playlist", function(req, res) {
 });
 
 app.get("/search-playlist", function(req, res) {
-  spotifyApi.getUserPlaylists(req.query.user, { limit: 50, offset: 0 }).then(
+  const keyword = req.query.keyword || 'chill'
+  
+  spotifyApi.searchPlaylists(keyword, { limit: 50, offset: 0 }).then(
     function(data) {
       res.send(data.body);
     },
@@ -66,6 +68,13 @@ app.get("/search-playlist", function(req, res) {
     }
   );
 });
+
+// spotifyApi.searchPlaylists('workout')
+//   .then(function(data) {
+//     console.log('Found playlists are', data.body);
+//   }, function(err) {
+//     console.log('Something went wrong!', err);
+//   });
 
 // -------------------------------------------------------------//
 // ------------------------ WEB SERVER -------------------------//

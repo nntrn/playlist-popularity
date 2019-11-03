@@ -20,10 +20,11 @@ window.addEventListener("DOMContentLoaded", event => {
     e.addEventListener("submit", function(ev) {
       ev.preventDefault();
       console.log(ev.target.dataset.api);
+      console.log(ev)
 
-      $.get("/user-playlist", function(data) {
-        e.nextSibling.innerHTML =
-          "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+      $.get(ev.target.dataset.api, function(data) {
+        ev.target.nextElementSibling.innerHTML = "<pre>hi</pre>"
+          // "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
       });
     });
   });
