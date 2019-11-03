@@ -45,7 +45,6 @@ label.input-container span {
   opacity: 0.85;
   width: 100%;
   padding-left: 0;
-  /*   background:#eee; */
 }
 
 label.input-container:hover span {
@@ -58,11 +57,6 @@ label.input-container input.form-control {
 input[type="submit"] {
   align-self: flex-end;
   justify-content: flex-end;
-}
-
-section .container{
-/*   display:inline-flex; */
-/*   flex-wrap:wrap */
 }
 
 .output{
