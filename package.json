@@ -1,5 +1,5 @@
 {
-  "name": "spotify-api-viewer",
+  "name": "spotify-api",
   "version": "0.0.1",
   "description": "What am I about?",
   "main": "server.js",
@@ -11,7 +11,7 @@
     "spotify-web-api-node": "^2.3.6"
   },
   "engines": {
-    "node": "6.10.x"
+    "node": "v12.1.0"
   },
   "author": "nntrn",
   "license": "MIT",
