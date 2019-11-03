@@ -9,30 +9,23 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
 
-// // parse application/x-www-form-urlencoded
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// // parse application/json
-// app.use(bodyParser.json())
-
 app.use(bodyParser.json());
-
 app.set("json spaces", 2);
 
 // -------------------------------------------------------------//
 // ----------------------- AUTHORIZATION -----------------------//
 // -------------------------------------------------------------//
 
-// The object we'll use to interact with the API
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET
 });
 
-// Using the Client Credentials auth flow, authenticate our app
 spotifyApi.clientCredentialsGrant().then(
   function(data) {
-    // Save the access token so that it's used in future calls
     spotifyApi.setAccessToken(data.body["access_token"]);
     console.log("Got an access token: " + spotifyApi.getAccessToken());
   },
@@ -66,7 +59,7 @@ app.get("/search-playlist", function(req, res) {
 
   spotifyApi.searchPlaylists(keyword, { limit: limit, offset: offset }).then(
     function(data) {
-      // Object.assign(data.body, { api: req.url });s
+      // Object.assign(data.body, { api: req.url });
       res.send(data.body);
     },
     function(err) {
@@ -74,13 +67,6 @@ app.get("/search-playlist", function(req, res) {
     }
   );
 });
-
-// spotifyApi.searchPlaylists('workout')
-//   .then(function(data) {
-//     console.log('Found playlists are', data.body);
-//   }, function(err) {
-//     console.log('Something went wrong!', err);
-//   });
 
 // -------------------------------------------------------------//
 // ------------------------ WEB SERVER -------------------------//
