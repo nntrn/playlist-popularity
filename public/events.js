@@ -19,8 +19,11 @@ window.addEventListener("DOMContentLoaded", event => {
   document.querySelectorAll("[data-api]").forEach(e => {
     e.addEventListener("submit", function(ev) {
       ev.preventDefault();
-
-      $.get(ev.target.dataset.api, function(data) {
+      
+      const query = Array.from(ev.target.querySelectorAll('[name]')).map(e=>`${e.name}=${e.value}`).join('&')
+      const apiPath = `${ev.target.dataset.api}?${query}`
+      
+      $.get(apiPath, function(data) {
         ev.target.parentElement.querySelector('.output').innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>"
           // "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
       });
