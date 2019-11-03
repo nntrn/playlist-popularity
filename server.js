@@ -58,7 +58,7 @@ app.get("/user-playlist", function(req, res) {
 
 app.get("/search-playlist", function(req, res) {
   const keyword = req.query.keyword || "chill";
-  const limit = 50;
+  const limit = req.query.limit || 50;
 
   let offset =
     req.query.offset || (req.query.page && req.query.page * limit) || 0;
