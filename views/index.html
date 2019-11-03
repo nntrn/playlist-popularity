@@ -24,8 +24,8 @@
     </header>
 
     <main>
-      <section class="text-black-50 bg-light" id="user-playlist">
-        <div class="container-fluid">
+      <section class="bg-light" id="user-playlist">
+        <div class="container">
           <h2>User</h2>
 
           <form data-api="/user-playlist" class="form-inline">
@@ -49,8 +49,8 @@
         </div>
       </section>
 
-      <section class="text-white-50 bg-light" id="search-playlist">
-        <div class="container-fluid">
+      <section class="text-black bg-white" id="search-playlist">
+        <div class="container">
           <h2>Search Playlist</h2>
 
           <form data-api="/search-playlist" class="form-inline">
@@ -62,14 +62,14 @@
                   class="form-control"
                   name="keyword"
                   value="chill"
-                  placeholder="search playlist"
+                  placeholder="chill"
                 />
               </label>
               <label class="input-container">
                 <span class="text-primary">limit</span>
                 <input
                   type="number"
-                  class="border-0 form-control"
+                  class="form-control"
                   name="limit"
                   value="20"
                   max="50"

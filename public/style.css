@@ -14,23 +14,9 @@ header {
   padding: 0 0.7rem;
 }
 
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
 
 a {
   color: #1db954;
-  text-decoration: none;
-}
-
-a:focus,
-a:hover {
-  color: #1ed760;
   text-decoration: none;
 }
 
@@ -42,10 +28,8 @@ a:focus {
 
 section {
   margin: 20px 0;
-  padding: 1.4rem 70px;
+  padding: 1.4rem 0;
 }
-
-
 
 .radius-right-0 {
   border-top-right-radius: 0 !important;
@@ -61,39 +45,34 @@ label.input-container {
   display: flex;
   flex-direction: column;
   position: relative;
-/*   padding:.25rem 0; */
-color:#222;
+
+  color: #222;
 }
 
 label.input-container span {
   user-select: none;
   text-transform: uppercase;
   font-size: 0.68em;
-/*   position: absolute; */
-  top: 0;
-  z-index: 1;
-  left: 0;
-/*   padding-left:.5rem; */
-/*   padding-top:.25rem ; */
-  opacity: 0.85;
-  width:90%;
- 
-  border-bottom:1px solid currentColor;
-/*   background:#eee; */
 
+  opacity: 0.85;
+  width: 100%;
+  padding-left: 0;
+  /*   background:#eee; */
 }
 
-label.input-container:hover span{
-
+label.input-container:hover span {
   opacity: 0.5;
 }
 
 label.input-container input.form-control {
-/*   padding: 0.75rem 0.5rem; */
 
-/*   padding-top: 1.65rem; */
-  
-  margin-right: 0.2rem;
-  border:none;
+  margin-right: 0.4rem;
+/*   border: none; */
 }
-
+input[type="submit"] {
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+section .container{
+  display:flex;
+}
