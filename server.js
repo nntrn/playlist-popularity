@@ -51,7 +51,6 @@ app.get("/search-playlist", function(req, res) {
 
   spotifyApi.searchPlaylists(keyword, { limit: limit, offset: offset }).then(
     function(data) {
-      Object.assign(data.body, { api: req.url });
       res.send(data.body);
     },
     function(err) {
@@ -62,6 +61,5 @@ app.get("/search-playlist", function(req, res) {
 
 /* WEB SERVER */
 const listener = app.listen(process.env.PORT, function() {
-  // console.log(JSON.stringify(listener,null,2))
   console.log("Your app is listening on port " + listener.address().port);
 });

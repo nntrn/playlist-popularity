@@ -11,19 +11,25 @@ document.querySelectorAll("[data-api]").forEach(e => {
     
     $.get(apiPath, function(data) {
       let pre = document.createElement("pre");
-      let link = document.createElement("a")
-
+      let link = document.createElement("a");
+      let details = document.createElement("details")
+      let summary = document.createElement("summary")
+      
       Object.assign(pre, {
         textContent: JSON.stringify(data, null, 2),
         style:
-          "max-height:300px;overflow-y:scroll;background:rgba(255,255,255,.6);padding:.25rem"
+          "max-height:300px;overflow-y:scroll;padding:.25rem"
       });
+      
       Object.assign(link,{
         href: apiPath,
         textContent:apiPath
       })
-      ev.target.parentElement.querySelector(".output").appendChild(link);
-      ev.target.parentElement.querySelector(".output").appendChild(pre);
+      summary.appendChild(link)
+       details.appendChild(summary)
+      details.appendChild(pre)
+      ev.target.parentElement.querySelector(".output").appendChild(details);
+      
     });
   });
 });
