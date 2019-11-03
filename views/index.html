@@ -5,7 +5,10 @@
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <link
       rel="stylesheet"
@@ -21,32 +24,32 @@
     </header>
 
     <main>
-      <section class="text-black-50 bg-primary" id="user-playlist">
+      <section class="text-black-50 bg-light" id="user-playlist">
         <div class="container-fluid">
           <h2>User</h2>
 
           <form data-api="/user-playlist" class="form-inline">
             <div class="form-group mb-2">
-              <input
-                type="text"
-                class="border-0 form-control radius-right-0"
-                id="user-search"
-                name="user"
-                value="nntrn"
-                placeholder="user lookup"
-              />
+              <label class="input-container">
+                <span>user</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="user-search"
+                  name="user"
+                  value="nntrn"
+                  placeholder="user lookup"
+                />
+              </label>
+             <input type="submit" class="btn btn-dark" value="submit" />
             </div>
-            <input
-              type="submit"
-              class="btn btn-dark mb-2 radius-left-0"
-              value="submit"
-            />
+            
           </form>
           <div class="output"></div>
         </div>
       </section>
 
-      <section class="text-black-50 bg-primary" id="search-playlist">
+      <section class="text-black-50 bg-light" id="search-playlist">
         <div class="container-fluid">
           <h2>Search Playlist</h2>
 
@@ -56,7 +59,7 @@
                 <span>keyword: </span>
                 <input
                   type="text"
-                  class="border-0 form-control"
+                  class="form-control"
                   name="keyword"
                   value="chill"
                   placeholder="search playlist"
@@ -73,11 +76,7 @@
                   min="1"
                 />
               </label>
-              <input
-                type="submit"
-                class="btn btn-dark"
-                value="submit"
-              />
+              <input type="submit" class="btn btn-dark" value="submit" />
             </div>
           </form>
           <div class="output"></div>
@@ -88,7 +87,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="/events.js"></script>
     <script>
-    document.querySelector('h1.title').textContent = document.title
+      document.querySelector("h1.title").textContent = document.title;
     </script>
   </body>
 </html>

@@ -45,25 +45,7 @@ section {
   padding: 1.4rem 70px;
 }
 
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: inherit;
-  font-weight: 900;
-  line-height: 1.1;
-  color: inherit;
-  padding-top: 0;
-  margin-top: 0;
-}
+
 
 .radius-right-0 {
   border-top-right-radius: 0 !important;
@@ -79,6 +61,7 @@ label.input-container {
   display: flex;
   flex-direction: column;
   position: relative;
+  padding:.25rem 0;
 }
 
 label.input-container span {
@@ -89,20 +72,21 @@ label.input-container span {
   top: 0;
   z-index: 1;
   left: 0;
-  padding: 0 0.5rem;
-  opacity: 0.9;
+  padding-left:.5rem;
+  padding-top:.25rem ;
+  opacity: 0.5;
+  color:#3498db;
+  
 }
 
-label.input-container input {
+label.input-container:hover span{
+display:none
+}
+
+label.input-container input.form-control {
   padding: 0.5rem;
   padding-top: 1.24rem;
-
   margin-right: 0.2rem;
+  border:none;
 }
 
-.bg-primary {
-  background: #fff!imp;
-}
-.bg-accent {
-  background: #1DB954;
-}
