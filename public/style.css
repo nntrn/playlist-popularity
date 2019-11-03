@@ -1,7 +1,3 @@
-/* styles */
-/* called by your view template */
-/* You might want to try something fancier: */
-/* less: http://lesscss.org/ */
 * {
   box-sizing: border-box;
 }
@@ -80,11 +76,9 @@ h6 {
 }
 
 label.input-container {
-  /*   padding-right:1rem; */
   display: flex;
   flex-direction: column;
   position: relative;
-  /*   padding-right:.4rem; */
   color: #1db954;
 }
 
@@ -102,11 +96,9 @@ label.input-container span {
 }
 
 label.input-container input {
-  /* margin-top:1rem; */
   padding: 0.5rem;
   padding-top: 1.4rem;
-  border-radius: 3px;
-  /*    border-right:2px solid #22dd64!important; */
+  border-radius: 0;
 }
 
 .input-container .border-right {
