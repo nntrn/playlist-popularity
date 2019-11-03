@@ -10,6 +10,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     e.style.border = `1px solid ${theme[e.dataset.bg]}`
   })
   
-  
+  document.querySelectorAll('form').forEach(e=>{
+    e.addEventListener('submit', function(ev){
+      ev.preventDefault()
+      console.log(ev)
+    });
+  })
   
 });
