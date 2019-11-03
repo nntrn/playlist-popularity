@@ -31,17 +31,17 @@
           <form data-api="/user-playlist" class="form-inline">
             <div class="form-group mb-2">
               <label class="input-container">
-                <span>user</span>
+                <span class="text-primary">user</span>
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control border border-primary"
                   id="user-search"
                   name="user"
                   value="nntrn"
                   placeholder="user lookup"
                 />
               </label>
-             <input type="submit" class="btn btn-dark" value="submit" />
+             <input type="submit" class="btn btn-outline-primary" value="submit" />
             </div>
             
           </form>
@@ -49,14 +49,14 @@
         </div>
       </section>
 
-      <section class="text-black-50 bg-light" id="search-playlist">
+      <section class="text-white-50 bg-light" id="search-playlist">
         <div class="container-fluid">
           <h2>Search Playlist</h2>
 
           <form data-api="/search-playlist" class="form-inline">
             <div class="form-group mb-2">
               <label class="input-container">
-                <span>keyword: </span>
+                <span class="text-primary">keyword</span>
                 <input
                   type="text"
                   class="form-control"
@@ -66,7 +66,7 @@
                 />
               </label>
               <label class="input-container">
-                <span>limit: </span>
+                <span class="text-primary">limit</span>
                 <input
                   type="number"
                   class="border-0 form-control"
@@ -76,7 +76,7 @@
                   min="1"
                 />
               </label>
-              <input type="submit" class="btn btn-dark" value="submit" />
+              <input type="submit" class="btn btn-primary" value="submit" />
             </div>
           </form>
           <div class="output"></div>
