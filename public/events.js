@@ -9,12 +9,6 @@ window.addEventListener("DOMContentLoaded", event => {
     e.style.border = `1px solid ${theme[e.dataset.bg]}`;
   });
 
-  // document.querySelectorAll('form').forEach(e=>{
-  //   e.addEventListener('submit', function(ev){
-  //     ev.preventDefault()
-  //     console.log(ev)
-  //   });
-  // })
 
   document.querySelectorAll("[data-api]").forEach(e => {
     e.addEventListener("submit", function(ev) {
@@ -24,8 +18,15 @@ window.addEventListener("DOMContentLoaded", event => {
       const apiPath = `${ev.target.dataset.api}?${query}`
       
       $.get(apiPath, function(data) {
-        ev.target.parentElement.querySelector('.output').innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>"
-          // "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+        let pre = document.createElement('pre')
+        pre.textContent = JSON.stringify(data, null, 2)
+        Object.assign(pre, {
+          textContent:JSON.stringify(data, null, 2),
+          style:'max-height:300px;overflow-y:scroll;background:rgba(255,255,255,.6);padding:.25rem'
+          
+        })
+        ev.target.parentElement.querySelector('.output').appendChild(pre)
+  
       });
     });
   });

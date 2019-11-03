@@ -69,9 +69,9 @@ label.input-container{
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-right:.4rem;
+/*   padding-right:.4rem; */
   color:#1db954;
-  text-align:left!important;
+
 }
 
 label.input-container span {
@@ -86,9 +86,9 @@ label.input-container span {
   opacity:.4;text-align:left;
 }
 
- label.input-container input.form-control {
+ label.input-container input {
   /* margin-top:1rem; */
   padding: .5rem;
   padding-top: 1.4rem;
-  vertical-align: bottom
+
 }

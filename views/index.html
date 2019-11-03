@@ -22,7 +22,7 @@
 
     <main>
       <section class="text-black-50" data-bg="primary" id="user-playlist">
-        <div class="container">
+        <div class="container-fluid">
           <h2>User</h2>
 
           <form
@@ -51,7 +51,7 @@
       </section>
 
       <section class="text-black-50" data-bg="primary" id="search-playlist">
-        <div class="container">
+        <div class="container-fluid">
           <h2>Search Playlist</h2>
 
           <form
@@ -69,7 +69,7 @@
                   placeholder="search playlist"
                 />
               </label>
-              <label class="input-container">
+<!--               <label class="input-container">
                 <span>page: </span>
                 <input
                   type="number"
@@ -77,25 +77,26 @@
                   name="page"
                   value="1"
                 />
-              </label>
+              </label> -->
               <label class="input-container">
                 <span>limit: </span>
                 <input
                   type="number"
-                  class="border-0 form-control radius-right-0"
+                  class="border-0 form-control radius-left-0 radius-right-0"
                   name="limit"
                   value="20"
                   max="50"
                   min="1"
                 />
               </label>
-            </div>
             <input
               type="submit"
-              class="btn btn-dark mb-2 radius-left-0"
+              class="btn btn-dark"
               value="submit"
               data-bg="accent"
             />
+            </div>
+
           </form>
           <div class="output"></div>
         </div>
