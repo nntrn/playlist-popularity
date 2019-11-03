@@ -63,16 +63,13 @@ app.get("/search-playlist", function(req, res) {
   let offset =
     req.query.offset || (req.query.page && req.query.page * limit) || 0;
 
-  console.log(req.url)
-console.log(req.client)
-  
+  console.log(req.url);
+  console.log(req.client);
+
   spotifyApi.searchPlaylists(keyword, { limit: limit, offset: offset }).then(
     function(data) {
-      const b={
-        api:req.url,
-        ...data.body.playlists
-      }
-      res.send(b)
+      Object.assign(data.body.playlists, { api: req.url });
+      res.send(data.body.playlists);
     },
     function(err) {
       console.error(err);

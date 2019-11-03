@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", event => {
       console.log(ev)
 
       $.get(ev.target.dataset.api, function(data) {
-        ev.target.nextElementSibling.innerHTML = "<pre>hi</pre>"
+        ev.target.parentElement.querySelector('.output').innerHTML = "<pre>hi</pre>"
           // "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
       });
     });
