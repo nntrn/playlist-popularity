@@ -62,6 +62,6 @@ app.get("/search-playlist", function(req, res) {
 
 /* WEB SERVER */
 const listener = app.listen(process.env.PORT, function() {
-  console.log(JSON.stringify(listener,null,2))
-  // console.log("Your app is listening on port " + listener.address().port);
+  // console.log(JSON.stringify(listener,null,2))
+  console.log("Your app is listening on port " + listener.address().port);
 });

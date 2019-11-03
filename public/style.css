@@ -14,18 +14,6 @@ header {
   padding: 0 0.7rem;
 }
 
-
-a {
-  color: #1db954;
-  text-decoration: none;
-}
-
-a:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-
 section {
   margin: 20px 0;
   padding: 1.4rem 0;
@@ -65,9 +53,7 @@ label.input-container:hover span {
 }
 
 label.input-container input.form-control {
-
   margin-right: 0.4rem;
-/*   border: none; */
 }
 input[type="submit"] {
   align-self: flex-end;
@@ -77,4 +63,9 @@ input[type="submit"] {
 section .container{
 /*   display:inline-flex; */
 /*   flex-wrap:wrap */
+}
+
+.output{
+  max-height:300px;
+  overflow-y:scroll
 }
