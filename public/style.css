@@ -64,10 +64,8 @@ section .container{
 /*   display:inline-flex; */
 /*   flex-wrap:wrap */
 }
-details{
-  outline:0;
-}
 
-details:empty{
-  display:none
+.output{
+  max-height:300px;
+  overflow-y:scroll
 }
