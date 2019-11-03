@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const SpotifyWebApi = require('spotify-web-api-node')
 const bodyParser = require('body-parser')
 
 app.use(express.static('public'))
@@ -23,9 +24,6 @@ app.set('json spaces', 2)
 // -------------------------------------------------------------//
 // ----------------------- AUTHORIZATION -----------------------//
 // -------------------------------------------------------------//
-
-// Initialize Spotify API wrapper
-const SpotifyWebApi = require('spotify-web-api-node')
 
 // The object we'll use to interact with the API
 const spotifyApi = new SpotifyWebApi({
@@ -63,7 +61,7 @@ app.get('/search-track', function (req, res) {
 })
 
 app.get('/user-playlist', function (req, res) {
-  spotifyApi.getUserPlaylists(req.query.user)
+  spotifyApi.getUserPlaylists(req.query.user,{ limit: 50, offset: 0 })
     .then(function (data) {  
       res.send(data.body)
     }, function (err) {
