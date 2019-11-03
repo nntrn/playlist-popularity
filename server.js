@@ -16,9 +16,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json());
 
- 
 
 app.set('json spaces', 2)
+
 
 // -------------------------------------------------------------//
 // ----------------------- AUTHORIZATION -----------------------//
