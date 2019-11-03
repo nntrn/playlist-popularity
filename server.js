@@ -9,16 +9,12 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
 
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 app.set("json spaces", 2);
 
-// -------------------------------------------------------------//
-// ----------------------- AUTHORIZATION -----------------------//
-// -------------------------------------------------------------//
-
+/* AUTHORIZATION */
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET
@@ -34,10 +30,7 @@ spotifyApi.clientCredentialsGrant().then(
   }
 );
 
-// -------------------------------------------------------------//
-// ------------------------- API CALLS -------------------------//
-// -------------------------------------------------------------//
-
+/* API CALLS */
 app.get("/user-playlist", function(req, res) {
   spotifyApi.getUserPlaylists(req.query.user, { limit: 50, offset: 0 }).then(
     function(data) {
@@ -56,7 +49,6 @@ app.get("/search-playlist", function(req, res) {
   let offset =
     req.query.offset || (req.query.page && req.query.page * limit) || 0;
 
-
   spotifyApi.searchPlaylists(keyword, { limit: limit, offset: offset }).then(
     function(data) {
       // Object.assign(data.body, { api: req.url });
@@ -68,12 +60,8 @@ app.get("/search-playlist", function(req, res) {
   );
 });
 
-// -------------------------------------------------------------//
-// ------------------------ WEB SERVER -------------------------//
-// -------------------------------------------------------------//
-
-// Listen for requests to our app
-// We make these requests from client.js
+/* WEB SERVER */
 const listener = app.listen(process.env.PORT, function() {
+  console.log(process.env.ENVIRONMENT)
   console.log("Your app is listening on port " + listener.address().port);
 });
