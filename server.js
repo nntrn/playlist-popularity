@@ -58,8 +58,15 @@ app.get("/user-playlist", function(req, res) {
 
 app.get("/search-playlist", function(req, res) {
   const keyword = req.query.keyword || 'chill'
+  const limit = 50
   
-  spotifyApi.searchPlaylists(keyword, { limit: 50, offset: 0 }).then(
+  let offset = req.query.offset || (req.query.page && req.query.page * limit)|| 
+  
+  if(req.query.offset){
+    offset = limit * req.query.offset
+  }
+  
+  spotifyApi.searchPlaylists(keyword, { limit: limit, offset: offset }).then(
     function(data) {
       res.send(data.body);
     },
