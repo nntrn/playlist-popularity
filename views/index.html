@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>user playlist</title>
+    <title>spotify api</title>
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +17,7 @@
 
   <body>
     <header>
-      <h1 class="title">spotify user playlist lookup</h1>
+      <h1 class="title"></h1>
     </header>
 
     <main>
@@ -28,8 +28,6 @@
           <form
             data-api="/user-playlist"
             class="form-inline"
-            action="/user-playlist"
-            method="get"
           >
             <div class="form-group mb-2">
               <input
@@ -59,11 +57,9 @@
           <form
             data-api="/search-playlist"
             class="form-inline"
-            action="/search-playlist"
-            method="get"
           >
             <div class="form-group mb-2">
-              <label>
+              <label class="input-container">
                 <span>keyword: </span>
                 <input
                   type="text"
@@ -73,7 +69,7 @@
                   placeholder="search playlist"
                 />
               </label>
-              <label>
+              <label class="input-container">
                 <span>page: </span>
                 <input
                   type="number"
@@ -82,7 +78,7 @@
                   value="1"
                 />
               </label>
-              <label>
+              <label class="input-container">
                 <span>limit: </span>
                 <input
                   type="number"

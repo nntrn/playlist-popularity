@@ -1,3 +1,7 @@
+/* styles */
+/* called by your view template */
+/* You might want to try something fancier: */
+/* less: http://lesscss.org/ */
 * {
   box-sizing: border-box;
 }
@@ -60,24 +64,29 @@ section {
   border-bottom-left-radius: 0!important;
 }
 
-label {
+label.input-container{
   /*   padding-right:1rem; */
   display: flex;
   flex-direction: column;
   position: relative;
-  user-select: none;
+  padding-right:.4rem;
+  color:#1db954;
+  text-align:left!important;
 }
 
-label span {
+label.input-container span {
+   user-select: none;
   text-transform: uppercase;
   font-size: .8em;
   position: absolute;
   top: 0;
   z-index: 1;
+  left:0;
   padding: 0 .5rem;
+  opacity:.4;text-align:left;
 }
 
-input.form-control {
+ label.input-container input.form-control {
   /* margin-top:1rem; */
   padding: .5rem;
   padding-top: 1.4rem;
