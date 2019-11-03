@@ -52,7 +52,39 @@
         </div>
        
       </section>
-      <div id="user-playlist-output"></div>
+      
+      <section class="text-black-50" data-bg="primary" id="search-playlist">
+        <div class="container">
+          <h2>User</h2>
+
+          <form
+            data-api="/search-playlsit"
+            class="form-inline"
+            action="/search-playlist"
+            method="get"
+          >
+            <div class="form-group mb-2">
+              <input
+                type="text"
+                class="border-0 form-control radius-right-0"
+                id="user-search"
+                name="user"
+                value="nntrn"
+                placeholder="user lookup"
+              />
+            </div>
+            <input
+              type="submit"
+              class="btn btn-dark mb-2 radius-left-0"
+              value="submit"
+              data-bg="accent"
+            />
+          </form>
+          <div class="output"></div>
+        </div>
+       
+      </section>
+ 
     </main>
 
     <!-- Your web-app is https, so your scripts need to be too -->
