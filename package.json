@@ -1,5 +1,5 @@
 {
-  "name": "user-playlist",
+  "name": "spotify-api-viewer",
   "version": "0.0.1",
   "description": "What am I about?",
   "main": "server.js",

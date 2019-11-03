@@ -104,3 +104,10 @@ label.input-container input {
 .input-container .border-right {
   border-right: 2px solid #22dd64 !important;
 }
+
+.bg-primary{
+background:#22dd64;
+}
+.bg-accent{
+  background:#1DB954;
+}
