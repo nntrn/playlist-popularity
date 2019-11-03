@@ -7,37 +7,41 @@
 }
 
 body {
-  font-family: Circular,Helvetica,Arial,sans-serif;
+  font-family: Circular, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #222326;
-  background-color: #fff
+  background-color: #fff;
 }
 
 header {
-  padding: 0 .7rem
+  padding: 0 0.7rem;
 }
 
-button,input,select,textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
-  line-height: inherit
+  line-height: inherit;
 }
 
 a {
   color: #1db954;
-  text-decoration: none
+  text-decoration: none;
 }
 
-a:focus,a:hover {
+a:focus,
+a:hover {
   color: #1ed760;
-  text-decoration: none
+  text-decoration: none;
 }
 
 a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px
+  outline-offset: -2px;
 }
 
 section {
@@ -45,7 +49,18 @@ section {
   padding: 1.4rem 70px;
 }
 
-.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: inherit;
   font-weight: 900;
   line-height: 1.1;
@@ -55,40 +70,45 @@ section {
 }
 
 .radius-right-0 {
-  border-top-right-radius: 0!important;
-  border-bottom-right-radius: 0!important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
 .radius-left-0 {
-  border-top-left-radius: 0!important;
-  border-bottom-left-radius: 0!important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
-label.input-container{
+label.input-container {
   /*   padding-right:1rem; */
   display: flex;
   flex-direction: column;
   position: relative;
-/*   padding-right:.4rem; */
-  color:#1db954;
-
+  /*   padding-right:.4rem; */
+  color: #1db954;
 }
 
 label.input-container span {
-   user-select: none;
+  user-select: none;
   text-transform: uppercase;
-  font-size: .8em;
+  font-size: 0.8em;
   position: absolute;
   top: 0;
   z-index: 1;
-  left:0;
-  padding: 0 .5rem;
-  opacity:.4;text-align:left;
+  left: 0;
+  padding: 0 0.5rem;
+  opacity: 0.4;
+  text-align: left;
 }
 
- label.input-container input {
+label.input-container input {
   /* margin-top:1rem; */
-  padding: .5rem;
+  padding: 0.5rem;
   padding-top: 1.4rem;
+  border-radius: 3px;
+  /*    border-right:2px solid #22dd64!important; */
+}
 
+.input-container .border-right {
+  border-right: 2px solid #22dd64 !important;
 }

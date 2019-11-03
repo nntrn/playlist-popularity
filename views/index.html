@@ -25,10 +25,7 @@
         <div class="container-fluid">
           <h2>User</h2>
 
-          <form
-            data-api="/user-playlist"
-            class="form-inline"
-          >
+          <form data-api="/user-playlist" class="form-inline">
             <div class="form-group mb-2">
               <input
                 type="text"
@@ -54,49 +51,36 @@
         <div class="container-fluid">
           <h2>Search Playlist</h2>
 
-          <form
-            data-api="/search-playlist"
-            class="form-inline"
-          >
+          <form data-api="/search-playlist" class="form-inline">
             <div class="form-group mb-2">
               <label class="input-container">
                 <span>keyword: </span>
                 <input
                   type="text"
-                  class="border-0 form-control radius-right-0"
+                  class="border-0 border-right form-control radius-right-0"
                   name="keyword"
                   value="chill"
                   placeholder="search playlist"
                 />
               </label>
-<!--               <label class="input-container">
-                <span>page: </span>
-                <input
-                  type="number"
-                  class="border-0 form-control radius-right-0"
-                  name="page"
-                  value="1"
-                />
-              </label> -->
               <label class="input-container">
                 <span>limit: </span>
                 <input
                   type="number"
-                  class="border-0 form-control radius-left-0 radius-right-0"
+                  class="border-0 form-control border-right radius-left-0 radius-right-0"
                   name="limit"
                   value="20"
                   max="50"
                   min="1"
                 />
               </label>
-            <input
-              type="submit"
-              class="btn btn-dark"
-              value="submit"
-              data-bg="accent"
-            />
+              <input
+                type="submit"
+                class="btn btn-dark radius-left-0"
+                value="submit"
+                data-bg="accent"
+              />
             </div>
-
           </form>
           <div class="output"></div>
         </div>
