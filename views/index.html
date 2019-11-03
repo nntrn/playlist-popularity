@@ -50,9 +50,8 @@
           </form>
           <div class="output"></div>
         </div>
-       
       </section>
-      
+
       <section class="text-black-50" data-bg="primary" id="search-playlist">
         <div class="container">
           <h2>Search Playlist</h2>
@@ -64,19 +63,36 @@
             method="get"
           >
             <div class="form-group mb-2">
-              <input
-                type="text"
-                class="border-0 form-control radius-right-0"
-                name="keyword"
-                value="chill"
-                placeholder="search playlist"
-              />
-              <input
-                type="number"
-                class="border-0 form-control radius-right-0"
-                name="page"
-                value="1"
-              />
+              <label>
+                <span>keyword: </span>
+                <input
+                  type="text"
+                  class="border-0 form-control radius-right-0"
+                  name="keyword"
+                  value="chill"
+                  placeholder="search playlist"
+                />
+              </label>
+              <label>
+                <span>page: </span>
+                <input
+                  type="number"
+                  class="border-0 form-control radius-right-0"
+                  name="page"
+                  value="1"
+                />
+              </label>
+              <label>
+                <span>limit: </span>
+                <input
+                  type="number"
+                  class="border-0 form-control radius-right-0"
+                  name="limit"
+                  value="20"
+                  max="50"
+                  min="1"
+                />
+              </label>
             </div>
             <input
               type="submit"
@@ -87,13 +103,15 @@
           </form>
           <div class="output"></div>
         </div>
-       
       </section>
- 
     </main>
 
     <!-- Your web-app is https, so your scripts need to be too -->
-      <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-2.2.1.min.js"
+      integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+      crossorigin="anonymous"
+    ></script>
     <script src="/events.js"></script>
   </body>
 </html>
