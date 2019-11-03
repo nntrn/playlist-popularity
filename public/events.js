@@ -6,7 +6,9 @@ document.querySelectorAll("[data-api]").forEach(e => {
       .map(e => `${e.name}=${e.value}`)
       .join("&");
     const apiPath = `${ev.target.dataset.api}?${query}`;
-
+    
+    console.log(apiPath)
+    
     $.get(apiPath, function(data) {
       let pre = document.createElement("pre");
       pre.textContent = JSON.stringify(data, null, 2);

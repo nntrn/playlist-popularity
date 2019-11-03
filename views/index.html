@@ -24,12 +24,10 @@
     </header>
 
     <main>
-      <section class="text-black-50 bg-light" id="user-playlist">
-         <h2 class="col">User</h2>
+      <section class="text-black bg-light" id="user-playlist">
         <div class="container">
-        
-
-          <form data-api="/user-playlist" class="form-inline col">
+          <h2>User</h2>
+          <form data-api="/user-playlist" class="form-inline">
             <div class="form-group mb-2">
               <label class="input-container">
                 <span class="text-primary">user</span>
@@ -42,11 +40,14 @@
                   placeholder="user lookup"
                 />
               </label>
-             <input type="submit" class="btn btn-outline-primary" value="submit" />
+              <input
+                type="submit"
+                class="btn btn-outline-primary"
+                value="submit"
+              />
             </div>
-            
           </form>
-          <div class="output col"></div>
+          <div class="output"></div>
         </div>
       </section>
 
