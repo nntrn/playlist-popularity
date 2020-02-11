@@ -8,6 +8,7 @@ body {
   line-height: 1.5;
   color: #222326;
   background-color: #fff;
+  tab-size:2;
 }
 
 header {

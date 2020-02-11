@@ -3,7 +3,26 @@ const app = express();
 const SpotifyWebApi = require("spotify-web-api-node");
 const bodyParser = require("body-parser");
 
-app.use(express.static("public"));
+
+
+
+
+
+app.use(express.static('public'));
+
+
+const hbs = require('hbs');
+hbs.registerPartials(__dirname + '/views/partials');
+
+//
+// This next pair of lines teaches Express that if I ask to render a file, say "index",
+// it's allowed to use any file named "index" that ends with 'hbs' and is contained in 
+// the "views" folder
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
+
+
+
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/views/index.html");
