@@ -55,15 +55,30 @@ spotifyApi.clientCredentialsGrant().then(
 );
 
 app.get("/user/:user", function(req, res) {
-  res.header("Content-Type", "application/json");
-  spotifyApi.getUserPlaylists(req.param.user, { limit: 50, offset: 0 }).then(
-    function(data) {
-      res.send(data.body);
-    },
-    function(err) {
-      console.error(err);
-    }
-  );
+
+  spotifyApi.getUserPlaylists(req.params.user, { limit: 50, offset: 0 }).then(data=>{
+        res.render("user", { 
+      title: req.params.user,
+          json: JSON.stringify(data,null,2),
+          ...data
+    })
+  })
+
+  
+  
+  
+//   spotifyApi.getUserPlaylists(req.param.user, { limit: 50, offset: 0 }).then(
+    
+
+    
+    
+//     function(data) {
+//       res.send(data.body);
+//     },
+//     function(err) {
+//       console.error(err);
+//     }
+//   );
 });
 
 
