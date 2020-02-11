@@ -14,19 +14,24 @@ app.use(express.static('public'));
 const hbs = require('hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
-//
-// This next pair of lines teaches Express that if I ask to render a file, say "index",
-// it's allowed to use any file named "index" that ends with 'hbs' and is contained in 
-// the "views" folder
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 
+app.get("/", (request, response) => {
 
+  let dt = new Date();
+  let data = {
+    projectName: process.env.PROJECT_DOMAIN,
+    luckyNumber: Math.floor(Math.random()*1000),
+    serverTime: new Date(),
+    ip: (request.headers["x-forwarded-for"]||"").split(",")[0]
+  };
 
+  data.json = JSON.stringify(data, null, 2);
 
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/views/index.html");
+  response.render('index', data);
 });
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -48,6 +53,20 @@ spotifyApi.clientCredentialsGrant().then(
     console.log(err);
   }
 );
+
+app.get("/user/:user", function(req, res) {
+  res.header("Content-Type", "application/json");
+  spotifyApi.getUserPlaylists(req.param.user, { limit: 50, offset: 0 }).then(
+    function(data) {
+      res.send(data.body);
+    },
+    function(err) {
+      console.error(err);
+    }
+  );
+});
+
+
 
 /* API CALLS */
 app.get("/user-playlist", function(req, res) {
