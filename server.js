@@ -65,22 +65,21 @@ app.get("/user/:user", function(req, res) {
   })
 
   
-  
-  
-//   spotifyApi.getUserPlaylists(req.param.user, { limit: 50, offset: 0 }).then(
-    
 
-    
-    
-//     function(data) {
-//       res.send(data.body);
-//     },
-//     function(err) {
-//       console.error(err);
-//     }
-//   );
 });
 
+
+app.get("/api/user/:user", function(req, res) {
+
+   res.header("Content-Type", "application/json");
+  
+  spotifyApi.getUserPlaylists(req.params.user, { limit: 50, offset: 0 })
+    .then(data=>  res.send(data))
+
+  
+
+
+});
 
 
 /* API CALLS */
