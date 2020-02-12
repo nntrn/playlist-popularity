@@ -2,10 +2,10 @@
   <main>
     <header>
       <h1 data-label="user">
-        {{title}}
+        {{user}}
       </h1>
       <h3>
-        <a href="https://open.spotify.com/user/{{title}}" data-label="open-spotify">https://open.spotify.com/user/{{title}}</a>
+        <a href="https://open.spotify.com/user/{{user}}" data-label="open-spotify">https://open.spotify.com/user/{{user}}</a>
       </h3>
     </header>
 
@@ -37,7 +37,16 @@
 
   <script>
     
-    var url = "/api/user/{{title}}";
+    function getPathName(){
+      return window.location.pathname
+    }
+    
+    function getApiUrl(path){
+      return `/api${path}`
+    }
+    
+    const currentPage = getPathName()
+    const url = getApiUrl(currentPage)
 
     function getLocalData(key) {
       return JSON.parse(localStorage.getItem(key));

@@ -13,7 +13,6 @@ app.set("views", __dirname + "/views");
 // app.set('view engine', 'html');
 // app.engine('html', require('hbs').__express);
 
-
 app.get("/", (request, response) => {
   let dt = new Date();
   let data = {
@@ -25,7 +24,6 @@ app.get("/", (request, response) => {
   data.json = JSON.stringify(data, null, 2);
   response.render("index", data);
 });
-
 
 app.set("json spaces", 2);
 
@@ -46,13 +44,16 @@ spotifyApi.clientCredentialsGrant().then(
 );
 
 app.get("/user/:user", function(req, res) {
-  spotifyApi
-    .getUserPlaylists(req.params.user, { limit: 50, offset: 0 })
-    .then(data => {
-      res.render("user", {
-        title: req.params.user,
-      });
-    });
+  res.render("user", {
+    user: req.params.user
+  });
+  // spotifyApi
+  //   .getUserPlaylists(req.params.user, { limit: 50, offset: 0 })
+  //   .then(data => {
+  //     res.render("user", {
+  //       title: req.params.user,
+  //     });
+  //   });
 });
 
 app.get("/api/user/:user", function(req, res) {
