@@ -31,11 +31,8 @@
     </div>
 
   </main>
-
-  <script src="client.js"></script>
   <script>
-    var url = "/api/user/{{title}}";
-    dataManager(url, fillPage);
+    var url = "/api/user/{{title}}"
     
     function getLocalData(key) {
   return JSON.parse(localStorage.getItem(key));
@@ -101,22 +98,24 @@ function dataManager(userUrl, cb) {
       .then(response => response.json())
       .then(data => {
         dat = data.body;
-        fillPage(userUrl, dat);
-        console.log("fetched", data);
         localStorage.setItem(
           userUrl,
           JSON.stringify({
             ...data.body,
             fetched: new Date().toLocaleString()
           })
-        );
-      });
+        )
+           fillPage(userUrl, dat);
+      })
+    .catch((error) => {
+  console.error('Error:', error);
+})
   }
 
   cb(dat);
 }
 
-    
+        dataManager(url, fillPage);
   </script>
  
 </body>
