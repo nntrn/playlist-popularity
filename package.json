@@ -1,0 +1,26 @@
+{
+  "name": "spotify-user-playlist",
+  "version": "0.0.1",
+  "description": "What am I about?",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0",
+    "spotify-web-api-node": "^4.0.0",
+    "hbs": "^4.1.0"
+  },
+  "engines": {
+    "node": "v12.1.0"
+  },
+  "author": "nntrn",
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express",
+    "spotify"
+  ]
+}
