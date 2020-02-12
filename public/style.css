@@ -18,16 +18,6 @@ body {
   tab-size: 2;
 }
 
-.radius-right-0 {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-}
-
-.radius-left-0 {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-}
-
 label.input-container {
   display: flex;
   flex-direction: column;
@@ -63,10 +53,8 @@ input[type="submit"] {
 
 .flex {
   display: flex;
-/*   flex-wrap: wrap; */
+  /*   flex-wrap: wrap; */
 }
-
-
 
 h1 {
   margin: 0.5rem 0;
@@ -78,17 +66,15 @@ h2,
 h3,
 h4,
 h5 {
-    margin: unset;
+  margin: unset;
   line-height: 1.4;
 }
 
 .container {
   padding: 0 0.85rem;
-  /*   flex-grow:2; */
 }
 
 .tooltip {
-  /*   display:none; */
   position: relative;
 }
 
@@ -135,22 +121,18 @@ h5 {
 
 .card .container {
   display: flex;
-  /*   width: 100%; */
   flex-direction: column;
   padding: 0.5rem;
 }
 
 .card h3 {
   line-height: 1 !important;
-  /*   box-shadow: 0 2px black, inset 0 -2px  black; */
   display: inline !important;
-
   width: fit-content;
 }
 
 .card [data-api="description"] {
   font-style: italic;
-
   bottom: 0;
   left: 0;
   margin: 0.5rem 0;
@@ -186,17 +168,16 @@ button {
 }
 
 blockquote {
-  border: 2px solid var(--primary);
+  border: 3px solid var(--primary);
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 3px;
 }
 
-.card label{
-  position:absolute;
-  top:0;
-  right:4px;
-  font-size:.7em;
-  opacity:.5
-
+.card label {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  font-size: 0.7em;
+  opacity: 0.5;
 }

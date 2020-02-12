@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>User Playlist</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#19e68c" />
-  <meta name="description" content="Simple web application exploring user playlist in Spotify" />
-  <meta property="og:description" content="Simple web application exploring user playlist in Spotify">
-  <link rel="stylesheet" href="https://csstools.github.io/sanitize.css/latest/sanitize.css">
-  <link rel="stylesheet" href="/style.css">
-</head>
 
-<body class="center">
+  {{> head}}
+  
+<body>
   <main>
     <header>
       <h1 data-label="user">
@@ -42,11 +34,10 @@
             <div data-api="description"></div>
           </div>
         </div>
-        <label data-api="id"</label>
+        <label data-api="id"></label>
       </div>
-
+      
     </div>
-
   </main>
 
   <script>
