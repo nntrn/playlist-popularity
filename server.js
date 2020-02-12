@@ -64,35 +64,6 @@ app.get("/api/user/:user", function(req, res) {
     .then(data => res.send(data));
 });
 
-/* API CALLS */
-app.get("/user-playlist", function(req, res) {
-  spotifyApi.getUserPlaylists(req.query.user, { limit: 50, offset: 0 }).then(
-    function(data) {
-      res.send(data.body);
-    },
-    function(err) {
-      console.error(err);
-    }
-  );
-});
-
-app.get("/search-playlist", function(req, res) {
-  const keyword = req.query.keyword || "chill";
-  const limit = req.query.limit || 50;
-
-  let offset =
-    req.query.offset || (req.query.page && req.query.page * limit) || 0;
-
-  spotifyApi.searchPlaylists(keyword, { limit: limit, offset: offset }).then(
-    function(data) {
-      Object.assign(data.body, { api: req.url });
-      res.send(data.body);
-    },
-    function(err) {
-      console.error(err);
-    }
-  );
-});
 
 /* WEB SERVER */
 const listener = app.listen(process.env.PORT, function() {
