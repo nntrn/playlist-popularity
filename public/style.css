@@ -174,7 +174,9 @@ a:hover {
   opacity: 0.8;
   transition: opacity 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
+a code{
+  color: inherit
+}
 input,
 button {
   padding: 0.5rem;

@@ -3,29 +3,31 @@
 <html>
 
 <head>
+
   <title>{{title}}</title>
   {{> head}}
-
 </head>
 
 <body>
+  
   <header>
+     <h1 class="title">{{projectName}}</h1>
     {{> search}}
   </header>
-  
-  body: {{{body}}}
+  <main>
+ {{{body}}}
 
-  <hr/>
-  post body
-  <hr/>
+    </main>
 
   <footer>
   annie tran
   </footer>
   
-  <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-  <script src="https://button.glitch.me/button.js"></script>
-  
+  <script>
+document.querySelector('#go').addEventListener('click',function(){
+  window.location.pathname = '/user/' +document.querySelector('#finduser').value
+})
+</script>
 </body>
 
 </html>
