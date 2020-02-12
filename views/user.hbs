@@ -12,13 +12,25 @@
     </main>
 
     <script>
-      fetch("https://spotify-user-playlist.glitch.me/api/user/{{title}}")
-        .then(response => {
-          return response.json();
+      const url = "/api/user/{{title}}"
+      
+      localStorage.getItem(url);
+      
+      function getLocalData(key){
+        return JSON.parse(localStorage.getItem(key))
+      }
+      
+      if(!localStorage.getItem(url)){
+        fetch(url)
+        .then(response =>response.json())
+        .then(data => {
+          console.log(data);
+        localStorage.setItem(url, JSON.stringify(data.body));
         })
-        .then(myJson => {
-          console.log(myJson);
-        });
+        
+      }
+      
+
     </script>
   </body>
 </html>
