@@ -78,6 +78,10 @@ h5 {
   line-height: 1.4;
 }
 
+.title{
+  margin-bottom:1.5rem;
+}
+
 .container {
   padding: 0 0.85rem;
 }
