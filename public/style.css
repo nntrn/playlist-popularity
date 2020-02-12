@@ -63,8 +63,10 @@ input[type="submit"] {
 
 .flex {
   display: flex;
-  flex-wrap: wrap;
+/*   flex-wrap: wrap; */
 }
+
+
 
 h1 {
   margin: 0.5rem 0;
@@ -76,7 +78,7 @@ h2,
 h3,
 h4,
 h5 {
-  /*   margin: unset; */
+    margin: unset;
   line-height: 1.4;
 }
 
@@ -188,4 +190,13 @@ blockquote {
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 3px;
+}
+
+.card label{
+  position:absolute;
+  top:0;
+  right:4px;
+  font-size:.7em;
+  opacity:.5
+
 }
