@@ -2,9 +2,10 @@ const express = require("express");
 const app = express();
 const SpotifyWebApi = require("spotify-web-api-node");
 const bodyParser = require("body-parser");
-const hbs = require("hbs");
 
 app.use(express.static("public"));
+
+const hbs = require("hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 
 app.set("view engine", "hbs");
@@ -14,6 +15,7 @@ app.get("/", (request, response) => {
   let dt = new Date();
   let data = {
     projectName: process.env.PROJECT_DOMAIN,
+    luckyNumber: Math.floor(Math.random() * 1000),
     serverTime: new Date(),
     ip: (request.headers["x-forwarded-for"] || "").split(",")[0]
   };
@@ -65,5 +67,6 @@ app.get("/api/user/:user", function(req, res) {
 
 /* WEB SERVER */
 const listener = app.listen(process.env.PORT, function() {
+  // console.log(JSON.stringify(listener,null,2))
   console.log("Your app is listening on port " + listener.address().port);
 });
