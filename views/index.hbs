@@ -1,95 +1,54 @@
-<!DOCTYPE html>
 <html>
-<!--   <head>
-    <title>spotify api</title>
-
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-
-    <link rel="stylesheet" href="/style.css" />
-  </head> -->
   {{> head }}
-  <body>
+  <body class="center">
     <header>
-      <h1 class="title"></h1>
+      <h1 id="">
+        {{title}}
+      </h1>
     </header>
 
     <main>
-      <section class="text-black bg-light" id="user-playlist">
-        <div class="container">
-          <h2>User</h2>
-          <form data-api="/user-playlist" class="form-inline">
-            <div class="form-group mb-2">
-              <label class="input-container">
-                <span class="text-primary">user</span>
-                <input
-                  type="text"
-                  class="form-control border border-primary"
-                  id="user-search"
-                  name="user"
-                  value="nntrn"
-                  placeholder="user lookup"
-                />
-              </label>
-              <input
-                type="submit"
-                class="btn btn-outline-primary"
-                value="submit"
-              />
-            </div>
-          </form>
-          <div class="output"></div>
-        </div>
-      </section>
-
-      <section class="text-black bg-white" id="search-playlist">
-        <div class="container">
-          <h2>Search Playlist</h2>
-
-          <form data-api="/search-playlist" class="form-inline">
-            <div class="form-group mb-2">
-              <label class="input-container">
-                <span class="text-primary">keyword</span>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="keyword"
-                  value="chill"
-                  placeholder="chill"
-                />
-              </label>
-              <label class="input-container">
-                <span class="text-primary">limit</span>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="limit"
-                  value="20"
-                  max="50"
-                  min="1"
-                />
-              </label>
-              <input type="submit" class="btn btn-primary" value="submit" />
-            </div>
-          </form>
-          <div class="output"></div>
-        </div>
-      </section>
+      <pre>{{json}}</pre>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="/events.js"></script>
     <script>
-      document.querySelector("h1.title").textContent = document.title;
+      const url = "/api/user/{{title}}";
+
+      localStorage.getItem(url);
+
+      function getLocalData(key) {
+        return JSON.parse(localStorage.getItem(key));
+      }
+
+      function fillPage(data) {
+        const div = Object.assign(document.createElement("div"), {
+          textContent: data.href
+        });
+
+        document.body.appendChild(div);
+      }
+
+      function dataManager(userUrl, cb) {
+        var dat = getLocalData(userUrl);
+
+        if (!localStorage.getItem(userUrl) && dat) {
+          fetch(userUrl)
+            .then(response => response.json())
+            .then(data => {
+            
+              dat = data.body;
+              console.log('fetched',data);
+              localStorage.setItem(userUrl, JSON.stringify({
+                ...data.body,
+                fetched: (new Date()).toLocaleString()
+              }));
+            });
+        }
+
+        cb(dat);
+      }
+
+      dataManager(url, fillPage);
     </script>
   </body>
 </html>
