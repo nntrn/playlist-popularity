@@ -34,16 +34,23 @@
       }
 
       function fillPage(data) {
-        const div = Object.assign(document.createElement("div"), {
-          textContent: data.href
+        const div = Object.assign(document.createElement("a"), {
+          href: url,
+          textContent: url
         });
 
         data.items.forEach(e => {
-          $get("items").appendChild(
-            Object.assign(document.createElement("div"), {
-              textContent: e.name
-            })
-          );
+          const item = Object.assign(document.createElement("div"), {
+            textContent: e.name,
+            className: "card"
+          });
+          const description = Object.assign(document.createElement("div"), {
+            textContent: e.description
+          });
+
+          item.appendChild(description);
+
+          $get("items").appendChild(item);
         });
 
         document.body.appendChild(div);
