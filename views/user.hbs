@@ -1,5 +1,6 @@
 <html>
 {{> head }}
+  
 <body class="center">
   <main>
     <header>
@@ -31,10 +32,11 @@
     </div>
 
   </main>
+  
   <script>
-    var url = "/api/user/{{title}}"
-    
-    function getLocalData(key) {
+var url = "/api/user/nntrn";
+
+function getLocalData(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 
@@ -70,7 +72,9 @@ function cloneHTML(itemData, index = 0) {
   var clone = document
     .querySelector('#items .card[data-index="-1"]')
     .cloneNode(true);
-  (clone.id = "playlist-" + itemData.id), (clone.dataset.index = index);
+    
+  clone.id = "playlist-" + itemData.id
+  clone.dataset.index = index
   clone.querySelectorAll("[data-api]").forEach(e => {
     e[e.dataset.label || "textContent"] = flatData[e.dataset.api];
   });
@@ -78,7 +82,7 @@ function cloneHTML(itemData, index = 0) {
   return clone;
 }
 
-function fillPage(url,data) {
+function fillPage(url, data) {
   const div = Object.assign(document.createElement("a"), {
     href: url,
     textContent: url
@@ -104,18 +108,19 @@ function dataManager(userUrl, cb) {
             ...data.body,
             fetched: new Date().toLocaleString()
           })
-        )
-           fillPage(userUrl, dat);
+        );
+        fillPage(userUrl, dat);
       })
-    .catch((error) => {
-  console.error('Error:', error);
-})
+      .catch(error => {
+        console.error("Error:", error);
+      });
   }
 
   cb(dat);
 }
 
-        dataManager(url, fillPage);
+dataManager(url, fillPage);
+
   </script>
  
 </body>
