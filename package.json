@@ -1,14 +1,13 @@
 {
   "name": "spotify-user-playlist",
   "version": "0.0.1",
-  "description": "What am I about?",
+  "description": "A simple project for exploring a user's playlists in Spotify using handlebars and node",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "body-parser": "^1.19.0",
     "spotify-web-api-node": "^4.0.0",
     "hbs": "^4.1.0"
   },
