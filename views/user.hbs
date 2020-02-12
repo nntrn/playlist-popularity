@@ -31,7 +31,7 @@
         </div>
         <label data-api="id" hidden></label>
       </div>
-      <!--      end of card  -->
+
     </div>
 
   </main>
@@ -46,8 +46,6 @@
     function $get(query) {
       return document.getElementById(query);
     }
-
-
 
     function flattenObject(data) {
       var result = {};
@@ -77,8 +75,6 @@
 
       const flatData = flattenObject(itemData)
 
-      console.log(itemData, flatData)
-
       var clone = document.querySelector('#items .card[data-index="-1"]').cloneNode(true)
 
       Object.assign(clone, {
@@ -103,11 +99,8 @@
         textContent: url
       });
 
-
       document.body.appendChild(div);
-
       data.items.forEach((e, i) => {
-
 
         $get("items").appendChild(cloneHTML(e, i));
       })

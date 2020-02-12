@@ -1,79 +1,37 @@
 <!DOCTYPE html>
 <html>
-{{> head }}
+  {{> head }}
 
   <body>
     <header>
-      <h1 class="title"></h1>
+      <h1 class="title">spotify-user-</h1>
     </header>
 
     <main>
-      <section class="text-black bg-light" id="user-playlist">
-        <div class="container">
-          <h2>User</h2>
-          <form data-api="/user-playlist" class="form-inline">
-            <div class="form-group mb-2">
-              <label class="input-container">
-                <span class="text-primary">user</span>
-                <input
-                  type="text"
-                  class="form-control border border-primary"
-                  id="user-search"
-                  name="user"
-                  value="nntrn"
-                  placeholder="user lookup"
-                />
-              </label>
-              <input
-                type="submit"
-                class="btn btn-outline-primary"
-                value="submit"
-              />
-            </div>
-          </form>
-          <div class="output"></div>
-        </div>
-      </section>
-
-      <section class="text-black bg-white" id="search-playlist">
-        <div class="container">
-          <h2>Search Playlist</h2>
-
-          <form data-api="/search-playlist" class="form-inline">
-            <div class="form-group mb-2">
-              <label class="input-container">
-                <span class="text-primary">keyword</span>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="keyword"
-                  value="chill"
-                  placeholder="chill"
-                />
-              </label>
-              <label class="input-container">
-                <span class="text-primary">limit</span>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="limit"
-                  value="20"
-                  max="50"
-                  min="1"
-                />
-              </label>
-              <input type="submit" class="btn btn-primary" value="submit" />
-            </div>
-          </form>
-          <div class="output"></div>
-        </div>
-      </section>
+      <div>
+        <input
+          id="finduser"
+          name="finduser"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        />
+        <button>
+          go
+        </button>
+      </div>
+      <blockquote>
+      <h3>
+        API:
+        </h3>
+      
+        <ul>
+          <li><a href="/user/nntrn">/user/<code>:username</code></a> (<code>:id</code> also works)</li>
+          <li><a href="api/user/nntrn">/api/user/<code>:username</code></a> (<code>:id</code> also works)</li>
+        </ul>
+ 
+      </blockquote>
     </main>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="/events.js"></script>
-    <script>
-      document.querySelector("h1.title").textContent = document.title;
-    </script>
   </body>
 </html>
