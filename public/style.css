@@ -4,7 +4,6 @@
   --primary: #1DB954;
 }
 
-
 * {
   box-sizing: border-box;
 }
@@ -71,7 +70,7 @@ input[type="submit"] {
 .flex{
   display:flex
 }
-h1,h2,h3,h4,h5{
+h2,h3,h4,h5{
   margin:unset
 }
 .container{
@@ -117,6 +116,7 @@ h1,h2,h3,h4,h5{
 
 .card .image {
   border: 5px solid var(--dark);
+  height:min-content
 }
 
 .card h3 a {
@@ -142,5 +142,18 @@ a:hover{
 
 input,button{
   padding:.5rem;
-  font-size: large
+  font-size: large;
+  border:3px solid var(--dark);
+  border-radius:3px;
+}
+button{
+  background:var(--primary);
+  color: var(--light)
+}
+
+blockquote{
+  border:2px solid var(--primary);
+  margin: 1rem 0;
+  padding:1rem;
+  border-radius:3px;
 }
