@@ -1,14 +1,21 @@
 <html>
   {{> head }}
+  
   <body class="center">
     <header>
-      <h1 id="">
+      <h1 data-label="user">
         {{title}}
       </h1>
+    <h3>
+       <a href="https://open.spotify.com/user/{{title}}" data-label="open-spotify">https://open.spotify.com/user/{{title}}</a>
+      </h3>
     </header>
 
     <main>
-      <pre>{{json}}</pre>
+      <div id="items">
+      
+      </div>
+      <pre id="json"></pre>
     </main>
 
     <script>
@@ -19,12 +26,23 @@
       function getLocalData(key) {
         return JSON.parse(localStorage.getItem(key));
       }
+      
+      function $get(query){
+        return document.querySelector(`[data-inject="${query}"]`)
+      }
 
       function fillPage(data) {
         const div = Object.assign(document.createElement("div"), {
           textContent: data.href
         });
+        
+        data.items.forEach(e=>{
+           $get("items").appendChild(Object.assign(document.createElement('div'),{
+             textContent: e.name
+           }))
+        })
 
+       
         document.body.appendChild(div);
       }
 
