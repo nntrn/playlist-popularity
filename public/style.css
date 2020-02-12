@@ -1,9 +1,8 @@
-:root{
+:root {
   --dark: #191414;
   --light: #ffffff;
   --primary: #1DB954;
 }
-
 
 * {
   box-sizing: border-box;
@@ -15,9 +14,8 @@ body {
   line-height: 1.5;
   color: var(--dark);
   background-color: var(--light);
-  tab-size:2;
+  tab-size: 2;
 }
-
 
 section {
   margin: 20px 0;
@@ -38,7 +36,6 @@ label.input-container {
   display: flex;
   flex-direction: column;
   position: relative;
-
 }
 
 label.input-container span {
@@ -63,35 +60,37 @@ input[type="submit"] {
   justify-content: flex-end;
 }
 
-.output{
-  max-height:300px;
-  overflow-y:scroll
+.output {
+  max-height: 300px;
+  overflow-y: scroll;
 }
 
-.flex{
-  display:flex
+.flex {
+  display: flex;
 }
-h1,h2,h3,h4,h5{
-  margin:unset
+h2,
+h3,
+h4,
+h5 {
+  margin: unset;
 }
-.container{
-  padding: 0 .85rem;
+.container {
+  padding: 0 0.85rem;
 }
-.tooltip{
-/*   display:none; */
-  position:relative;
-  
+.tooltip {
+  /*   display:none; */
+  position: relative;
 }
 .tooltip:after {
-  position:absolute;
-  content: 'Hovered!';
+  position: absolute;
+  content: "Hovered!";
   padding: 1px 6px;
   transform: translateX(-70%) translateY(0%);
   background: var(--dark);
   color: var(--light);
   visibility: hidden;
-  font-size:12px;
-  border-radius:5px;
+  font-size: 12px;
+  border-radius: 5px;
 }
 .tooltip:hover:after {
   visibility: visible;
@@ -99,48 +98,61 @@ h1,h2,h3,h4,h5{
   transition: transform 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-#playlist-template{
-  display:none
+#playlist-template {
+  display: none;
 }
 
 .card {
   margin: 1.5rem 0;
   border-radius: 3px;
-  padding: 1.8rem!important;
+  padding: 1.8rem !important;
   background: #19e68c;
-    border: 5px solid var(--dark);
+  border: 5px solid var(--dark);
 }
 
-.card .playlist-name a{
+.card .playlist-name a {
   color: var(--light);
 }
 
 .card .image {
   border: 5px solid var(--dark);
+  height: min-content;
 }
 
 .card h3 a {
+}
+.card [data-api="description"] {
+  font-style: italic;
+}
 
+main {
+  padding: 2rem;
 }
-.card [data-api="description"]{
- font-style:italic
-}
-
-main{
-  padding:2rem;
-}
-a{
+a {
   text-decoration: none;
- color: var(--primary)
+  color: var(--primary);
 }
 
-a:hover{
-  opacity:.8;
-  transition: opacity 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55); 
-
+a:hover {
+  opacity: 0.8;
+  transition: opacity 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-input,button{
-  padding:.5rem;
-  font-size: large
+input,
+button {
+  padding: 0.5rem;
+  font-size: large;
+  border: 3px solid var(--dark);
+  border-radius: 3px;
+}
+button {
+  background: var(--primary);
+  color: var(--light);
+}
+
+blockquote {
+  border: 2px solid var(--primary);
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 3px;
 }
