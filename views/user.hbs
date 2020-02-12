@@ -18,15 +18,15 @@
 
       <div id="items">
         
-       <div class="card" id="$id" data-index="1">
+       <div class="card" id="playlist-template" data-index="-1">
          <label data-api="id"></label>
          <div class="flex">
            <div class="image">
-             <img src="" data-api="images-url">
+             <img src="" data-api="images-url" data-label="src">
            </div>
            <div class="container">
              <h3 data-api="playlist-name"></h3>
-              <div data-api="description"></div>
+            <div data-api="description"></div>
            </div>
          </div>
          
@@ -52,17 +52,36 @@
         
       }
       
+      function flattenObject(obj) {
+    var toReturn = {};
+    Object.keys(obj).forEach(key => {
+      if (typeof obj[key] === 'object') {
+        const flatObject = flattenObject(obj[key]);
+        Object.keys(flatObject).forEach(e => {
+          const propName = `${key}.${e}`.replace(/\.(\d+)/g, '[$1]')
+          toReturn[propName] = flatObject[e];
+        })
+      } else {
+        toReturn[key] = obj[key];
+      }
+    })
+    return toReturn;
+  }
+      
       function cloneHTML(itemData,index=0){
         
-        var clone = document.querySelector('#items .card[data-index="1"]').cloneNode(true)
+        const flatData = flattenObject(itemData)
+        
+        var clone = document.querySelector('#items .card[data-index="-1"]').cloneNode(true)
         
         Object.assign(clone,{
-          id: itemData.id,
+          id: 'playlist-'+itemData.id,
+          data:JSON.stringify(flatData)
         })
         
         clone.dataset.index=index
-        clone.querySelectorAll('[data-api="id"]').forEach(e=>{
-          e.textContent = itemData.id
+        clone.querySelectorAll('[data-api]').forEach(e=>{
+          e[e.dataset.label || 'textContent'] = itemData[e.dataset.api]
         })
         
         return clone
