@@ -2,10 +2,10 @@ const express = require("express");
 const app = express();
 const SpotifyWebApi = require("spotify-web-api-node");
 const bodyParser = require("body-parser");
+const hbs = require("hbs");
 
 app.use(express.static("public"));
 
-const hbs = require("hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 
 app.set("view engine", "hbs");
