@@ -47,26 +47,31 @@
         return document.getElementById(query);
       }
       
-      function albumImage(images){
+
       
-        
-      }
-      
-      function flattenObject(obj) {
-        var toReturn = {};
-        Object.keys(obj).forEach(key => {
-          if (typeof obj[key] === 'object') {
-            const flatObject = flattenObject(obj[key]);
-            Object.keys(flatObject).forEach(e => {
-              const propName = `${key}.${e}`
-              toReturn[propName] = flatObject[e];
-            })
-          } else {
-            toReturn[key] = obj[key];
-          }
-        })
-        return toReturn;
-      }
+function flattenObject(data) {
+    var result = {};
+    function recurse (cur, prop) {
+        if (Object(cur) !== cur) {
+            result[prop] = cur;
+        } else if (Array.isArray(cur)) {
+             for(var i=0, l=cur.length; i<l; i++)
+                 recurse(cur[i], prop + "[" + i + "]");
+            if (l == 0)
+                result[prop] = [];
+        } else {
+            var isEmpty = true;
+            for (var p in cur) {
+                isEmpty = false;
+                recurse(cur[p], prop ? prop+"."+p : p);
+            }
+            if (isEmpty && prop)
+                result[prop] = {};
+        }
+    }
+    recurse(data, "");
+    return result;
+}
       
       function cloneHTML(itemData,index=0){
         
