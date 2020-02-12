@@ -1,4 +1,5 @@
 <html lang="en">
+  
   {{> head }}
 
   <body class="center">
@@ -19,15 +20,17 @@
       <div id="items">
         
        <div class="card" id="playlist-template" data-index="-1">
-         <label data-api="id"></label>
+       
          <div class="flex">
            <div class="image">
-             <img src="" data-api="images-url" data-label="src">
+             <img data-api="images[0].url" data-label="src" width="120">
            </div>
            <div class="container">
-             <h3 data-api="playlist-name"></h3>
+             <h3 data-api="name"></h3>
             <div data-api="description"></div>
            </div>
+           
+             <label data-api="id"></label>
          </div>
          
         </div>
@@ -88,7 +91,7 @@ function flattenObject(data) {
         
         clone.dataset.index=index
         clone.querySelectorAll('[data-api]').forEach(e=>{
-          e[e.dataset.label || 'textContent'] = itemData[e.dataset.api]
+          e[e.dataset.label || 'textContent'] = flatData[e.dataset.api]
         })
         
         return clone
@@ -97,34 +100,18 @@ function flattenObject(data) {
 
       
       function fillPage(data) {
+        
         const div = Object.assign(document.createElement("a"), {
           href: url,
           textContent: url
         });
         
-        
+      
         
        document.body.appendChild(div);
 
         data.items.forEach((e,i) => {
-          const item = Object.assign(document.createElement("div"), {
-            className: "card",
-            id: e.id
-          });
-          const description = Object.assign(document.createElement("div"), {
-            textContent: e.description,
-            'aria-label': 'description'
-          });
-          const title = Object.assign(document.createElement("h3"), {
-            textContent: e.name,
-              'aria-label': 'title'
-          });
-          const albumImage = Object.assign(document.createElement('img'),{
-            src: e.images[0].url
-          })
 
-          item.appendChild(title);
-          item.appendChild(description);
 
           $get("items").appendChild(cloneHTML(e,i));
         })
@@ -147,8 +134,8 @@ function flattenObject(data) {
                   ...data.body,
                   fetched: new Date().toLocaleString()
                 })
-              );
-            });
+              )
+            })
         }
 
         cb(dat);
