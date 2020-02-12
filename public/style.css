@@ -1,13 +1,20 @@
+:root{
+  --dark: #191414;
+  --light: #ffffff;
+  --primary: #1DB954;
+}
+
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: Circular, Helvetica, Arial, sans-serif;
+  font-family: SF Pro Display, system ui, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  color: #222326;
-  background-color: #fff;
+  color: var(--dark);
+  background-color: var(--light);
   tab-size:2;
 }
 
@@ -32,7 +39,6 @@ label.input-container {
   flex-direction: column;
   position: relative;
 
-  color: #222;
 }
 
 label.input-container span {
@@ -81,8 +87,8 @@ h1,h2,h3,h4,h5{
   content: 'Hovered!';
   padding: 1px 6px;
   transform: translateX(-70%) translateY(0%);
-  background: black;
-  color: white;
+  background: var(--dark);
+  color: var(--light);
   visibility: hidden;
   font-size:12px;
   border-radius:5px;
@@ -98,21 +104,43 @@ h1,h2,h3,h4,h5{
 }
 
 .card {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   border-radius: 3px;
   padding: 1.8rem!important;
   background: #19e68c;
+    border: 5px solid var(--dark);
+}
+
+.card .playlist-name a{
+  color: var(--light);
 }
 
 .card .image {
-  border: 8px solid #1d1d1d;
+  border: 5px solid var(--dark);
 }
 
 .card h3 a {
-  text-decoration: none;
-  color: black;
+
+}
+.card [data-api="description"]{
+ font-style:italic
 }
 
 main{
   padding:2rem;
+}
+a{
+  text-decoration: none;
+ color: var(--primary)
+}
+
+a:hover{
+  opacity:.8;
+  transition: opacity 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+
+}
+
+input,button{
+  padding:.5rem;
+  font-size: large
 }
