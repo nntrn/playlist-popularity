@@ -58,15 +58,17 @@ input[type="submit"] {
 }
 
 .flex {
-  display: flex;
+/*   display: flex; */
 }
 .flex.wrap {
   flex-wrap: wrap;
 }
 
-h1 {
-  margin: 0.5rem 0;
-  margin-top: 0;
+.row{
+    grid-template-columns: 100px 50px 100px;
+  grid-template-rows: 80px auto 80px; 
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
 }
 
 h1,
@@ -78,9 +80,6 @@ h5 {
   line-height: 1.4;
 }
 
-.title{
-  margin-bottom:1.5rem;
-}
 
 .container {
   padding: 0 0.85rem;
@@ -195,4 +194,13 @@ blockquote {
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 3px;
+}
+
+header{
+  background:var(--dark);
+  padding:1rem;
+  color: white;
+  display:flex;
+  justify-content:space-between;
+  min-height:30vh;
 }
