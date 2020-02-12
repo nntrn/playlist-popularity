@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
 
-  {{> head}}
-  
-<body>
   <main>
     <header>
       <h1 data-label="user">
@@ -41,6 +36,7 @@
   </main>
 
   <script>
+    
     var url = "/api/user/{{title}}";
 
     function getLocalData(key) {
@@ -121,5 +117,3 @@
 
     dataManager(url, fillPage);
   </script>
-  </body>
-</html>
