@@ -11,9 +11,6 @@ body {
   tab-size:2;
 }
 
-header {
-  padding: 0 0.7rem;
-}
 
 section {
   margin: 20px 0;
@@ -63,4 +60,8 @@ input[type="submit"] {
 .output{
   max-height:300px;
   overflow-y:scroll
+}
+.card{
+  padding: 1rem;
+  border:1px solid gray;
 }
