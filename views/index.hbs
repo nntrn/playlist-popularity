@@ -13,8 +13,9 @@
           autocorrect="off"
           autocapitalize="off"
           spellcheck="false"
+          placeholder="username"
         />
-        <button>
+        <button id="go">
           go
         </button>
       </div>
@@ -28,5 +29,10 @@
         </ul>
       </blockquote>
     </main>
+    <script>
+    document.querySelector('#go').addEventListener('click',function(){
+      window.location.pathname = '/user/' +document.querySelector('#finduser').value
+    })
+    </script>
   </body>
 </html>
