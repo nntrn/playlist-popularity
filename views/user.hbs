@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
   {{> head }}
 
   <body class="center">
@@ -21,7 +21,9 @@
        <div class="card" id="$id" data-index="1">
          <label data-api="id"></label>
          <div class="flex">
-           <div class="image"></div>
+           <div class="image">
+             <img src="" data-api="images-url">
+           </div>
            <div class="container">
              <h3 data-api="playlist-name"></h3>
               <div data-api="description"></div>
@@ -49,6 +51,23 @@
       
         
       }
+      
+      function cloneHTML(itemData,index=0){
+        
+        var clone = document.querySelector('#items .card[data-index="1"]').cloneNode(true)
+        
+        Object.assign(clone,{
+          id: itemData.id,
+        })
+        
+        clone.dataset.index=index
+        clone.querySelectorAll('[data-api="id"]').forEach(e=>{
+          e.textContent = itemData.id
+        })
+        
+        return clone
+        
+      }
 
       
       function fillPage(data) {
@@ -61,7 +80,7 @@
         
        document.body.appendChild(div);
 
-        data.items.forEach(e => {
+        data.items.forEach((e,i) => {
           const item = Object.assign(document.createElement("div"), {
             className: "card",
             id: e.id
@@ -81,7 +100,7 @@
           item.appendChild(title);
           item.appendChild(description);
 
-          $get("items").appendChild(item);
+          $get("items").appendChild(cloneHTML(item,i));
         })
 
 
