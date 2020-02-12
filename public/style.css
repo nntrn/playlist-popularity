@@ -1,6 +1,6 @@
 :root {
   --dark: #191414;
-  --semidark: #FFC107;
+  --accent: #FFC107;
   --light: #ffffff;
   --primary: #1DB954;
   --card-bg: #19e68c;
@@ -10,6 +10,33 @@
 * {
   box-sizing: border-box;
 }
+
+.light{
+  color: var(--light)!important
+}
+
+.dark{
+  color: var(--dark)!important
+}
+
+
+.primary{
+  color: var(--primary)!important
+}
+
+.bg-light{
+  background: var(--light)!important
+}
+
+.bg-dark{
+  background: var(--dark)!important
+}
+
+
+.bg-primary{
+  background: var(--primary)!important
+}
+
 
 body {
   font-family: SF Pro Display, system ui, Helvetica, Arial, sans-serif;
@@ -59,7 +86,7 @@ input[type="submit"] {
 }
 
 .flex {
-  /*   display: flex; */
+    display: flex;
 }
 
 .flex.wrap {
@@ -165,6 +192,7 @@ h5 {
 
 main {
   padding: 1rem;
+  box-shadow: inset 0 230px var(--accent);
 }
 a {
   text-decoration: none;
@@ -184,12 +212,13 @@ input,
 button {
   padding: 0.5rem;
   font-size: large;
-  border: 2px solid var(--dark);
+  border: 2px solid transparent;
+  margin:1px;
   border-radius: 6px;
 }
 
 button {
-  background: var(--primary);
+  background: var(--dark);
   color: var(--light);
 }
 
@@ -201,16 +230,16 @@ blockquote {
 }
 
 header {
-  background: var(--semidark);
+  background: var(--accent);
   padding: 1rem;
   color: white;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0 240px  var(--semidark);
   align-content: flex-end;
   width: 100%;
   flex-wrap: wrap;
   min-height: 100px;
+  z-index:-1;
 }
 
 header > * {
