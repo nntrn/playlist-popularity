@@ -16,7 +16,21 @@
         </h3>
       </header>
 
-      <div id="items"></div>
+      <div id="items">
+        
+       <div class="card" id="$id" data-index="1">
+         <label data-api="id"></label>
+         <div class="flex">
+           <div class="image"></div>
+           <div class="container">
+             <h3 data-api="playlist-name"></h3>
+              <div data-api="description"></div>
+           </div>
+         </div>
+         
+        </div>
+      </div>
+      
       <pre id="json"></pre>
     </main>
 
@@ -30,6 +44,11 @@
       function $get(query) {
         return document.getElementById(query);
       }
+      
+      function albumImage(images){
+      
+        
+      }
 
       
       function fillPage(data) {
@@ -37,6 +56,8 @@
           href: url,
           textContent: url
         });
+        
+        
         
        document.body.appendChild(div);
 
@@ -46,11 +67,16 @@
             id: e.id
           });
           const description = Object.assign(document.createElement("div"), {
-            textContent: e.description
+            textContent: e.description,
+            'aria-label': 'description'
           });
           const title = Object.assign(document.createElement("h3"), {
-            textContent: e.name
+            textContent: e.name,
+              'aria-label': 'title'
           });
+          const albumImage = Object.assign(document.createElement('img'),{
+            src: e.images[0].url
+          })
 
           item.appendChild(title);
           item.appendChild(description);
