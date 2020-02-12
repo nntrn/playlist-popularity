@@ -108,6 +108,7 @@ h5 {
   padding: 1.8rem !important;
   background: #19e68c;
   border: 5px solid var(--dark);
+  word-break: break-word;
 }
 
 .card .playlist-name a {
