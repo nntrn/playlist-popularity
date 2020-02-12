@@ -74,3 +74,24 @@ h1,h2,h3,h4,h5{
 .container{
   padding: 0 .85rem;
 }
+.tooltip{
+/*   display:none; */
+  position:relative;
+  
+}
+.tooltip:after {
+  position:absolute;
+  content: 'Hovered!';
+  padding: 1px 6px;
+  transform: translateX(-70%) translateY(0%);
+  background: black;
+  color: white;
+  visibility: hidden;
+  font-size:12px;
+  border-radius:5px;
+}
+.tooltip:hover:after {
+  visibility: visible;
+  transform: translateX(-70%) translateY(-45%);
+  transition: transform 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
