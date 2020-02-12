@@ -37,7 +37,7 @@
   </main>
 
   <script>
-    const url = "/api/user/{{title}}";
+    var url = "/api/user/{{title}}";
 
     function getLocalData(key) {
       return JSON.parse(localStorage.getItem(key));
@@ -76,12 +76,7 @@
       const flatData = flattenObject(itemData)
 
       var clone = document.querySelector('#items .card[data-index="-1"]').cloneNode(true)
-
-      Object.assign(clone, {
-        id: 'playlist-' + itemData.id,
-
-      })
-
+      clone.id = 'playlist-' + itemData.id,
       clone.dataset.index = index
       clone.querySelectorAll('[data-api]').forEach(e => {
         e[e.dataset.label || 'textContent'] = flatData[e.dataset.api]
@@ -90,7 +85,6 @@
       return clone
 
     }
-
 
     function fillPage(data) {
 
@@ -104,7 +98,6 @@
 
         $get("items").appendChild(cloneHTML(e, i));
       })
-
     }
 
     function dataManager(userUrl, cb) {
@@ -115,6 +108,7 @@
           .then(response => response.json())
           .then(data => {
             dat = data.body;
+          fillPage(dat)
             console.log("fetched", data);
             localStorage.setItem(
               userUrl,
@@ -127,6 +121,7 @@
       }
 
       cb(dat);
+
     }
 
     dataManager(url, fillPage);
