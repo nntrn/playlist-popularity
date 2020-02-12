@@ -41,13 +41,17 @@
 
         data.items.forEach(e => {
           const item = Object.assign(document.createElement("div"), {
-            textContent: e.name,
             className: "card"
           });
+
           const description = Object.assign(document.createElement("div"), {
             textContent: e.description
           });
+          const title = Object.assign(document.createElement("h3"), {
+            textContent: e.name
+          });
 
+          item.appendChild(title);
           item.appendChild(description);
 
           $get("items").appendChild(item);
