@@ -65,3 +65,12 @@ input[type="submit"] {
   padding: 1rem;
   border:1px solid gray;
 }
+.flex{
+  display:flex
+}
+h1,h2,h3,h4,h5{
+  margin:unset
+}
+.container{
+  padding: 0 .85rem;
+}
