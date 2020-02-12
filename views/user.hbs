@@ -1,156 +1,170 @@
 <html lang="en">
-  
-  {{> head }}
 
-  <body class="center">
-    <main>
-      <header>
-        <h1 data-label="user">
-          {{title}}
-        </h1>
-        <h3>
-          <a
-            href="https://open.spotify.com/user/{{title}}"
-            data-label="open-spotify"
-            >https://open.spotify.com/user/{{title}}</a
-          >
-        </h3>
-      </header>
+{{> head }}
 
-      <div id="items">
-        
-       <div class="card" id="playlist-template" data-index="-1">
-       
-         <div class="flex">
-           <div class="image">
-             <img data-api="images[0].url" data-label="src" width="120">
-           </div>
-           <div class="container">
-             <h3>
+<body class="center">
+  <main>
+    <header>
+      <h1 data-label="user">
+        {{title}}
+      </h1>
+      <h3>
+        <a href="https://open.spotify.com/user/{{title}}" data-label="open-spotify">https://open.spotify.com/user/{{title}}</a>
+      </h3>
+    </header>
+
+    <div id="items">
+      
+      <div class="card" id="playlist-template" data-index="-1">
+  <header class="card-header">
+    <p class="card-header-title" data-api="name">
+    </p>
+    <a href="#" class="card-header-icon" aria-label="more options">
+      <span class="icon">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </a>
+  </header>
+  <div class="card-content">
+     <img data-api="images[0].url" data-label="src" width="120">
+    <div class="content" >
+      <span data-api="description"></span>
+      <a href="" data-api="external_urls.spotify" data-label="href">Open</a>
+      <br>
+      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+    </div>
+  </div>
+  <footer class="card-footer">
+    <a href="#" class="card-footer-item">Save</a>
+    <a href="#" class="card-footer-item">Edit</a>
+    <a href="#" class="card-footer-item">Delete</a>
+  </footer>
+</div>
+      
+
+      <div class="card" id="playlist-template" data-index="-1">
+        <div class="flex">
+          <div class="image">
+            <img data-api="images[0].url" data-label="src" width="120">
+          </div>
+          <div class="container">
+            <h3 class="playlist-name">
+              <a href="" data-api="external_urls.spotify" data-label="href">
                <span data-api="name"></span>
-                <a href="" data-api="external_urls.spotify" data-label="href">
-                  <span class="tooltip" data-api="external_urls.spotify"></span>
-             </a>
-            
-             </h3>
-      
-
+              </a>
+            </h3>
             <div data-api="description"></div>
-           </div>
-           
-         </div>
-                    
-           <label data-api="id"></label>
-         
+          </div>
         </div>
+        <label data-api="id" hidden></label>
       </div>
-      
-      <pre id="json"></pre>
-    </main>
+      <!--      end of card  -->
+    </div>
 
-    <script>
-      const url = "/api/user/{{title}}";
+  </main>
 
-      function getLocalData(key) {
-        return JSON.parse(localStorage.getItem(key));
-      }
+  <script>
+    const url = "/api/user/{{title}}";
 
-      function $get(query) {
-        return document.getElementById(query);
-      }
-      
-
-      
-function flattenObject(data) {
-    var result = {};
-    function recurse (cur, prop) {
-        if (Object(cur) !== cur) {
-            result[prop] = cur;
-        } else if (Array.isArray(cur)) {
-             for(var i=0, l=cur.length; i<l; i++)
-                 recurse(cur[i], prop + "[" + i + "]");
-            if (l == 0)
-                result[prop] = [];
-        } else {
-            var isEmpty = true;
-            for (var p in cur) {
-                isEmpty = false;
-                recurse(cur[p], prop ? prop+"."+p : p);
-            }
-            if (isEmpty && prop)
-                result[prop] = {};
-        }
+    function getLocalData(key) {
+      return JSON.parse(localStorage.getItem(key));
     }
-    recurse(data, "");
-    return result;
-}
-      
-      function cloneHTML(itemData,index=0){
-        
-        const flatData = flattenObject(itemData)
-        
-        console.log(itemData,flatData)
-        
-        var clone = document.querySelector('#items .card[data-index="-1"]').cloneNode(true)
-        
-        Object.assign(clone,{
-          id: 'playlist-'+itemData.id,
-      
-        })
-        
-        clone.dataset.index=index
-        clone.querySelectorAll('[data-api]').forEach(e=>{
-          e[e.dataset.label || 'textContent'] = flatData[e.dataset.api]
-        })
-        
-        return clone
-        
-      }
 
-      
-      function fillPage(data) {
-        
-        const div = Object.assign(document.createElement("a"), {
-          href: url,
-          textContent: url
-        });
-        
-      
-        
-       document.body.appendChild(div);
-
-        data.items.forEach((e,i) => {
+    function $get(query) {
+      return document.getElementById(query);
+    }
 
 
-          $get("items").appendChild(cloneHTML(e,i));
-        })
 
-
-      }
-
-      function dataManager(userUrl, cb) {
-        var dat = getLocalData(userUrl);
-
-        if (!localStorage.getItem(userUrl)) {
-          fetch(userUrl)
-            .then(response => response.json())
-            .then(data => {
-              dat = data.body;
-              console.log("fetched", data);
-              localStorage.setItem(
-                userUrl,
-                JSON.stringify({
-                  ...data.body,
-                  fetched: new Date().toLocaleString()
-                })
-              )
-            })
+    function flattenObject(data) {
+      var result = {};
+      function recurse(cur, prop) {
+        if (Object(cur) !== cur) {
+          result[prop] = cur;
+        } else if (Array.isArray(cur)) {
+          for (var i = 0, l = cur.length; i < l; i++)
+            recurse(cur[i], prop + "[" + i + "]");
+          if (l == 0)
+            result[prop] = [];
+        } else {
+          var isEmpty = true;
+          for (var p in cur) {
+            isEmpty = false;
+            recurse(cur[p], prop ? prop + "." + p : p);
+          }
+          if (isEmpty && prop)
+            result[prop] = {};
         }
+      }
+      recurse(data, "");
+      return result;
+    }
 
-        cb(dat);
+    function cloneHTML(itemData, index = 0) {
+
+      const flatData = flattenObject(itemData)
+
+      console.log(itemData, flatData)
+
+      var clone = document.querySelector('#items .card[data-index="-1"]').cloneNode(true)
+
+      Object.assign(clone, {
+        id: 'playlist-' + itemData.id,
+
+      })
+
+      clone.dataset.index = index
+      clone.querySelectorAll('[data-api]').forEach(e => {
+        e[e.dataset.label || 'textContent'] = flatData[e.dataset.api]
+      })
+
+      return clone
+
+    }
+
+
+    function fillPage(data) {
+
+      const div = Object.assign(document.createElement("a"), {
+        href: url,
+        textContent: url
+      });
+
+
+      document.body.appendChild(div);
+
+      data.items.forEach((e, i) => {
+
+
+        $get("items").appendChild(cloneHTML(e, i));
+      })
+
+    }
+
+    function dataManager(userUrl, cb) {
+      var dat = getLocalData(userUrl);
+
+      if (!localStorage.getItem(userUrl)) {
+        fetch(userUrl)
+          .then(response => response.json())
+          .then(data => {
+            dat = data.body;
+            console.log("fetched", data);
+            localStorage.setItem(
+              userUrl,
+              JSON.stringify({
+                ...data.body,
+                fetched: new Date().toLocaleString()
+              })
+            )
+          })
       }
 
-      dataManager(url, fillPage);
-    </script>
-  </body>
+      cb(dat);
+    }
+
+    dataManager(url, fillPage);
+  </script>
+</body>
+
 </html>
