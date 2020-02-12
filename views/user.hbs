@@ -91,16 +91,8 @@
     }
 
     function fillPage(data) {
-
-      const div = Object.assign(document.createElement("a"), {
-        href: url,
-        textContent: url
-      });
-
-      document.body.appendChild(div);
-      data.items.forEach((e, i) => {
-
-        $get("items").appendChild(cloneHTML(e, i));
+      data.items.forEach((item, i) => {
+        $get("items").appendChild(cloneHTML(item, i));
       })
     }
 
@@ -112,24 +104,22 @@
           .then(response => response.json())
           .then(data => {
             dat = data.body;
-          fillPage(dat)
+            fillPage(dat)
             console.log("fetched", data);
             localStorage.setItem(
               userUrl,
-              JSON.stringify({
-                ...data.body,
-                fetched: new Date().toLocaleString()
-              })
+              JSON.stringify(
+                { ...data.body, 
+                 fetched: new Date().toLocaleString()
+                }
+              )
             )
           })
       }
-
       cb(dat);
-
     }
 
     dataManager(url, fillPage);
   </script>
-</body>
-
+  </body>
 </html>

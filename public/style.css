@@ -117,6 +117,7 @@ h5 {
 
 .card .image {
   height: min-content;
+  padding: 0.5rem;
 }
 
 .card .container {
