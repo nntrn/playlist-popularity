@@ -1,5 +1,6 @@
 :root {
   --dark: #191414;
+  --semidark: #FFC107;
   --light: #ffffff;
   --primary: #1DB954;
   --card-bg: #19e68c;
@@ -58,17 +59,19 @@ input[type="submit"] {
 }
 
 .flex {
-/*   display: flex; */
+  /*   display: flex; */
 }
+
 .flex.wrap {
   flex-wrap: wrap;
 }
 
-.row{
-    grid-template-columns: 100px 50px 100px;
-  grid-template-rows: 80px auto 80px; 
-  grid-column-gap: 10px;
-  grid-row-gap: 15px;
+.row {
+  grid-template-columns: 80% 20%;
+  grid-column-gap: 2px;
+  display: grid;
+
+  height: fit-content;
 }
 
 h1,
@@ -79,7 +82,6 @@ h5 {
   margin: unset;
   line-height: 1.4;
 }
-
 
 .container {
   padding: 0 0.85rem;
@@ -159,11 +161,11 @@ h5 {
   font-size: 0.7em;
   opacity: 0.5;
 }
-/* 
-main {
-  padding: 2rem;
-} */
 
+
+main {
+  padding: 1rem;
+}
 a {
   text-decoration: none;
   color: var(--primary);
@@ -173,15 +175,17 @@ a:hover {
   opacity: 0.8;
   transition: opacity 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-a code{
-  color: inherit
+
+a code {
+  color: inherit;
 }
+
 input,
 button {
   padding: 0.5rem;
   font-size: large;
-  border: 3px solid var(--dark);
-  border-radius: 3px;
+  border: 2px solid var(--dark);
+  border-radius: 6px;
 }
 
 button {
@@ -196,11 +200,19 @@ blockquote {
   border-radius: 3px;
 }
 
-header{
-  background:var(--dark);
-  padding:1rem;
+header {
+  background: var(--semidark);
+  padding: 1rem;
   color: white;
-  display:flex;
-  justify-content:space-between;
-  min-height:30vh;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 240px  var(--semidark);
+  align-content: flex-end;
+  width: 100%;
+  flex-wrap: wrap;
+  min-height: 100px;
+}
+
+header > * {
+  margin: 0.5rem 0;
 }
