@@ -4,18 +4,23 @@
 
 <head>
 
-  <title>{{title}}</title>
+  <title>{{user}}</title>
   {{> head}}
 </head>
 
 <body>
   
+  
+  
   <header>
-     <h1 class="title">{{projectName}}</h1>
+    
+  <h1 class="title">{{projectName}}</h1>
+    
     {{> search}}
+    
   </header>
   
-  <main>
+<main>
     
  {{{body}}}
 
@@ -30,7 +35,6 @@ document.querySelector('#go').addEventListener('click',function(){
   window.location.pathname = '/user/' +document.querySelector('#finduser').value
 })
 </script>
-  <script src="/client.js"></script>
   
 </body>
 

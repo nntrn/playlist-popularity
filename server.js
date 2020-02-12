@@ -45,6 +45,7 @@ spotifyApi.clientCredentialsGrant().then(
 
 app.get("/user/:user", function(req, res) {
   res.render("user", {
+    projectName: process.env.PROJECT_DOMAIN,
     user: req.params.user
   });
   // spotifyApi
