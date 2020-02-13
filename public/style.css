@@ -5,6 +5,7 @@
   --primary: #1DB954;
   --card-bg: #19e68c;
   --code: #777;
+  --link:#3498db;
 
   --gradient: linear-gradient(#0b7285, #0ca678);
 }
@@ -37,6 +38,9 @@
   background: var(--primary) !important;
 }
 
+body,html{
+  overflow:auto
+}
 body {
   font-family: SF Pro Display, system ui, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -201,7 +205,7 @@ main {
 }
 a {
   text-decoration: none;
-  color: var(--primary);
+  color: var(--link);
 }
 
 a:hover {
@@ -228,7 +232,6 @@ button {
 }
 
 blockquote {
-  /*   border: 3px solid var(--primary); */
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 3px;
