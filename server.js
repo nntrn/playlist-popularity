@@ -47,6 +47,26 @@ app.get("/user/:user", function(req, res) {
   });
 });
 
+
+app.get("/api/playlist/:id", function(req, res) {
+  
+  const options={
+    fields:'items(added_at,track(id,name,popularity,type,external_urls(spotify),preview_url),album(images))'
+  }
+  res.header("Content-Type", "application/json");
+
+  spotifyApi.getUserPlaylists(req.params.user, { limit: 50, offset: 0 }).then(
+    function(data) {
+      res.send(data);
+    },
+    function(err) {
+      console.log(err);
+    }
+  );
+ 
+});
+
+
 app.get("/api/user/:user", function(req, res) {
   res.header("Content-Type", "application/json");
 
