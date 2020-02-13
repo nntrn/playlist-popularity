@@ -35,11 +35,20 @@
     })
   </script>
   <script>
-    function getTracksApi(e){
-      fetch(`/api/playlist/${e}/tracks`).then(function(data){
-        console.log(data)
-      })
+    
+    function getTracksApi(id){
       
+      fetch(`/api/playlist/${id}/tracks`)
+      .then(data=> data.json())
+      .then(d=>blah(id, d))
+      
+    }
+    
+    function blah(id, dat){
+      document.querySelector(`#playlist-${id} .tracks .output`)
+        .appendChild(Object.assign(document.createElement('div',{
+        textContent:JSON.stringify(dat,null,2)
+      })))
     }
 </script>
 
