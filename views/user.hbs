@@ -36,9 +36,9 @@
         </div>
       </div>
       <label data-api="id" class="opacity-50"></label>
-      <div class="tracks flex">
+      <div class="output flex">
         <button value="" data-api="id" data-label="value" onclick="getTracksApi(value)">view tracks</button>
-        <div class="output"></div>
+        <div class="track"></div>
       </div>
     </div>
   </div>
@@ -79,18 +79,18 @@
     }
 
     function blah(id, dat) {
-      
-      
+
+
       const output = document.querySelector(`button[value="${id}"]`).parentElement
-      output.style.cssText='display:flex;flex-direction:column-reverse'
+      output.style.cssText = 'display:flex;flex-direction:column'
       const parent = $make('table')
-      var pop=[]
-      
+      var pop = []
+
       dat.forEach((e, i) => {
         const row = $make('tr')
 
-        pop.push(e.track.popularity)
-        
+        // pop.push(e.track.popularity)
+
         const cols = [
           i + 1,
           new Date(e.added_at).toLocaleDateString(),
@@ -104,31 +104,34 @@
             style: `${String(e).length < 15 ? 'white-space:pre' : ''}`
           }))
         })
-
+        pop.push(cols)
         parent.appendChild(row)
       })
-      
-       output.appendChild(parent)
-      
-      var div = Object.assign($make('div'),{
-        className:'chart',
-        style:`display:flex;width:500px;height:200px`
-      })
-      
-  
-      pop.sort((a, b) => a - b).forEach(p=>{
-            div.appendChild(Object.assign($make('div'), {
-              style:`height: ${p}%;width:100%;flex-grow:1;background:red`,
-              textContent:p,
-              className:'bar'
-          }))
-        
+
+      // output.appendChild(parent)
+
+      var div = Object.assign($make('div'), {
+        className: 'chart',
+        style: `display:flex;width:500px;height:200px;align-items:flex-end;`
       })
 
-      
+      pop.sort((a, b) => a[4] - b[4]).forEach(p => {
+       var bar = Object.assign($make('div'), {
+          style: `height: ${p[4]}%;width:100%;flex-grow:1;background:red;border:1px solid black`,
+          className: 'bar'
+        })
+       var tooltip = Object.assign($make('div'), {
+          textContent:JSON.stringify(p),
+          className: 'tooltip'
+        })
+       bar.appendChild(tooltip)
+div.appendChild(bar)
+      })
+
+
       output.appendChild(div)
 
-      // document.querySelector(`#playlist-${id} .tracks .output`).appendChild(parent)
+
       document.querySelector(`#playlist-${id} .tracks button`).remove()
     }
 
