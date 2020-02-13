@@ -1,8 +1,6 @@
 <div class="user">
   
-<h2 data-label="title">
-  {{user}}
-</h2>
+<h2 data-label="title">{{user}}</h2>
   
 <h3>
   <a href="https://open.spotify.com/user/{{user}}" data-label="open-spotify">
@@ -10,6 +8,7 @@
 </h3>
   
     <div id="items">
+      
       <div class="card" id="playlist-template" data-index="-1">
         <div class="flex">
           <div class="image">
@@ -24,14 +23,14 @@
             </h3>
 
             <div data-api="description"></div>
-            <small>
+            <small class="light opacity-75 hover">
                <span>Tracks: </span>
                <span data-api="tracks.total"></span>
             </small>
             
           </div>
         </div>
-        <label data-api="id"></label>
+        <label data-api="id" class="opacity-50"></label>
       </div>
       
     </div>

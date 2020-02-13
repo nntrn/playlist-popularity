@@ -1,5 +1,6 @@
 :root {
   --dark: #191414;
+  --gray:#95a5a6;
   --accent: #FFC107;
   --light: #ffffff;
   --primary: #1DB954;
@@ -21,6 +22,9 @@ html {
 .light {
   color: var(--light) !important;
 }
+.gray{
+  color: var(--gray) !important;
+}
 
 .dark {
   color: var(--dark) !important;
@@ -41,6 +45,20 @@ html {
 .bg-primary {
   background: var(--primary) !important;
 }
+
+.opacity-75{
+  opacity:.75
+}
+.opacity-50{
+  opacity:.5
+}
+.opacity-75.hover:hover{
+ opacity:1
+}
+.opacity-50.hover:hover{
+ opacity:.75
+}
+
 
 body,
 html {
@@ -78,7 +96,7 @@ code {
   color: var(--code);
 }
 
-label.input-container:hover span {
+/* label.input-container:hover span {
   opacity: 0.5;
 }
 
@@ -89,7 +107,7 @@ label.input-container input.form-control {
 input[type="submit"] {
   align-self: flex-end;
   justify-content: flex-end;
-}
+} */
 
 .output {
   max-height: 300px;
