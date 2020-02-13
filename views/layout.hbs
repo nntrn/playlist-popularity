@@ -40,15 +40,19 @@
       
       fetch(`/api/playlist/${id}/tracks`)
       .then(data=> data.json())
-      .then(d=>blah(id, d))
+      .then(d=>blah(id, d.items))
       
     }
     
     function blah(id, dat){
-      document.querySelector(`#playlist-${id} .tracks .output`)
-        .appendChild(Object.assign(document.createElement('div',{
-        textContent:JSON.stringify(dat,null,2)
-      })))
+      
+      const appe = Object.assign(document.createElement('div'),{
+        textContent: JSON.stringify(dat,null,2),
+        style:'white-space:pre'
+      })
+      
+      document.querySelector(`#playlist-${id} .tracks .output`).appendChild(appe)
+      document.querySelector(`#playlist-${id} .tracks input`).remove()
     }
 </script>
 
