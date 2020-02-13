@@ -79,11 +79,12 @@
     }
 
     function blah(id, dat) {
-      var div = $make('div')
+      
       
       const output = document.querySelector(`button[value="${id}"]`).parentElement
+      output.style.cssText='display:flex;flex-direction:column-reverse'
       const parent = $make('table')
-      const pop=[]
+      var pop=[]
       
       dat.forEach((e, i) => {
         const row = $make('tr')
@@ -107,9 +108,25 @@
         parent.appendChild(row)
       })
       
-      output.appendChild(parent)
-      div.textContent=pop.toString()
- output.appendChild(div)
+       output.appendChild(parent)
+      
+      var div = Object.assign($make('div'),{
+        className:'chart',
+        style:`display:flex;width:500px;height:200px`
+      })
+      
+  
+      pop.sort((a, b) => a - b).forEach(p=>{
+            div.appendChild(Object.assign($make('div'), {
+              style:`height: ${p}%;width:100%;flex-grow:1;background:red`,
+              textContent:p,
+              className:'bar'
+          }))
+        
+      })
+
+      
+      output.appendChild(div)
 
       // document.querySelector(`#playlist-${id} .tracks .output`).appendChild(parent)
       document.querySelector(`#playlist-${id} .tracks button`).remove()
