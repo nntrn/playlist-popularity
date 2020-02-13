@@ -68,7 +68,7 @@ function fillPage(data) {
     $get("items").appendChild(cloneHTML(item, i));
   });
   
-  $get("items").querySelectorAll('[data-inject-api]').forEach(e => {
+  document.querySelectorAll('[data-inject-api]').forEach(e => {
     e[e.dataset.label || "textContent"] = decodeSingleQuote(data[e.dataset.injectApi]);
   });
   

@@ -50,9 +50,15 @@ app.get("/user/:user", function(req, res) {
 app.get("/api/user/:user", function(req, res) {
   res.header("Content-Type", "application/json");
 
-  spotifyApi
-    .getUserPlaylists(req.params.user, { limit: 50, offset: 0 })
-    .then(data => res.send(data));
+  spotifyApi.getUserPlaylists(req.params.user, { limit: 50, offset: 0 }).then(
+    function(data) {
+      res.send(data);
+    },
+    function(err) {
+      console.log(err);
+    }
+  );
+ 
 });
 
 const listener = app.listen(process.env.PORT, function() {
