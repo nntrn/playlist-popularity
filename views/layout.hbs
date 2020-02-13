@@ -36,9 +36,18 @@
   </script>
   <script>
     
+    function query(params) {
+      return (
+        '?' +
+        Object.entries(params)
+          .map(e => `${e[0]}=${e[1]}`)
+          .join('&')
+      )
+    }
+    
     function getTracksApi(id){
       
-      fetch(`/api/playlist/${id}/tracks`)
+      fetch(`/api/playlist/${id}/tracks${query({fields:'items(track(name,artists,popularity))'})}`)
       .then(data=> data.json())
       .then(d=>blah(id, d.items))
       
@@ -46,13 +55,19 @@
     
     function blah(id, dat){
       
+      dat.forEach(e=>{
+        
+        e.tracks.atr
+        
+      })
+      
       const appe = Object.assign(document.createElement('div'),{
         textContent: JSON.stringify(dat,null,2),
         style:'white-space:pre;font-size:.9em'
       })
       
       document.querySelector(`#playlist-${id} .tracks .output`).appendChild(appe)
-      document.querySelector(`#playlist-${id} .tracks input`).remove()
+      document.querySelector(`#playlist-${id} .tracks button`).remove()
     }
 </script>
 

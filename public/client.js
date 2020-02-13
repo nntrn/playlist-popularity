@@ -92,7 +92,7 @@ function dataManager(userUrl, cb) {
       .then(response => response.json())
       .then(data => {
         dat = data.body;
-        fillPage(dat);
+        cb(dat);
         console.log("fetched", data);
         localStorage.setItem(
           userUrl,
