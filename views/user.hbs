@@ -79,20 +79,23 @@
     }
 
     function blah(id, dat) {
-      var table = $make('table')
+      var div = $make('div')
+      
       const output = document.querySelector(`button[value="${id}"]`).parentElement
-
       const parent = $make('table')
-
+      const pop=[]
+      
       dat.forEach((e, i) => {
         const row = $make('tr')
 
+        pop.push(e.track.popularity)
+        
         const cols = [
           i + 1,
           new Date(e.added_at).toLocaleDateString(),
           e.track.name,
           e.track.artists.map(e => e.name).join(' & '),
-          e.popularity
+          e.track.popularity
         ]
         cols.forEach(e => {
           row.appendChild(Object.assign($make('td'), {
@@ -103,10 +106,12 @@
 
         parent.appendChild(row)
       })
+      
       output.appendChild(parent)
+      div.textContent=pop.toString()
+ output.appendChild(div)
 
-
-      document.querySelector(`#playlist-${id} .tracks .output`).appendChild(parent)
+      // document.querySelector(`#playlist-${id} .tracks .output`).appendChild(parent)
       document.querySelector(`#playlist-${id} .tracks button`).remove()
     }
 
