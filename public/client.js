@@ -72,6 +72,28 @@ function cloneHTML(itemData, index = 0) {
   return clone;
 }
 
+function browserPredicates(userAgent) {
+  
+  userAgent = userAgent || window.navigator.userAgent;
+  
+  let isChrome = /Chrome/i.test(userAgent) && !/Edge/i.test(userAgent);
+  let isMobile = /iPhone|iPad|Android/i.test(userAgent);
+  let isAndroid = /android/i.test(userAgent);
+  let isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window["MSStream"];
+  let isMacOS = /Mac/i.test(userAgent);
+  let isAppleDevice = isIOS || isMacOS;
+
+  return {
+    isChrome,
+    isMobile,
+    isAndroid,
+    isIOS,
+    isMacOS,
+    isAppleDevice
+  };
+}
+
+
 function fillPage(data) {
   data.items.forEach((item, i) => {
     $get("items").appendChild(cloneHTML(item, i));
