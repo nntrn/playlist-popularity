@@ -47,47 +47,33 @@ app.get("/user/:user", function(req, res) {
   });
 });
 
-function getTracks(id) {
-  var tracks = [];
 
-    const options = {
-      fields:
-        "next,total,offset,items(added_at, track(id,name,popularity,type,external_urls(spotify),preview_url),album(images))",
-      // limit: 100,
-      // offset: (function() {
-      //   return tracks.length;
-      // })()
-    };
-
-    spotifyApi.getPlaylistTracks(id, options)
-      .then(data=>tracks.push(data.items))
-
-  return tracks;
-}
 
 app.get("/api/playlist/:id", function(req, res) {
   res.header("Content-Type", "application/json");
-  const tracks = []
-      const options = {
-      fields:
-        "next,total,offset,items(added_at, track(id,name,popularity,type,external_urls(spotify),preview_url),album(images))",
-      limit: 100,
-      offset: (function() {
-        return tracks.length;
-      })()
-    };
-  
+  const tracks = [];
+  const options = {
+    fields:
+      "next,total,offset,items(added_at, track(id,name,popularity,type,external_urls(spotify),preview_url),album(images))",
+    limit: 100
+  };
 
-  spotifyApi.getPlaylistTracks(req.params.id, { limit: 100 }).then(
-    function(data) {
-      // res.send(data);
-      tracks.push(data)
-    },
-    function(err) {
-      console.log(err);
-    }
-  );
-  
+  spotifyApi
+    .getPlaylistTracks(req.params.id, { ...options })
+    .then(
+      function(data) {
+        res.send({...req.query,...data.body});
+        
+        // tracks.push(data.body);
+      },
+      function(err) {
+        console.log(err);
+      }
+    )
+    // .then(function() {
+    // // const filtered = tracks.
+    //   res.send(tracks);
+    // })
 });
 
 app.get("/api/user/:user", function(req, res) {
