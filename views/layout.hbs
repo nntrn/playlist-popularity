@@ -1,43 +1,37 @@
 <!doctype html>
-
 <html>
-
 <head>
-
   <title>{{user}}</title>
+  
   {{> head}}
+  
 </head>
-
 <body>
-  
-  
-  
   <header>
-    
-  <h1 class="title">
-    <a href="/" class="light">{{projectName}}</a>
-  </h1>
+    <h1 class="title">
+      <a href="/" class="light">{{projectName}}</a>
+    </h1>
     
     {{> search}}
     
   </header>
-  
-<main>
-    
- {{{body}}}
 
-</main>
+  <main>
+    
+    {{{body}}}
+    
+  </main>
 
   <footer>
-  annie tran
+    annie tran
   </footer>
-  
+
   <script>
-document.querySelector('#go').addEventListener('click',function(){
-  window.location.pathname = '/user/' +document.querySelector('#finduser').value
-})
-</script>
-  
+    document.querySelector('#go').addEventListener('click', function () {
+      window.location.pathname = '/user/' + document.querySelector('#finduser').value
+    })
+  </script>
+
 </body>
 
 </html>
