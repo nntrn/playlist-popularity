@@ -17,6 +17,13 @@ function $get(query) {
   return document.getElementById(query);
 }
 
+function createPath(api){
+  const ={
+    user:(user)=>`/api/user/${user}`
+  }
+  
+}
+
 // TODO: find a better way/lib to do this
 function decodeSingleQuote(str){
   if(!str || typeof str !== 'string'){
@@ -71,7 +78,6 @@ function fillPage(data) {
   document.querySelectorAll('[data-inject-api]').forEach(e => {
     e[e.dataset.label || "textContent"] = decodeSingleQuote(data[e.dataset.injectApi]);
   });
-  
 }
 
 function dataManager(userUrl, cb) {
