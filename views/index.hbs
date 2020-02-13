@@ -1,38 +1,11 @@
-<!DOCTYPE html>
-<html>
-  {{> head}}
-
-  <body>
-    <main>
-        <h1 class="title">{{projectName}}</h1>
-      <div class="flex wrap">
-        <input
-          id="finduser"
-          name="finduser"
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
-          placeholder="username"
-        />
-        <button id="go">
-          go
-        </button>
-      </div>
-      <blockquote>
-      <h3>
-        API:
-        </h3>
-        <ul>
-          <li><a href="/user/nntrn">/user/<code>:username</code></a> (<code>:id</code> also works)</li>
-          <li><a href="api/user/nntrn">/api/user/<code>:username</code></a> (<code>:id</code> also works)</li>
-        </ul>
-      </blockquote>
-    </main>
-    <script>
-    document.querySelector('#go').addEventListener('click',function(){
-      window.location.pathname = '/user/' +document.querySelector('#finduser').value
-    })
-    </script>
-  </body>
-</html>
+<div class="index">
+<blockquote class="bg-light dark" style="position:relative">
+  <h3>API:</h3>
+  <ul>
+    <li><a href="/user/nntrn">/user/<code>:username</code></a></li>
+    <li><a href="api/user/nntrn">/api/user/<code>:username</code></a></li>
+  </ul>
+  <div class="glitchButton" style="position:absolute;top:10px;right:10px;z-index:1000"></div>
+</blockquote>
+<script src="https://button.glitch.me/button.js"></script>
+</div>

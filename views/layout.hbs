@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{user}}</title>
+  
+  {{> head}}
+  
+</head>
+<body>
+  <header>
+    <h1 class="title">
+      <a href="/" class="light">{{projectName}}</a>
+    </h1>
+    
+    {{> search}}
+    
+  </header>
+
+  <main>
+    
+    {{{body}}}
+    
+  </main>
+
+  <footer>
+    <a href="https://open.spotify.com/user/nntrn">annie tran</a>
+  </footer>
+
+  <script>
+    let form = document.getElementById("getUser");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault()
+      window.location.pathname =`/user/${document.querySelector("#finduser").value}`
+    })
+  </script>
+
+</body>
+
+</html>
