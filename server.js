@@ -3,7 +3,7 @@ const app = express();
 const SpotifyWebApi = require("spotify-web-api-node");
 const hbs = require("hbs");
 
-const {flattenObject} = require('./lib/utils')
+const { flattenObject } = require("./lib/utils");
 
 app.use(express.static("public"));
 
@@ -49,29 +49,31 @@ app.get("/user/:user", function(req, res) {
   });
 });
 
-
+app.get("/api/test/:param", function(req, res) {
+  res.header("Content-Type", "application/json");
+  
+//3Qm86XLflmIXVm1wcwkgDK
+  spotifyApi.getAudioAnalysisForTrack(req.params.param).then(
+    function(data) {
+      res.send(data.body);
+    },
+    function(err) {}
+  );
+});
 
 app.get("/api/playlist/:id/tracks", function(req, res) {
   res.header("Content-Type", "application/json");
   const tracks = [];
   const options = {
     fields:
-    "next,total,offset,items(added_at, track(id,name,artists(name,id),popularity))",
-      // "next,total,offset,items(added_at, track(id,name,artists(name,id),popularity,type,external_urls(spotify), preview_url),album(images))",
+      "next,total,offset,items(added_at, track(id,name,artists(name,id),popularity))",
+    // "next,total,offset,items(added_at, track(id,name,artists(name,id),popularity,type,external_urls(spotify), preview_url),album(images))",
     limit: 100
   };
 
   spotifyApi
     .getPlaylistTracks(req.params.id, { ...options, ...req.query })
-    .then(
-      function(data) {
-        res.send({...req.query,...data.body});
-      },
-      function(err) {
-        console.log(err);
-      }
-    )
-
+    .then(data => res.send({ ...req.query, ...data.body }));
 });
 
 app.get("/api/user/:user", function(req, res) {
