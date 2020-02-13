@@ -27,9 +27,16 @@
   </footer>
 
   <script>
-    document.querySelector('#go').addEventListener('click', function () {
-      window.location.pathname = '/user/' + document.querySelector('#finduser').value
-    })
+
+    
+let form = document.getElementById("getUser");
+
+form.addEventListener("submit", function(event) {
+  window.location.pathname =
+    "/user/" + document.querySelector("#finduser").value;
+});
+
+    
   </script>
 
 </body>
