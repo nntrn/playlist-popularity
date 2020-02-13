@@ -27,16 +27,13 @@
   </footer>
 
   <script>
-
     
-let form = document.getElementById("getUser");
+    let form = document.getElementById("getUser");
 
-form.addEventListener("submit", function(event) {
-  window.location.pathname =
-    "/user/" + document.querySelector("#finduser").value;
-});
-
-    
+    form.addEventListener("submit", function(event) {
+      console.log(event)
+      window.location.pathname =`/user/${document.querySelector("#finduser").value}`
+    })
   </script>
 
 </body>

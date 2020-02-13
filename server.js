@@ -47,15 +47,8 @@ app.get("/user/:user", function(req, res) {
   res.render("user", {
     projectName: process.env.PROJECT_DOMAIN,
     user: req.params.user
-  });
-  // spotifyApi
-  //   .getUserPlaylists(req.params.user, { limit: 50, offset: 0 })
-  //   .then(data => {
-  //     res.render("user", {
-  //       title: req.params.user,
-  //     });
-  //   });
-});
+  })
+})
 
 app.get("/api/user/:user", function(req, res) {
   res.header("Content-Type", "application/json");
