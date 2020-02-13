@@ -5,7 +5,7 @@
   --primary: #1DB954;
   --card-bg: #19e68c;
   --code: #777;
-  --link:#3498db;
+  --link: #3498db;
 
   --gradient: linear-gradient(#0b7285, #0ca678);
 }
@@ -38,8 +38,9 @@
   background: var(--primary) !important;
 }
 
-body,html{
-  overflow:auto
+body,
+html {
+  overflow: auto;
 }
 body {
   font-family: SF Pro Display, system ui, Helvetica, Arial, sans-serif;
@@ -47,7 +48,7 @@ body {
   line-height: 1.5;
   color: var(--dark);
   background-color: var(--light);
-  background:var(--gradient);
+  background: var(--gradient);
   tab-size: 2;
 }
 
@@ -114,8 +115,8 @@ h5 {
   line-height: 1.4;
 }
 
-.user h2{
-  font-size:2.5em
+.user h2 {
+  font-size: 2.5em;
 }
 
 .container {
@@ -197,9 +198,7 @@ h5 {
   opacity: 0.5;
 }
 
-
 main {
-
   box-shadow: inset 0 50vh var(--accent);
   height: 100%;
 }
@@ -237,14 +236,16 @@ blockquote {
   border-radius: 3px;
 }
 
-header,main,footer {
-  padding:1.5rem;
+header,
+main,
+footer {
+  padding: 1.5rem;
 }
 
-footer{
-  background:var(--dark);
-  opacity:.5;
-  color:var(--light)
+footer {
+  background: var(--dark);
+  opacity: 0.8;
+  color: var(--light);
 }
 header {
   background: var(--accent);
