@@ -48,14 +48,31 @@ app.get("/user/:user", function(req, res) {
 });
 
 
-app.get("/api/playlist/:id", function(req, res) {
+
+function getPlaylistTracks(id,offset=0){
+  
+  const tracks= []
   
   const options={
-    fields:'items(added_at,track(id,name,popularity,type,external_urls(spotify),preview_url),album(images))'
+    fields:'next,total,offset,items(added_at, track(id,name, popularity,type,external_urls(spotify), preview_url),album(images))',
+    limit:100,
+    offset:tracks.length
   }
+  
+  spotifyApi.getPlaylistTracks(id, options)
+    .then(function(data){
+    
+  })
+  
+  
+}
+app.get("/api/playlist/:id", function(req, res) {
+  
+
   res.header("Content-Type", "application/json");
 
-  spotifyApi.getUserPlaylists(req.params.user, { limit: 50, offset: 0 }).then(
+  
+  spotifyApi.getPlaylistTracks(req.params.id, { limit: 100, offset: 0 }).then(
     function(data) {
       res.send(data);
     },
