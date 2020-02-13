@@ -51,14 +51,11 @@ app.get("/user/:user", function(req, res) {
 
 app.get("/api/test/:param", function(req, res) {
   res.header("Content-Type", "application/json");
-  
-//3Qm86XLflmIXVm1wcwkgDK
-  spotifyApi.getAudioAnalysisForTrack(req.params.param).then(
-    function(data) {
-      res.send(data.body);
-    },
-    function(err) {}
-  );
+
+  //3Qm86XLflmIXVm1wcwkgDK
+  spotifyApi.getAudioAnalysisForTrack(req.params.param).then(function(data) {
+    res.send(data.body);
+  });
 });
 
 app.get("/api/playlist/:id/tracks", function(req, res) {
@@ -79,14 +76,11 @@ app.get("/api/playlist/:id/tracks", function(req, res) {
 app.get("/api/user/:user", function(req, res) {
   res.header("Content-Type", "application/json");
 
-  spotifyApi.getUserPlaylists(req.params.user, { limit: 50, offset: 0 }).then(
-    function(data) {
+  spotifyApi
+    .getUserPlaylists(req.params.user, { limit: 50, offset: 0 })
+    .then(function(data) {
       res.send(data);
-    },
-    function(err) {
-      console.log(err);
-    }
-  );
+    });
 });
 
 const listener = app.listen(process.env.PORT, function() {
