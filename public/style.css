@@ -96,19 +96,6 @@ code {
   color: var(--code);
 }
 
-/* label.input-container:hover span {
-  opacity: 0.5;
-}
-
-label.input-container input.form-control {
-  margin-right: 0.4rem;
-}
-
-input[type="submit"] {
-  align-self: flex-end;
-  justify-content: flex-end;
-} */
-
 .output {
   max-height: 300px;
   overflow-y: scroll;
@@ -215,7 +202,7 @@ h5 {
 
 .card label {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 4px;
   font-size: 0.7em;
   opacity: 0.5;

@@ -48,7 +48,7 @@
       
       const appe = Object.assign(document.createElement('div'),{
         textContent: JSON.stringify(dat,null,2),
-        style:'white-space:pre'
+        style:'white-space:pre;font-size:.9em'
       })
       
       document.querySelector(`#playlist-${id} .tracks .output`).appendChild(appe)
