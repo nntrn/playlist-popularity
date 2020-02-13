@@ -1,54 +1,54 @@
 <div class="user">
-  
-<h2 data-label="title">{{user}}</h2>
-  
-<h3>
-  <a href="https://open.spotify.com/user/{{user}}" data-label="open-spotify">
-  <span class="light">https://open.spotify.com/user/{{user}}</span></a>
-</h3>
-  
+
+  <h2 data-label="title">{{user}}</h2>
+
+  <h3>
+    <a href="https://open.spotify.com/user/{{user}}" data-label="open-spotify">
+      <span class="light">https://open.spotify.com/user/{{user}}</span></a>
+  </h3>
+
   <span class="opacity-75">
     <span data-inject-api="total"></span>
     <span>playlists</span>
   </span>
-  
-  <div id="items">
-      
-      <div class="card" id="playlist-template" data-index="-1">
-        <div class="flex">
-          <div class="image">
-            <img data-api="images[0].url" data-label="src" width="80px" height="80px">
-          </div>
-          <div class="container">
-            <h3 class="playlist-name">
-              <a href="" data-api="external_urls.spotify" data-label="href" target="_blank">
-               <span data-api="name"></span>
-              </a>
-              <small>by <span data-api="owner.display_name"></span></small>
-            </h3>
 
-            <div data-api="description"></div>
-            <small class="light opacity-75 hover">
-               <span>Tracks: </span>
-               <span data-api="tracks.total"></span>
-            </small>
-            
-          </div>
+  <div id="items">
+
+    <div class="card" id="playlist-template" data-index="-1">
+      <div class="flex">
+        <div class="image">
+          <img data-api="images[0].url" data-label="src" width="80px" height="80px">
         </div>
-        <label data-api="id" class="opacity-50"></label>
-        <div class="tracks flex">
-          <button value="" data-api="id" data-label="value" onclick="getTracksApi(value)" >view tracks</button>
-          <div class="output"></div>
+        <div class="container">
+          <h3 class="playlist-name">
+            <a href="" data-api="external_urls.spotify" data-label="href" target="_blank">
+              <span data-api="name"></span>
+            </a>
+            <small>by <span data-api="owner.display_name"></span></small>
+          </h3>
+
+          <div data-api="description"></div>
+          <small class="light opacity-75 hover">
+            <span>Tracks: </span>
+            <span data-api="tracks.total"></span>
+          </small>
+
         </div>
       </div>
+      <label data-api="id" class="opacity-50"></label>
+      <div class="tracks flex">
+        <button value="" data-api="id" data-label="value" onclick="getTracksApi(value)">view tracks</button>
+        <div class="output"></div>
+      </div>
     </div>
-  
+  </div>
+
   <small>
     <strong>last fetched: </strong>
     <span data-inject-api="fetched"></span>
   </small>
-  
-    <style>
+
+  <style>
     .tracks button{
       font-size:.8em;
       position:absolute;
@@ -59,10 +59,10 @@
       background:rgba(255,255,255,.7);
     }
   </style>
-  
+
   <script src="/client.js"></script>
   <script>
-      function query(params) {
+    function query(params) {
       return (
         '?' +
         Object.entries(params)
@@ -70,27 +70,34 @@
           .join('&')
       )
     }
-    
-    function getTracksApi(id){
-      
-      fetch(`/api/playlist/${id}/tracks${query({fields:'items(track(name,artists,popularity))'})}`)
-      .then(data=> data.json())
-      .then(d=>blah(id, d.items))
-      
+
+    function getTracksApi(id) {
+
+      fetch(`/api/playlist/${id}/tracks${query({ fields: 'items(track(name,artists,popularity))' })}`)
+        .then(data => data.json())
+        .then(d => blah(id, d.items))
+
     }
-    
-    function blah(id, dat){
+
+    function blah(id, dat) {
       var table = $make('table')
-      var row = $make('tr')
       
-      Object.values(dat).forEach(e=>{
-        
-        row.appendChild(Object.assign($make('table'),{
-        textContent: JSON.stringify(e,null,2)
-      }))
-        table.appendChild(row)
-      })
+Object.values(dat).forEach(e=>{
+  var row = $make('tr')
   
+  
+  Object.entries(e).forEach(r=>{
+    row.appendChild(Object.assign($make(td),{
+      className:r[0],
+      textContent:r[1]
+    }))
+    
+  }))
+
+  
+  table.appendChild(row)
+})
+   
       document.querySelector(`#playlist-${id} .tracks .output`).appendChild(table)
       document.querySelector(`#playlist-${id} .tracks button`).remove()
     }
