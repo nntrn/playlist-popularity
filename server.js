@@ -10,18 +10,15 @@ hbs.registerPartials(__dirname + "/views/partials");
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
 
+// for using .html instead of .hbs
 // app.set('view engine', 'html');
 // app.engine('html', require('hbs').__express);
 
 app.get("/", (request, response) => {
   let dt = new Date();
   let data = {
-    projectName: process.env.PROJECT_DOMAIN,
-    serverTime: new Date(),
-    ip: (request.headers["x-forwarded-for"] || "").split(",")[0]
+    projectName: process.env.PROJECT_DOMAIN
   };
-
-  data.json = JSON.stringify(data, null, 2);
   response.render("index", data);
 });
 
@@ -47,8 +44,8 @@ app.get("/user/:user", function(req, res) {
   res.render("user", {
     projectName: process.env.PROJECT_DOMAIN,
     user: req.params.user
-  })
-})
+  });
+});
 
 app.get("/api/user/:user", function(req, res) {
   res.header("Content-Type", "application/json");
