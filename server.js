@@ -49,31 +49,27 @@ app.get("/user/:user", function(req, res) {
 
 
 
-app.get("/api/playlist/:id", function(req, res) {
+app.get("/api/playlist/:id/tracks", function(req, res) {
   res.header("Content-Type", "application/json");
   const tracks = [];
   const options = {
     fields:
-      "next,total,offset,items(added_at, track(id,name,popularity,type,external_urls(spotify),preview_url),album(images))",
+      "next,total,offset,items(added_at, track(id,name,artists(name,id),popularity,type,external_urls(spotify), preview_url),album(images))",
     limit: 100
   };
 
   spotifyApi
-    .getPlaylistTracks(req.params.id, { ...options })
+    .getPlaylistTracks(req.params.id, { ...options, ...req.query })
     .then(
       function(data) {
         res.send({...req.query,...data.body});
-        
-        // tracks.push(data.body);
+      
       },
       function(err) {
         console.log(err);
       }
     )
-    // .then(function() {
-    // // const filtered = tracks.
-    //   res.send(tracks);
-    // })
+
 });
 
 app.get("/api/user/:user", function(req, res) {
