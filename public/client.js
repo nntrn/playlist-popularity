@@ -17,6 +17,14 @@ function $get(query) {
   return document.getElementById(query);
 }
 
+// TODO: find a better way/lib to do this
+function decodeSingleQuote(str){
+  if(!str || typeof str !== 'string'){
+    return str
+  }
+  return str.replace(/&#x27;/g,"'")
+}
+
 function flattenObject(data) {
   var result = {};
   function recurse(cur, prop) {
@@ -47,7 +55,7 @@ function cloneHTML(itemData, index = 0) {
     .cloneNode(true);
   (clone.id = "playlist-" + itemData.id), (clone.dataset.index = index);
   clone.querySelectorAll("[data-api]").forEach(e => {
-    e[e.dataset.label || "textContent"] = flatData[e.dataset.api];
+    e[e.dataset.label || "textContent"] = decodeSingleQuote(flatData[e.dataset.api]);
   });
 
   return clone;

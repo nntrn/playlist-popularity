@@ -10,6 +10,11 @@
   --gradient: linear-gradient(#0b7285, #0ca678);
 }
 
+html {
+  background: var(--dark);
+  height: 100%;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -50,6 +55,7 @@ body {
   background-color: var(--light);
   background: var(--gradient);
   tab-size: 2;
+  height: 100%;
 }
 
 label.input-container {
@@ -200,7 +206,6 @@ h5 {
 
 main {
   box-shadow: inset 0 50vh var(--accent);
-  height: 100%;
 }
 a {
   text-decoration: none;
@@ -247,6 +252,7 @@ footer {
   opacity: 0.8;
   color: var(--light);
 }
+
 header {
   background: var(--accent);
   color: white;
