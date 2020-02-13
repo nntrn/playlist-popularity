@@ -73,34 +73,43 @@
 
     function getTracksApi(id) {
 
-      fetch(`/api/playlist/${id}/tracks${query({ fields: 'items(track(name,artists,popularity))' })}`)
+      fetch(`/api/playlist/${id}/tracks`)
         .then(data => data.json())
         .then(d => blah(id, d.items))
-
     }
 
     function blah(id, dat) {
       var table = $make('table')
-      
-Object.values(dat).forEach(e=>{
-  var row = $make('tr')
-  
-  
-  Object.entries(e).forEach(r=>{
-    row.appendChild(Object.assign($make(td),{
-      className:r[0],
-      textContent:r[1]
-    }))
-    
-  }))
+      const output = document.querySelector(`button[value="${id}"]`).parentElement
 
-  
-  table.appendChild(row)
-})
-   
-      document.querySelector(`#playlist-${id} .tracks .output`).appendChild(table)
+      const parent = $make('table')
+
+      dat.forEach((e, i) => {
+        const row = $make('tr')
+
+        const cols = [
+          i + 1,
+          new Date(e.added_at).toLocaleDateString(),
+          e.track.name,
+          e.track.artists.map(e => e.name).join(' & '),
+          e.popularity
+        ]
+        cols.forEach(e => {
+          row.appendChild(Object.assign($make('td'), {
+            textContent: e,
+            style: `${String(e).length < 15 ? 'white-space:pre' : ''}`
+          }))
+        })
+
+        parent.appendChild(row)
+      })
+      output.appendChild(parent)
+
+
+      document.querySelector(`#playlist-${id} .tracks .output`).appendChild(parent)
       document.querySelector(`#playlist-${id} .tracks button`).remove()
     }
+
   </script>
 
 
