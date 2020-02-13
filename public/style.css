@@ -43,6 +43,7 @@ body {
   line-height: 1.5;
   color: var(--dark);
   background-color: var(--light);
+  background:var(--gradient);
   tab-size: 2;
 }
 
@@ -107,6 +108,10 @@ h4,
 h5 {
   margin: unset;
   line-height: 1.4;
+}
+
+.user h2{
+  font-size:2.5em
 }
 
 .container {
@@ -188,11 +193,9 @@ h5 {
   opacity: 0.5;
 }
 
-footer {
-  padding: 1rem;
-}
+
 main {
-  padding: 1rem;
+
   box-shadow: inset 0 50vh var(--accent);
   height: 100%;
 }
@@ -231,9 +234,17 @@ blockquote {
   border-radius: 3px;
 }
 
+header,main,footer {
+  padding:1.5rem;
+}
+
+footer{
+  background:var(--dark);
+  opacity:.5;
+  color:var(--light)
+}
 header {
   background: var(--accent);
-  padding: 1rem;
   color: white;
   display: flex;
   justify-content: space-between;
