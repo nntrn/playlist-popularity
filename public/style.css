@@ -10,6 +10,10 @@
   --gradient: linear-gradient(#0b7285, #0ca678);
 }
 
+html{
+  background: var(--dark)
+}
+
 * {
   box-sizing: border-box;
 }
@@ -247,6 +251,7 @@ footer {
   opacity: 0.8;
   color: var(--light);
 }
+
 header {
   background: var(--accent);
   color: white;
