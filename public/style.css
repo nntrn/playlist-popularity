@@ -214,6 +214,7 @@ a {
 
 a:hover {
   opacity: 0.8;
+  background: #eee;
   transition: opacity 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
@@ -267,4 +268,15 @@ header {
 
 header > * {
   margin: 0.5rem 0;
+}
+
+input {
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+input:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.5);
 }
