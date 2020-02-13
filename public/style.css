@@ -1,14 +1,5 @@
 :root {
-  --dark: #191414;
-  --accent: #FFC107;
-  --light: #ffffff;
-  --primary: #1DB954;
-  --card-bg: #19e68c;
-  --code: #777;
-  --link: #3498db;
-
-  --gradient: linear-gradient(#0b7285, #0ca678);
-}
+  --dark: #191414; --accent: #FFC107; --light: #ffffff; --primary: #1DB954; --card-bg: #19e68c; --code: #777; --link: #3498db; --gradient: linear-gradient(#0b7285, #0ca678); }
 
 html {
   background: var(--dark);
@@ -43,10 +34,10 @@ html {
   background: var(--primary) !important;
 }
 
-body,
-html {
+body, html {
   overflow: auto;
 }
+
 body {
   font-family: SF Pro Display, system ui, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -108,15 +99,10 @@ input[type="submit"] {
   grid-template-columns: 80% 20%;
   grid-column-gap: 2px;
   display: grid;
-
   height: fit-content;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1, h2, h3, h4, h5 {
   margin: unset;
   line-height: 1.4;
 }
@@ -207,6 +193,7 @@ h5 {
 main {
   box-shadow: inset 0 50vh var(--accent);
 }
+
 a {
   text-decoration: none;
   color: var(--link);
@@ -214,16 +201,16 @@ a {
 
 a:hover {
   opacity: 0.8;
-  background: #eee;
-  transition: opacity 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /*   background: #eee; */
+  box-shadow: inset 0 -.2rem currentColor;
+  transition: box-shadow 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 a code {
   color: inherit;
 }
 
-input,
-button {
+input, button {
   padding: 0.25rem;
   font-size: large;
   margin: 1px;
@@ -236,15 +223,19 @@ button {
   color: var(--light);
 }
 
+[type="submit"]:hover,button:hover {
+  /*  opacity:.8; */
+  transform: translateX(3px);
+  transition: transform 100ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
 blockquote {
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 3px;
 }
 
-header,
-main,
-footer {
+header, main, footer {
   padding: 1.5rem;
 }
 
@@ -271,12 +262,13 @@ header > * {
 }
 
 input {
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-radius 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 input:focus {
+  border-radius: 0;
   color: #495057;
   background-color: #fff;
-  border-color: #80bdff;
   outline: 0;
-  box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.5);
+  box-shadow: inset 0 -3px rgba(0, 0, 0, 0.8);
 }
