@@ -17,19 +17,19 @@ function $get(query) {
   return document.getElementById(query);
 }
 
-function createPath(api){
-  const ={
-    user:(user)=>`/api/user/${user}`
-  }
-  
+function createPath(api) {
+  const p = {
+    user: user => `/api/user/${user}`,
+    playlist: id => `/api/playlist/${id}`
+  };
 }
 
 // TODO: find a better way/lib to do this
-function decodeSingleQuote(str){
-  if(!str || typeof str !== 'string'){
-    return str
+function decodeSingleQuote(str) {
+  if (!str || typeof str !== "string") {
+    return str;
   }
-  return str.replace(/&#x27;/g,"'")
+  return str.replace(/&#x27;/g, "'");
 }
 
 function flattenObject(data) {
@@ -60,11 +60,13 @@ function cloneHTML(itemData, index = 0) {
   var clone = document
     .querySelector('#items .card[data-index="-1"]')
     .cloneNode(true);
-  
+
   (clone.id = "playlist-" + itemData.id), (clone.dataset.index = index);
-  
+
   clone.querySelectorAll("[data-api]").forEach(e => {
-    e[e.dataset.label || "textContent"] = decodeSingleQuote(flatData[e.dataset.api]);
+    e[e.dataset.label || "textContent"] = decodeSingleQuote(
+      flatData[e.dataset.api]
+    );
   });
 
   return clone;
@@ -74,9 +76,11 @@ function fillPage(data) {
   data.items.forEach((item, i) => {
     $get("items").appendChild(cloneHTML(item, i));
   });
-  
-  document.querySelectorAll('[data-inject-api]').forEach(e => {
-    e[e.dataset.label || "textContent"] = decodeSingleQuote(data[e.dataset.injectApi]);
+
+  document.querySelectorAll("[data-inject-api]").forEach(e => {
+    e[e.dataset.label || "textContent"] = decodeSingleQuote(
+      data[e.dataset.injectApi]
+    );
   });
 }
 
