@@ -48,16 +48,53 @@
     <span data-inject-api="fetched"></span>
   </small>
   
-  <script src="/client.js"></script>
-  <style>
+    <style>
     .tracks button{
       font-size:.8em;
       position:absolute;
       bottom:0;
       left:0;
+      border-radius:0;
       color:var(--dark);
       background:rgba(255,255,255,.7);
     }
   </style>
+  
+  <script src="/client.js"></script>
+  <script>
+      function query(params) {
+      return (
+        '?' +
+        Object.entries(params)
+          .map(e => `${e[0]}=${e[1]}`)
+          .join('&')
+      )
+    }
+    
+    function getTracksApi(id){
+      
+      fetch(`/api/playlist/${id}/tracks${query({fields:'items(track(name,artists,popularity))'})}`)
+      .then(data=> data.json())
+      .then(d=>blah(id, d.items))
+      
+    }
+    
+    function blah(id, dat){
+      var table = $make('table')
+      var row = $make('tr')
+      
+      Object.values(dat).forEach(e=>{
+        
+        row.appendChild(Object.assign($make('table'),{
+        textContent: JSON.stringify(e,null,2)
+      }))
+        table.appendChild(row)
+      })
+  
+      document.querySelector(`#playlist-${id} .tracks .output`).appendChild(table)
+      document.querySelector(`#playlist-${id} .tracks button`).remove()
+    }
+  </script>
+
 
 </div>

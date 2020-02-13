@@ -1,3 +1,7 @@
+var $ = query => document.querySelector(query)
+var $$ = query => Array.from(document.querySelectorAll(query))
+var $make = type => document.createElement(type)
+
 function getPathName() {
   return window.location.pathname;
 }
