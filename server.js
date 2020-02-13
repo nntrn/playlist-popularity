@@ -3,6 +3,8 @@ const app = express();
 const SpotifyWebApi = require("spotify-web-api-node");
 const hbs = require("hbs");
 
+const {flattenObject} = require('./lib/utils')
+
 app.use(express.static("public"));
 
 hbs.registerPartials(__dirname + "/views/partials");
@@ -62,6 +64,7 @@ app.get("/api/playlist/:id/tracks", function(req, res) {
     .getPlaylistTracks(req.params.id, { ...options, ...req.query })
     .then(
       function(data) {
+        // flattenObject({...data.body})
         res.send({...req.query,...data.body});
       
       },
