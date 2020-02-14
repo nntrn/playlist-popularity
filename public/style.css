@@ -179,7 +179,7 @@ h5 {
 
 .card label {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 4px;
   font-size: 0.7em;
   opacity: 0.5;
