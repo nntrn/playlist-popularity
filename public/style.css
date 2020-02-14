@@ -106,7 +106,7 @@ code {
 
 .output {
   max-height: 300px;
-  overflow-y: scroll;
+/*   overflow-y: scroll; */
   height: 100%;
 }
 
@@ -141,7 +141,7 @@ h5 {
 .container {
   padding: 0 0.85rem;
 }
-
+/* 
 .tooltip {
   position: relative;
 }
@@ -163,7 +163,7 @@ h5 {
   transform: translateX(-70%) translateY(-45%);
   transition: transform 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
+ */
 #playlist-template {
   display: none;
 }
@@ -303,4 +303,33 @@ input:focus {
   background-color: #fff;
   outline: 0;
   box-shadow: inset 0 -3px rgba(0, 0, 0, 0.8);
+}
+
+.tooltip {
+ visibility: hidden;
+  position: absolute;
+}
+
+.bar:hover {
+  background: black;
+
+
+}
+.bar{
+ background:white;
+ width:100%;
+ display:flex;
+ align-content:flex-end
+}
+.chart{
+  position:relative;
+  width:100%
+}
+
+.bar:hover .tooltip {
+left:0;
+  top:0;
+  width: 100%;
+   visibility: visible;
+  color: white;
 }
