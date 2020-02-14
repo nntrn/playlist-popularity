@@ -1,6 +1,6 @@
-var $ = query => document.querySelector(query)
-var $$ = query => Array.from(document.querySelectorAll(query))
-var $make = type => document.createElement(type)
+var $ = query => document.querySelector(query);
+var $$ = query => Array.from(document.querySelectorAll(query));
+var $make = type => document.createElement(type);
 
 function getPathName() {
   return window.location.pathname;
@@ -77,9 +77,8 @@ function cloneHTML(itemData, index = 0) {
 }
 
 function browserPredicates(userAgent) {
-  
   userAgent = userAgent || window.navigator.userAgent;
-  
+
   let isChrome = /Chrome/i.test(userAgent) && !/Edge/i.test(userAgent);
   let isMobile = /iPhone|iPad|Android/i.test(userAgent);
   let isAndroid = /android/i.test(userAgent);
@@ -96,7 +95,6 @@ function browserPredicates(userAgent) {
     isAppleDevice
   };
 }
-
 
 function fillPage(data) {
   data.items.forEach((item, i) => {
@@ -133,3 +131,19 @@ function dataManager(userUrl, cb) {
 }
 
 dataManager(url, fillPage);
+
+function IQR(arr) {
+  let data = arr.sort((a, b) => a - b);
+  let lowerHalfData = data.slice(0, Math.floor(data.length / 2));
+  let upperHalfData = data.slice(Math.ceil(data.length / 2), data.length);
+  
+  return [
+
+
+
+    lowerHalfData.slice(0, Math.floor(lowerHalfData.length / 2)).slice(-1).toString(),
+    lowerHalfData.slice(-1).toString(),
+upperHalfData.slice(0, Math.floor(upperHalfData.length / 2)).slice(-1).toString(),
+    [...lowerHalfData, ...upperHalfData].slice(-1).toString()
+  ];
+}

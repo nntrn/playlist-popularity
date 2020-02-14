@@ -60,6 +60,23 @@
 
   <script src="/client.js"></script>
   <script>
+    
+    function IQR(arr){
+
+let data = arr.sort((a, b) => a - b);
+
+let lowerHalfData = data.slice(0,Math.floor(data.length/2));
+let upperHalfData = data.slice(Math.ceil(data.length/2), data.length);
+return [
+lowerHalfData.slice(0,Math.floor(lowerHalfData.length/2)).pop(),
+lowerHalfData.pop(),
+[...lowerHalfData, ...upperHalfData.slice(0,Math.floor(upperHalfData.length/2))].pop(),
+ [...lowerHalfData,...upperHalfData].pop()
+]
+
+
+}
+    
     function query(params) {
       return (
         '?' +
@@ -120,7 +137,7 @@
           className: 'tooltip'
         })
         tooltip.setAttribute('data-tooltip',`${p[2]} by ${p[3]}`)
-        if(i<tracksCount)
+     
         bar.appendChild(tooltip)
         div.appendChild(bar)
       })
