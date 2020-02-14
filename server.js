@@ -12,10 +12,6 @@ hbs.registerPartials(__dirname + "/views/partials");
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
 
-// for using .html instead of .hbs
-// app.set('view engine', 'html');
-// app.engine('html', require('hbs').__express);
-
 app.get("/", (request, response) => {
   let dt = new Date();
   let data = {
