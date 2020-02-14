@@ -76,11 +76,13 @@
     }
 
     function makePopChart(id, dat) {
-      const output = document.querySelector(`button[value="${id}"]`).parentElement
+      let output = document.querySelector(`button[value="${id}"]`).parentElement
       output.style.cssText = 'display:flex;flex-direction:column'
-      const parent = $make('table')
+      let parent = $make('table')
       var pop = []
 
+      let maxPop = Math.max(...dat.map(e=>e.track.popularity))
+      
       dat.forEach((e, i) => {
         const row = $make('tr')
         const cols = [
@@ -102,12 +104,12 @@
 
       var div = Object.assign($make('div'), {
         className: 'chart',
-        style: `display:flex;width:100%;height:200px;align-items:flex-end;`
+        style: `max-height:${maxPop*2}px`
       })
 
       pop.sort((a, b) => a[4] - b[4]).forEach(p => {
         var bar = Object.assign($make('div'), {
-          style: `height: ${p[4]}%;width:100%;flex-grow:1;border:1px solid black`,
+          style: `height: ${p[4]*2}px;`,
           className: 'bar',
         })
 
@@ -124,5 +126,68 @@
       document.querySelector(`#playlist-${id} .output button`).remove()
     }
   </script>
+  <style id="tracks-chart">
+  .chart {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    align-items: flex-end;
+  }
+  .bar {
+    width: 100%;
+    flex-grow: 1;
+    border: 1px solid var(--card-bg);
+  }
+
+  .tooltip {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  .bar:hover {
+    background: black;
+  }
+
+  .bar:hover:before {
+    content: attr(data-pop);
+    position: absolute;
+    transform: translateY(-35px);
+    white-space: pre;
+    z-index: 1000;
+  }
+
+  .bar {
+    background: white;
+    width: 100%;
+    display: flex;
+    align-content: flex-end;
+    min-height: 4px!important;
+  }
+
+  .chart {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .bar:hover .tooltip {
+    left: 0;
+    top: 0;
+    width: 100%;
+    visibility: visible;
+    color: white;
+  }
+
+  .chart:before {
+    content: "song popularity";
+    width: 100%;
+    white-space: pre;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: -25px;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+  </style>
 
 </div>
