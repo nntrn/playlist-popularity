@@ -107,7 +107,6 @@ code {
 
 .output {
   max-height: 300px;
-  /*   overflow-y: scroll; */
   height: 100%;
 }
 
@@ -143,29 +142,6 @@ h5 {
   padding: 0 0.85rem;
 }
 
-/* 
-.tooltip {
-  position: relative;
-}
-
-.tooltip:after {
-  position: absolute;
-  content: "Hovered!";
-  padding: 1px 6px;
-  transform: translateX(-70%) translateY(0%);
-  background: var(--dark);
-  color: var(--light);
-  visibility: hidden;
-  font-size: 12px;
-  border-radius: 5px;
-}
-
-.tooltip:hover:after {
-  visibility: visible;
-  transform: translateX(-70%) translateY(-45%);
-  transition: transform 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
- */
 #playlist-template {
   display: none;
 }
@@ -231,7 +207,6 @@ a {
 
 a:hover {
   opacity: 0.8;
-  /*   background: #eee; */
   box-shadow: inset 0 -0.2rem currentColor;
   transition: box-shadow 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -256,7 +231,6 @@ button {
 
 [type="submit"]:hover,
 button:hover {
-  /*  opacity:.8; */
   transform: translateX(3px);
   transition: transform 100ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -319,8 +293,9 @@ input:focus {
 .bar:hover:before {
   content: attr(data-pop);
   position: absolute;
-  transform: translateY(-30px);
+  transform: translateY(-35px);
   white-space: pre;
+  z-index: 1000;
 }
 
 .bar {
