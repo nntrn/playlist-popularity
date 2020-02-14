@@ -118,10 +118,13 @@
       pop.sort((a, b) => a[4] - b[4]).forEach(p => {
         var bar = Object.assign($make('div'), {
           style: `height: ${p[4]}%;width:100%;flex-grow:1;border:1px solid black`,
-          className: 'bar'
+          className: 'bar',
+         
         })
+        
+        bar.dataset.pop=`${p[4]}%`
         var tooltip = Object.assign($make('div'), {
-          textContent: JSON.stringify(p),
+          textContent: `${p[2]} by ${p[3]}`,
           className: 'tooltip'
         })
         bar.appendChild(tooltip)
