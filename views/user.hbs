@@ -60,23 +60,7 @@
 
   <script src="/client.js"></script>
   <script>
-    
-    function IQR(arr){
 
-let data = arr.sort((a, b) => a - b);
-
-let lowerHalfData = data.slice(0,Math.floor(data.length/2));
-let upperHalfData = data.slice(Math.ceil(data.length/2), data.length);
-return [
-lowerHalfData.slice(0,Math.floor(lowerHalfData.length/2)).pop(),
-lowerHalfData.pop(),
-[...lowerHalfData, ...upperHalfData.slice(0,Math.floor(upperHalfData.length/2))].pop(),
- [...lowerHalfData,...upperHalfData].pop()
-]
-
-
-}
-    
     function query(params) {
       return (
         '?' +
@@ -93,13 +77,12 @@ lowerHalfData.pop(),
     }
 
     function makePopChart(id, dat) {
-      let output = document.querySelector(`button[value="${id}"]`).parentElement
+      var output = document.querySelector(`button[value="${id}"]`).parentElement
       output.style.cssText = 'display:flex;flex-direction:column'
-      let parent = $make('table')
+      var parent = $make('table')
       var pop = []
 
-      let maxPop = Math.max(...dat.map(e=>e.track.popularity))
-      let tracksCount = dat.length
+      var maxPop = Math.max(...dat.map(e=>e.track.popularity))
       
       dat.forEach((e, i) => {
         const row = $make('tr')
@@ -125,7 +108,7 @@ lowerHalfData.pop(),
         style: `max-height:${(maxPop*2)+30}px`
       })
 
-      pop.sort((a, b) => a[4] - b[4]).forEach(p => {
+      pop.sort((a, b) => a[4] - b[4]).forEach((p,i) => {
         var bar = Object.assign($make('div'), {
           style: `height: ${p[4]*2}px;`,
           className: 'bar',
@@ -133,11 +116,15 @@ lowerHalfData.pop(),
 
         bar.dataset.pop = `${p[4]}%`
         var tooltip = Object.assign($make('div'), {
-          innerHTML: `${p[2]} <em>by ${p[3]}</em> `,
+          innerHTML: `<strong>${p[2]}</strong> by <em>${p[3]}</em> `,
           className: 'tooltip'
         })
         tooltip.setAttribute('data-tooltip',`${p[2]} by ${p[3]}`)
-     
+        
+         if(i<(dat.length/2)){
+            tooltip.classList.add('left')
+         }
+       
         bar.appendChild(tooltip)
         div.appendChild(bar)
       })
@@ -199,7 +186,6 @@ lowerHalfData.pop(),
     width:100%;
     min-width:calc(100vw /6);
     max-width: calc(100vw / 2) !important;
-    white-space:pre-line;
     margin-top: -10px;
     border-radius: 5px;
     opacity: 0;
@@ -207,12 +193,16 @@ lowerHalfData.pop(),
     right:0;
     top: 0;
     line-height: 1.3;
-    word-break:keep-all
+    color: #999;
   }
-    .tooltip.left{
-      right:unset;
-      left:0
-    }
+  .tooltip.left{
+    right:unset;
+    left:0
+  }
+
+  .tooltip strong{
+    color:var(--light)
+  }
 
   .tooltip em{
     color:var(--primary)
