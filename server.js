@@ -49,11 +49,11 @@ app.get("/user/:user", function(req, res) {
   });
 });
 
-app.get("/api/test/:param", function(req, res) {
+app.get("/api/analysis/:id", function(req, res) {
   res.header("Content-Type", "application/json");
-
+  
   //3Qm86XLflmIXVm1wcwkgDK
-  spotifyApi.getAudioAnalysisForTrack(req.params.param).then(function(data) {
+  spotifyApi.getAudioAnalysisForTrack(req.params.id).then(function(data) {
     res.send(data.body);
   });
 });
@@ -82,8 +82,6 @@ app.get("/api/user/:user", function(req, res) {
       res.send(data);
     });
 });
-
-
 
 const listener = app.listen(process.env.PORT, function() {
   console.log("Your app is listening on port " + listener.address().port);
