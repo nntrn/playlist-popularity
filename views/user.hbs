@@ -1,39 +1,240 @@
 <div class="user">
+  <h2 data-label="title">{{user}}</h2>
   
-<h2 data-label="title">
-  {{user}}
-</h2>
-  
-<h3>
-  <a href="https://open.spotify.com/user/{{user}}" data-label="open-spotify">
-  <span class="light">https://open.spotify.com/user/{{user}}</span></a>
-</h3>
-  
-    <div id="items">
-      <div class="card" id="playlist-template" data-index="-1">
-        <div class="flex">
-          <div class="image">
-            <img data-api="images[0].url" data-label="src" width="80px" height="80px">
-          </div>
-          <div class="container">
-            <h3 class="playlist-name">
-              <a href="" data-api="external_urls.spotify" data-label="href" target="_blank">
-               <span data-api="name"></span>
-              </a>
-              <small>by <span data-api="owner.display_name"></span></small>
-            </h3>
+  <h3>
+    <a href="https://open.spotify.com/user/{{user}}" data-label="open-spotify">
+      <span class="light">https://open.spotify.com/user/{{user}}</span></a>
+  </h3>
 
-            <div data-api="description"></div>
-            <small>
-               <span>Tracks: </span>
-               <span data-api="tracks.total"></span>
-            </small>
-            
-          </div>
+  <span class="opacity-75">
+    <span data-inject-api="total"></span>
+    <span>playlists</span>
+  </span>
+
+  <div id="items">
+
+    <div class="card" id="playlist-template" data-index="-1">
+      <div class="flex">
+        <div class="image">
+          <a href="" data-api="external_urls.spotify" data-label="href" target="_blank">
+            <img data-api="images[0].url" data-label="src" width="90px" height="90px">
+          </a>
         </div>
-        <label data-api="id"></label>
+        <div class="container">
+          <h3 class="playlist-name">
+            <a href="" data-api="external_urls.spotify" data-label="href" target="_blank">
+              <span data-api="name"></span>
+            </a>
+            <small>by <span data-api="owner.display_name"></span></small>
+          </h3>
+
+          <div data-api="description" data-label="innerHTML"></div>
+          <small class="light opacity-75 hover">
+            <span>Tracks: </span>
+            <span data-api="tracks.total"></span>
+          </small>
+        </div>
       </div>
-      
+      <label data-api="id" class="opacity-50"></label>
+      <div class="output flex">
+        <button value="" data-api="id" data-label="value" onclick="getTracksApi(value)">view tracks</button>
+        <div class="track"></div>
+      </div>
     </div>
+    
+  </div>
+
+  <small>
+    <strong>last fetched: </strong>
+    <span data-inject-api="fetched"></span>
+  </small>
+
+  <style>
+    .output button{
+      font-size:.8em;
+      border-radius:0;
+      color:var(--dark);
+      background:rgba(255,255,255,.7);
+    }
+  </style>
+
   <script src="/client.js"></script>
+  <script>
+
+    function query(params) {
+      return (
+        '?' +
+        Object.entries(params)
+          .map(e => `${e[0]}=${e[1]}`)
+          .join('&')
+      )
+    }
+
+    function getTracksApi(id) {
+      if(getStorage(id)){
+        var d = getStorage(id)
+        makePopChart(id, d.items)
+      }
+      else{
+        fetch(`/api/playlist/${id}/tracks`)
+        .then(data => data.json())
+        .then(d => {
+          console.log('fetch',id)
+          setStorage(id, d)
+          makePopChart(id, d.items)
+      })
+      }
+    }
+
+    function makePopChart(id, dat) {
+      var output = document.querySelector(`button[value="${id}"]`).parentElement
+      output.style.cssText = 'display:flex;flex-direction:column'
+      var parent = $make('table')
+      var pop = []
+
+      var maxPop = Math.max(...dat.map(e=>e.track.popularity))
+      
+      dat.forEach((e, i) => {
+        const row = $make('tr')
+        const cols = [
+          i + 1,
+          new Date(e.added_at).toLocaleDateString(),
+          e.track.name,
+          e.track.artists.map(e => e.name).join(', '),
+          e.track.popularity
+        ]
+        cols.forEach(e => {
+          row.appendChild(Object.assign($make('td'), {
+            textContent: e,
+            style: `${String(e).length < 15 ? 'white-space:pre' : ''}`
+          }))
+        })
+        pop.push(cols)
+        parent.appendChild(row)
+      })
+
+      var div = Object.assign($make('div'), {
+        className: 'chart',
+        style: `max-height:${(maxPop*2)+30}px`
+      })
+
+      pop.sort((a, b) => a[4] - b[4]).forEach((p,i) => {
+        var bar = Object.assign($make('div'), {
+          style: `height: ${p[4]*2}px;`,
+          className: 'bar',
+        })
+
+        bar.dataset.pop = `${p[4]}%`
+        var tooltip = Object.assign($make('div'), {
+          innerHTML: `<strong>${p[2]}</strong><br><em>${p[3]}</em> `,
+          className: 'tooltip'
+        })
+        tooltip.setAttribute('data-tooltip',`${p[2]} by ${p[3]}`)
+        
+         if(i<(dat.length/2)){
+            tooltip.classList.add('left')
+         }
+       
+        bar.appendChild(tooltip)
+        div.appendChild(bar)
+      })
+
+      output.appendChild(div)
+      document.querySelector(`#playlist-${id} .output button`).remove()
+    }
+  </script>
+  <style id="tracks-chart">
+  .chart {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    align-items: flex-end;
+    position: relative;
+    padding: 10px;
+    padding-bottom: 30px;
+  }
+
+  .bar {
+    width: 100%;
+    flex-grow: 1;
+    box-shadow: 0 0 0 1px var(--card-bg);
+    background: white;
+    width: 100%;
+    display: flex;
+    align-content: flex-end;
+    min-height: 4px!important;
+    align-items: flex-end;
+    position: relative;
+  }
+
+  .bar:hover {
+    background: black;
+  }
+
+  .bar:hover:after {
+    content: attr(data-pop);
+    position: absolute;
+    bottom: -18px;
+    font-size: .7em;
+    white-space: pre;
+    z-index: 1000;
+  }
+
+  .bar:hover .tooltip {
+    visibility: visible;
+  }
+
+  .tooltip {
+    position: absolute;
+    content: attr(data-tooltip);
+    padding: 6px 10px;
+    transform: translateX(1%) translateY(30%);
+    background: black;
+    color: white;
+    visibility: hidden;
+    font-size: 12px;
+    width:100%;
+    min-width:calc(100vw /6);
+    max-width: calc(100vw / 2) !important;
+    margin-top: -10px;
+    border-radius: 5px;
+    opacity: 0;
+    z-index: 1000;
+    right:0;
+    top: 0;
+    line-height: 1.3;
+    color: #999;
+  }
+  .tooltip.left{
+    right:unset;
+    left:0
+  }
+
+  .tooltip strong{
+    color:var(--light)
+  }
+
+  .tooltip em{
+    color:var(--primary)
+  }
+
+  .bar:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    box-shadow:2px 2px 3px 0 rgba(0,0,0,.4);
+    transform: translateX(1%) translateY(-90%);
+    transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .chart:before {
+    content: "song popularity";
+    width: 100%;
+    white-space: pre;
+    position: absolute;
+    bottom: 0;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+  </style>
+
 </div>

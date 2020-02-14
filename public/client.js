@@ -1,3 +1,7 @@
+var $ = query => document.querySelector(query);
+var $$ = query => Array.from(document.querySelectorAll(query));
+var $make = type => document.createElement(type);
+
 function getPathName() {
   return window.location.pathname;
 }
@@ -5,9 +9,6 @@ function getPathName() {
 function getApiUrl(path) {
   return `/api${path}`;
 }
-
-const currentPage = getPathName();
-const url = getApiUrl(currentPage);
 
 function getLocalData(key) {
   return JSON.parse(localStorage.getItem(key));
@@ -17,12 +18,11 @@ function $get(query) {
   return document.getElementById(query);
 }
 
-// TODO: find a better way/lib to do this
-function decodeSingleQuote(str){
-  if(!str || typeof str !== 'string'){
-    return str
-  }
-  return str.replace(/&#x27;/g,"'")
+function createPath(api) {
+  const p = {
+    user: user => `/api/user/${user}`,
+    playlist: id => `/api/playlist/${id}`
+  };
 }
 
 function flattenObject(data) {
@@ -53,9 +53,11 @@ function cloneHTML(itemData, index = 0) {
   var clone = document
     .querySelector('#items .card[data-index="-1"]')
     .cloneNode(true);
+
   (clone.id = "playlist-" + itemData.id), (clone.dataset.index = index);
+
   clone.querySelectorAll("[data-api]").forEach(e => {
-    e[e.dataset.label || "textContent"] = decodeSingleQuote(flatData[e.dataset.api]);
+    e[e.dataset.label || "textContent"] = flatData[e.dataset.api];
   });
 
   return clone;
@@ -65,6 +67,18 @@ function fillPage(data) {
   data.items.forEach((item, i) => {
     $get("items").appendChild(cloneHTML(item, i));
   });
+
+  document.querySelectorAll("[data-inject-api]").forEach(e => {
+    e[e.dataset.label || "textContent"] = data[e.dataset.injectApi];
+  });
+}
+
+function setStorage(key, data) {
+  return localStorage.setItem(key, JSON.stringify(data));
+}
+
+function getStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
 }
 
 function dataManager(userUrl, cb) {
@@ -75,7 +89,7 @@ function dataManager(userUrl, cb) {
       .then(response => response.json())
       .then(data => {
         dat = data.body;
-        fillPage(dat);
+        cb(dat);
         console.log("fetched", data);
         localStorage.setItem(
           userUrl,
@@ -89,4 +103,4 @@ function dataManager(userUrl, cb) {
   cb(dat);
 }
 
-dataManager(url, fillPage);
+dataManager(getApiUrl(getPathName()), fillPage);

@@ -31,9 +31,11 @@
 
     form.addEventListener("submit", function(event) {
       event.preventDefault()
-      window.location.pathname =`/user/${document.querySelector("#finduser").value}`
+      
+      window.location.pathname =`/user/${form.querySelector("#user").value || 'Spotify'}`
     })
   </script>
+  <script src="browser.js"></script>
 
 </body>
 

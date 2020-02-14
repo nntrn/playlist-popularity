@@ -1,18 +1,13 @@
 :root {
   --dark: #191414;
+  --gray: #95a5a6;
   --accent: #FFC107;
   --light: #ffffff;
   --primary: #1DB954;
   --card-bg: #19e68c;
   --code: #777;
   --link: #3498db;
-
   --gradient: linear-gradient(#0b7285, #0ca678);
-}
-
-html {
-  background: var(--dark);
-  height: 100%;
 }
 
 * {
@@ -21,6 +16,10 @@ html {
 
 .light {
   color: var(--light) !important;
+}
+
+.gray {
+  color: var(--gray) !important;
 }
 
 .dark {
@@ -43,16 +42,39 @@ html {
   background: var(--primary) !important;
 }
 
+.opacity-75 {
+  opacity: 0.75;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.opacity-75.hover:hover {
+  opacity: 1;
+}
+
+.opacity-50.hover:hover {
+  opacity: 0.75;
+}
+
+html {
+  background: var(--dark);
+  height: 100%;
+}
+
 body,
 html {
   overflow: auto;
+  background: var(--dark);
 }
+
 body {
   font-family: SF Pro Display, system ui, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.5;
   color: var(--dark);
-  background-color: var(--light);
+  background-color: var(--dark);
   background: var(--gradient);
   tab-size: 2;
   height: 100%;
@@ -78,22 +100,9 @@ code {
   color: var(--code);
 }
 
-label.input-container:hover span {
-  opacity: 0.5;
-}
-
-label.input-container input.form-control {
-  margin-right: 0.4rem;
-}
-
-input[type="submit"] {
-  align-self: flex-end;
-  justify-content: flex-end;
-}
-
 .output {
   max-height: 300px;
-  overflow-y: scroll;
+  height: 100%;
 }
 
 .flex {
@@ -108,7 +117,6 @@ input[type="submit"] {
   grid-template-columns: 80% 20%;
   grid-column-gap: 2px;
   display: grid;
-
   height: fit-content;
 }
 
@@ -127,28 +135,6 @@ h5 {
 
 .container {
   padding: 0 0.85rem;
-}
-
-.tooltip {
-  position: relative;
-}
-
-.tooltip:after {
-  position: absolute;
-  content: "Hovered!";
-  padding: 1px 6px;
-  transform: translateX(-70%) translateY(0%);
-  background: var(--dark);
-  color: var(--light);
-  visibility: hidden;
-  font-size: 12px;
-  border-radius: 5px;
-}
-
-.tooltip:hover:after {
-  visibility: visible;
-  transform: translateX(-70%) translateY(-45%);
-  transition: transform 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 #playlist-template {
@@ -198,7 +184,7 @@ h5 {
 
 .card label {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 4px;
   font-size: 0.7em;
   opacity: 0.5;
@@ -207,14 +193,17 @@ h5 {
 main {
   box-shadow: inset 0 50vh var(--accent);
 }
+
 a {
   text-decoration: none;
   color: var(--link);
+  word-break: break-word;
 }
 
 a:hover {
   opacity: 0.8;
-  transition: opacity 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: inset 0 -0.2rem currentColor;
+  transition: box-shadow 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 a code {
@@ -233,6 +222,12 @@ button {
 button {
   background: var(--dark);
   color: var(--light);
+}
+
+[type="submit"]:hover,
+button:hover {
+  transform: translateX(3px);
+  transition: transform 100ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 blockquote {
@@ -267,4 +262,16 @@ header {
 
 header > * {
   margin: 0.5rem 0;
+}
+
+input {
+  transition: border-radius 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input:focus {
+  border-radius: 0;
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+  box-shadow: inset 0 -3px rgba(0, 0, 0, 0.8);
 }
