@@ -62,6 +62,7 @@
   width: 0px;
   height: 0px;
 }
+
 html {
   background: var(--dark);
   height: 100%;
@@ -106,7 +107,7 @@ code {
 
 .output {
   max-height: 300px;
-/*   overflow-y: scroll; */
+  /*   overflow-y: scroll; */
   height: 100%;
 }
 
@@ -141,6 +142,7 @@ h5 {
 .container {
   padding: 0 0.85rem;
 }
+
 /* 
 .tooltip {
   position: relative;
@@ -306,30 +308,50 @@ input:focus {
 }
 
 .tooltip {
- visibility: hidden;
+  visibility: hidden;
   position: absolute;
 }
 
 .bar:hover {
   background: black;
-
-
 }
-.bar{
- background:white;
- width:100%;
- display:flex;
- align-content:flex-end
+
+.bar:hover:before {
+  content: attr(data-pop);
+  position: absolute;
+  transform: translateY(-30px);
+  white-space: pre;
 }
-.chart{
-  position:relative;
-  width:100%
+
+.bar {
+  background: white;
+  width: 100%;
+  display: flex;
+  align-content: flex-end;
+  min-height: 3px;
+}
+
+.chart {
+  position: relative;
+  width: 100%;
+  margin: 1rem 0;
 }
 
 .bar:hover .tooltip {
-left:0;
-  top:0;
+  left: 0;
+  top: 0;
   width: 100%;
-   visibility: visible;
+  visibility: visible;
   color: white;
+}
+
+.chart:before {
+  content: "song popularity";
+  width: 100%;
+  white-space: pre;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: -25px;
+  text-transform: uppercase;
+  font-size: 11px;
 }
