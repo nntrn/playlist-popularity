@@ -104,7 +104,7 @@
 
       var div = Object.assign($make('div'), {
         className: 'chart',
-        style: `max-height:${maxPop*2}px`
+        style: `max-height:${(maxPop*2)+30}px`
       })
 
       pop.sort((a, b) => a[4] - b[4]).forEach(p => {
@@ -115,9 +115,10 @@
 
         bar.dataset.pop = `${p[4]}%`
         var tooltip = Object.assign($make('div'), {
-          textContent: `${p[2]} by ${p[3]}`,
+          innerHTML: `${p[2]} <em>by ${p[3]}</em> `,
           className: 'tooltip'
         })
+        tooltip.setAttribute('data-tooltip',`${p[2]} by ${p[3]}`)
         bar.appendChild(tooltip)
         div.appendChild(bar)
       })
@@ -127,7 +128,7 @@
     }
   </script>
   <style id="tracks-chart">
-  .chart {
+/*   .chart {
     display: flex;
     width: 100%;
     height: 200px;
@@ -169,20 +170,18 @@
     margin-bottom: 1rem;
   }
 
-/*   .bar:hover .tooltip {
-    left: 0;
-    top: 0;
+  .bar:hover .tooltip {
     width: 100%;
     visibility: visible;
     color: white;
   }
- */
+
     
 .tooltip:after {
   position:absolute;
-  content: 'Hovered!';
+  content: attr(data-tooltip);
   padding: 1px 6px;
-  transform: translateX(-70%) translateY(-20%);
+  transform: translateX(-20%) translateY(-20%);
   background: black;
   color: white;
   visibility: hidden;
@@ -191,10 +190,10 @@
 }
 .tooltip:hover:after {
   visibility: visible;
-  transform: translateX(-70%) translateY(-16px);
+  transform: translateX(-20%) translateY(-16px);
   transition: transform 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-  .chart:after {
+  .chart:before {
     content: "song popularity";
     width: 100%;
     white-space: pre;
@@ -203,7 +202,7 @@
     margin-bottom: -25px;
     text-transform: uppercase;
     font-size: 11px;
-  }
+  } */
   </style>
 
 </div>
