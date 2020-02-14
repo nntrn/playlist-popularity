@@ -167,11 +167,13 @@
     position: relative;
   }
 
-  .bar:hover {
+  .bar:hover,
+  .bar:hover:active {
     background: black;
   }
 
-  .bar:hover:after {
+  .bar:hover:after,
+  .bar:hover:active:after  {
     content: attr(data-pop);
     position: absolute;
     bottom: -18px;
@@ -180,7 +182,8 @@
     z-index: 1000;
   }
 
-  .bar:hover .tooltip {
+  .bar:hover .tooltip,
+  .bar:hover:active .tooltip{
     visibility: visible;
   }
 
@@ -218,7 +221,8 @@
     color:var(--primary)
   }
 
-  .bar:hover .tooltip {
+  .bar:hover .tooltip,
+  .bar:hover:active .tooltip {
     opacity: 1;
     visibility: visible;
     box-shadow:2px 2px 3px 0 rgba(0,0,0,.4);
