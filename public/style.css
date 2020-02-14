@@ -1,6 +1,6 @@
 :root {
   --dark: #191414;
-  --gray: #95a5a6;
+  --gray: #999999;
   --accent: #FFC107;
   --light: #ffffff;
   --primary: #1DB954;
@@ -208,6 +208,7 @@ a:hover {
 
 a code {
   color: inherit;
+  filter:hue-rotate(120deg);
 }
 
 input,
