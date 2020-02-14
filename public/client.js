@@ -108,6 +108,14 @@ function fillPage(data) {
   });
 }
 
+function setStorage(key,data) {
+  return localStorage.setItem(key,JSON.stringify(data))
+}
+
+function getStorage(key) {
+  return JSON.parse(localStorage.getItem(key))
+}
+
 function dataManager(userUrl, cb) {
   var dat = getLocalData(userUrl);
 
@@ -131,22 +139,3 @@ function dataManager(userUrl, cb) {
 }
 
 dataManager(url, fillPage);
-
-function IQR(arr) {
-  let data = arr.sort((a, b) => a - b);
-  let lowerHalfData = data.slice(0, Math.floor(data.length / 2));
-  let upperHalfData = data.slice(Math.ceil(data.length / 2), data.length);
-
-  return [
-    lowerHalfData
-      .slice(0, Math.floor(lowerHalfData.length / 2))
-      .slice(-1)
-      .toString(),
-    lowerHalfData.slice(-1).toString(),
-    upperHalfData
-      .slice(0, Math.floor(upperHalfData.length / 2))
-      .slice(-1)
-      .toString(),
-    [...lowerHalfData, ...upperHalfData].slice(-1).toString()
-  ].map(e => +e);
-}

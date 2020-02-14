@@ -71,9 +71,19 @@
     }
 
     function getTracksApi(id) {
-      fetch(`/api/playlist/${id}/tracks`)
+      if(getStorage(id)){
+        var d = getStorage(id)
+        makePopChart(id, d.items)
+      }
+      else{
+        fetch(`/api/playlist/${id}/tracks`)
         .then(data => data.json())
-        .then(d => makePopChart(id, d.items))
+        .then(d => {
+          console.log('fetch',id)
+          setStorage(id, d)
+          makePopChart(id, d.items)
+      })
+      }
     }
 
     function makePopChart(id, dat) {
@@ -90,7 +100,7 @@
           i + 1,
           new Date(e.added_at).toLocaleDateString(),
           e.track.name,
-          e.track.artists.map(e => e.name).join(' & '),
+          e.track.artists.map(e => e.name).join(', '),
           e.track.popularity
         ]
         cols.forEach(e => {
@@ -116,7 +126,7 @@
 
         bar.dataset.pop = `${p[4]}%`
         var tooltip = Object.assign($make('div'), {
-          innerHTML: `<strong>${p[2]}</strong> by <em>${p[3]}</em> `,
+          innerHTML: `<strong>${p[2]}</strong><br><em>${p[3]}</em> `,
           className: 'tooltip'
         })
         tooltip.setAttribute('data-tooltip',`${p[2]} by ${p[3]}`)
