@@ -128,14 +128,14 @@
     }
   </script>
   <style id="tracks-chart">
-.chart {
+/* .chart {
   display: flex;
   width: 100%;
   height: 200px;
   align-items: flex-end;
   position: relative;
   padding: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 .bar {
@@ -177,7 +177,10 @@
   color: white;
   visibility: hidden;
   font-size: 12px;
-  max-width: calc(100vw / 5);
+  min-width:calc(100vw / 4);
+  max-width: calc(100vw / 2) !important;
+
+  white-space:pre-line
   margin-top: -20px;
   border-radius: 5px;
   opacity: 0;
@@ -185,9 +188,12 @@
   right: 10px;
   top: 0;
   line-height: 1.3;
-  
 }
 
+.tooltip em{
+  color:var(--primary)
+}
+    
 .bar:hover .tooltip {
   opacity: 1;
   visibility: visible;
@@ -203,7 +209,7 @@
   bottom: 0;
   text-transform: uppercase;
   font-size: 11px;
-}
+} */
   </style>
 
 </div>
