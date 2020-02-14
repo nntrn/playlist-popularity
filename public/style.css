@@ -147,7 +147,7 @@ h5 {
   padding: 1.1rem;
   background: var(--card-bg);
   border: 5px solid var(--dark);
-  word-break: break-word;
+  word-break: keep-all;
   position: relative;
   color: var(--dark);
 }
