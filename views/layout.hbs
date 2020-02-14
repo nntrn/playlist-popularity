@@ -33,11 +33,50 @@
       event.preventDefault()
       window.location.pathname =`/user/${document.querySelector("#finduser").value}`
     })
-  </script>
-  <script>
     
+    
+  </script>
+<script>
+  function browserPredicates(userAgent) {
+  userAgent = userAgent || window.navigator.userAgent;
 
-</script>
+  let isChrome = /Chrome/i.test(userAgent) && !/Edge/i.test(userAgent);
+  let isMobile = /iPhone|iPad|Android/i.test(userAgent);
+  let isAndroid = /android/i.test(userAgent);
+  let isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window["MSStream"];
+  let isMacOS = /Mac/i.test(userAgent);
+  let isAppleDevice = isIOS || isMacOS;
+
+  return {
+    isChrome,
+    isMobile,
+    isAndroid,
+    isIOS,
+    isMacOS,
+    isAppleDevice
+  };
+}
+  
+  function createStyle(css, id=''){
+    Object.assign(document.createElement('style'),{
+      textContent: css,
+      id: id
+    })
+    
+  }
+
+  if(!browserPredicates().isMacOS){
+    body.style.fontWeight=500
+    
+    document.createElement('style')
+    
+    css=`*::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}`
+  }
+
+  </script>
 
 </body>
 
