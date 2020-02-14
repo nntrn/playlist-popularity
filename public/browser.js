@@ -33,6 +33,6 @@ const windowStyle = `body{
     width:0px;
 }`;
 
-if (browserPredicates().isMacOS) {
+if (!browserPredicates().isMacOS) {
   addStyleSheet(windowStyle, "browser-win");
 }
