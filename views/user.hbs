@@ -118,7 +118,9 @@
         style: `max-height:${(maxPop * 2) + 30}px`
       })
 
-      pop.sort((a, b) => a[4] - b[4]).forEach((p, i) => {
+      pop
+        // .sort((a, b) => a[4] - b[4])
+        .forEach((p, i) => {
         var bar = Object.assign($make('div'), {
           style: `height: ${p[4] * 2}px;`,
           className: 'bar',
