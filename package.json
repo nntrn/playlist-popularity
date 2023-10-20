@@ -1,6 +1,6 @@
 {
   "name": "spotify-user-playlist",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A simple project for exploring a user's playlists in Spotify using handlebars and node",
   "main": "server.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "spotify-web-api-node": "^4.0.0"
   },
   "engines": {
-    "node": "v12.1.0"
+    "node": "v16.x"
   },
   "author": "nntrn",
   "license": "MIT",
